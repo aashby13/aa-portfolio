@@ -1,16 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { PlayerComponent } from './player/player.component';
+import { DataService } from './services/data.service';
+
+const appRoutes: Routes = [
+    { path: 'portfolio', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },
+    { path: '', redirectTo: 'portfolio', pathMatch: 'full' },
+    { path: '**', redirectTo: 'portfolio', pathMatch: 'full' }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PortfolioComponent,
+        PlayerComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterModule.forRoot(
+            appRoutes,
+            { enableTracing: true } // <-- debugging purposes only
+        )
+    ],
+    providers: [Title, DataService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

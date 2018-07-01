@@ -1,0 +1,21 @@
+/* global colors */
+$white: #FFF;
+$black: #000;
+$dark-grey: rgb(48, 48, 48);
+$darker-grey: rgb(33, 33, 33);
+$light-grey: rgb(89, 89, 89);
+$lighter-grey: #bcbcbc;
+/*  */
+$keyword-color:#17dcf2; //#17dcf2;
+$string-color: #e8db61; //#e8db61;
+$name-color: $lighter-grey;
+$num-color:#b779d3; //#b779d3;
+$operator-color:#ff0071;
+/* global dims */
+
+$gutter-width-L:7%;
+$gutter-width-R:6%;
+$left-width:100% - ($gutter-width-L+$gutter-width-R);
+$right-width:30em;
+$right-image-height:30em;
+$top-height: calc((100% - #{$right-image-height})/2);
