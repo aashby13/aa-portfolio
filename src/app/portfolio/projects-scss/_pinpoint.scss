@@ -1,0 +1,35 @@
+$pinpoint-red:#ff3434;
+
+#pinpoint {
+    background-image: url(/assets/images/pinpoint.svg);
+}
+
+.page.portfolio.pinpoint{
+	#text-holder{
+		.project-type{
+			color:$white;
+		}
+		.project-role h2{
+			color:$pinpoint-red;
+			.tab{
+				color:$lighter-grey;
+			}
+		}
+		/* .project-info{
+			border-color:$white;
+			p{
+				color:$white;
+			}
+		} */
+		.string{
+			color:$white;
+		}
+		.name{
+			color:$black;
+			background-color:$pinpoint-red;
+		}
+		.number, .keyword, .operator{
+			color:$pinpoint-red;
+		}
+    }
+}

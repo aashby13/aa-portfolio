@@ -1,0 +1,40 @@
+$ps-green:#22d922;
+$ps-blue:#7071ca; /* #6061ad; */
+$ps-purple:#a54fa1; /* #823f7f; */
+$ps-yellow:#b77a34;
+
+#project-strong {
+    background-image: url(/assets/images/project-strong.png);
+}
+
+.page.portfolio.project-strong{
+	#text-holder{
+		.project-type{
+			color:$white;
+		}
+		.project-role h2{
+			color:$ps-yellow;
+			.tab{
+				color:$ps-blue;
+			}
+		}
+		.project-info{
+			p{
+				color:$white;
+			}
+		}
+		.string{
+			color:$ps-purple;
+		}
+		.keyword{
+			color:$ps-blue;
+		}
+		.name{
+			color:$black;
+			background-color:$ps-green;
+		}
+		.number, .operator,{
+			color:$ps-green;
+		}
+	}
+}

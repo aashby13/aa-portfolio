@@ -97,9 +97,6 @@ span {
 .number{
 	color:$num-color;
 }
-.string{
-	color:$string-color;
-}
 .name{
 	color:$name-color;
 	background-color:$black;
@@ -107,6 +104,14 @@ span {
 .operator{
 	color:$operator-color;
 } */
+
+.string::after {
+    content: ', '
+}
+
+.string:last-of-type::after {
+    content: ''
+}
 
 #svg-logo {
     rect {

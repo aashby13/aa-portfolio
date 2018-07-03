@@ -59,6 +59,7 @@
             p {
                 font-family: 'Droid Sans Mono', sans-serif;
                 font-size: 1.25em;
+                white-space: nowrap;
             }
             .tab {
                 width: 1.8em;
@@ -72,17 +73,18 @@
         display: inline-block;
         position: relative;
         /* visibility: hidden; */
-        .portfolio-image {
-            width: $right-width;
-            height: $right-image-height;
-            background: transparent no-repeat;
-            background-size: cover;
-            /* border-left: 0.15em solid $darker-grey;
+    }
+    .portfolio-image {
+        width: $right-width;
+        height: $right-image-height;
+        background: transparent no-repeat;
+        background-size: cover;
+        /* border-left: 0.15em solid $darker-grey;
 			border-right: 0.15em solid $darker-grey; */
-        }
-        .portfolio-image:first-of-type {
-            background-position-y: 30em;
-        }
+    }
+
+    .portfolio-image:first-of-type {
+        background-position-y: 30em;
     }
     .gutter.right {
         display: table;
@@ -105,3 +107,12 @@
         }
     }
 }
+
+/* projects */
+@import "projects-scss/pinpoint";
+@import "projects-scss/train-to-tend";
+@import "projects-scss/project-strong";
+@import "projects-scss/bevac";
+@import "projects-scss/step-for-life";
+@import "projects-scss/momzing";
+@import "projects-scss/bub-and-bot";

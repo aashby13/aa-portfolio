@@ -1,0 +1,39 @@
+$momzing-pink:#d9508c;
+$momzing-orange:#dd7848;
+/* $momzing-yellow:#EFAD18; */
+
+#momzing {
+    background-image: url(/assets/images/momzing.svg);
+}
+
+.page.portfolio.momzing{
+	#text-holder{
+		.project-type{
+			color:$white;
+		}
+		.project-role h2{
+			color:$momzing-pink;
+			.tab{
+				color:$momzing-orange;
+			}
+		}
+		/* .project-info{
+			p{
+				color:$white;
+			}
+		} */
+		.string, .number, .keyword, .name{
+			color:$white;
+		}
+		.name{
+			/* color:$black; */
+			background-color:$momzing-pink;
+		}
+		.number, .operator{
+			color:$momzing-orange;
+		}
+		.keyword{
+			color:$momzing-pink;
+		}
+	}
+}

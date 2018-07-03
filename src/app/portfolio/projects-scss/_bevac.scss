@@ -1,0 +1,38 @@
+$bevac-blue:#0071bb;
+$bevac-orange:#C95F0A;
+/* $bevac-yellow:#EFAD18; */
+
+#bevac {
+    background-image: url(/assets/images/bevac.svg);
+}
+
+.page.portfolio.bevac{
+	#text-holder{
+		.project-type{
+			color:$white;
+		}
+		.project-role h2{
+			color:$bevac-blue;
+			.tab{
+				color:$bevac-orange;
+			}
+		}
+		/* .project-info{
+			p{
+				color:$white;
+			}
+		} */
+		.string, .number, .keyword{
+			color:$white;
+		}
+		.name{
+			background-color:$bevac-blue;
+		}
+		.number, .operator{
+			color:$bevac-orange;
+		}
+		.keyword{
+			color:$bevac-blue;
+		}
+	}
+}
