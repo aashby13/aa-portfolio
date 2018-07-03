@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PlayerComponent } from './player/player.component';
 import { DataService } from './services/data.service';
+import { WindowService } from './services/window.service';
 
 const appRoutes: Routes = [
     { path: 'portfolio', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
             { enableTracing: true } // <-- debugging purposes only
         )
     ],
-    providers: [Title, DataService],
+    providers: [Title, DataService, WindowService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
