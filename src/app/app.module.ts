@@ -10,9 +10,9 @@ import { DataService } from './services/data.service';
 import { WindowService } from './services/window.service';
 
 const appRoutes: Routes = [
-    { path: 'portfolio', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },
-    { path: '', redirectTo: 'portfolio', pathMatch: 'full' },
-    { path: '**', redirectTo: 'portfolio', pathMatch: 'full' }
+    { path: 'portfolio/:id', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },
+    { path: '', redirectTo: 'portfolio/0', pathMatch: 'full' },
+    { path: '**', redirectTo: 'portfolio/0', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -26,7 +26,7 @@ const appRoutes: Routes = [
         HttpClientModule,
         RouterModule.forRoot(
             appRoutes,
-            { enableTracing: true } // <-- debugging purposes only
+            { enableTracing: false } // <-- debugging purposes only
         )
     ],
     providers: [Title, DataService, WindowService],

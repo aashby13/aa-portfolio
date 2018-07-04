@@ -22,7 +22,3 @@ export interface ProjectData {
 export interface TypesData {
     [key: string]: ProjectTypeData;
 }
-
-export interface RolesData {
-    [key: string]: ProjectRoleData;
-}

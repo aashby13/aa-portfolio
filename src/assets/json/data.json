@@ -1,118 +1,130 @@
 {
-    "roles": {
-        "kb-standard": {
+    "roles": [
+        {
+            "id": "kb-standard",
             "me": "Front End & Game Dev, & Design",
             "company": "Klein Buendel Inc."
         },
-        "kb-vid": {
+        {
+            "id": "kb-vid",
             "me": "Front End & Game Dev, Design, & Video Production",
             "company": "Klein Buendel Inc."
         },
-        "kb-vid2": {
+        {
+            "id": "kb-vid2",
             "me": "Video Player/Server Dev & Video Production",
             "company": "Klein Buendel Inc."
         },
-        "kb-game": {
+        {
+            "id": "kb-game",
             "me": "Game Dev & Design",
             "company": "Klein Buendel Inc."
         }
-    },
+    ],
     "projects": [
         {
             "id": "pinpoint",
             "name": "Pinpoint",
             "type": "Web Apps",
             "role": "kb-standard",
-            "image": "url(\"/images/portfolio/pinpoint.svg\")",
-            "info": [
-                "duties: [<span class=\"string\">'js'</span>, <span class=\"string\">'php'</span>, <span class=\"string\">'html'</span>, <span class=\"string\">'css'</span>, <span class=\"string\">'gfx'</span>, <span class=\"string\">'sfx'</span>],",
-                "js: [<span class=\"string\">'angularJS'</span>, <span class=\"string\">'GSAP'</span>, <span class=\"string\">'createJS'</span>, <span class=\"string\">'opentypeJS'</span>],",
-                "apps: [<span class=\"string\">'Ai'</span>, <span class=\"string\">'Au'</span>, <span class=\"string\">'SASS'</span>],",
-                "year: <span class=\"number\">2017</span>"
+            "info": [ {
+                    "title": "duties",
+                    "strings": [
+                        "js",
+                        "php",
+                        "html",
+                        "css",
+                        "gfx",
+                        "sfx"
+                    ]
+                }, {
+                    "title": "js",
+                    "strings": [
+                        "angularJS",
+                        "GSAP",
+                        "createJS",
+                        "opentypeJS"
+                    ]
+                }, {
+                    "title": "apps",
+                    "strings": [
+                        "Ai",
+                        "Au",
+                        "SASS"
+                    ]
+                }, {
+                    "title": "year",
+                    "number": 2017
+                }
             ]
-        },
-        {
+        }, {
             "id": "bevac",
             "name": "BeVac",
             "type": "Web Apps",
             "role": "kb-standard",
-            "company": "Klein Buendel Inc.",
-            "image": "url(\"/images/portfolio/bevac.svg\")",
-            "info": [
-                "duties: [<span class=\"string\">'js'</span>, <span class=\"string\">'php'</span>, <span class=\"string\">'html'</span>, <span class=\"string\">'css'</span>, <span class=\"string\">'gfx'</span>],",
-                "js: [<span class=\"string\">'angularJS'</span>, <span class=\"string\">'GSAP'</span>],",
-                "apps: [<span class=\"string\">'Ae'</span>, <span class=\"string\">'Ai'</span>, <span class=\"string\">'Chimera'</span>, <span class=\"string\">'SASS'</span>],",
-                "year: <span class=\"number\">2016</span>"
-            ]
-        },
-        {
+            "info": [{
+                "title": "duties",
+                "strings": [ 
+                    "js",
+                    "php",
+                    "html",
+                    "css",
+                    "gfx"
+                ]
+            }, {
+                "title": "js",
+                "strings": [
+                    "angularJS",
+                    "GSAP"
+                ]
+            }, {
+                "title": "apps",
+                "strings": [ 
+                    "Ae",
+                    "Ai",
+                    "Chimera",
+                    "SASS"
+                ]
+            }, {
+                "title": "year",
+                "number": 2016
+            }]
+        }, {
             "id": "train-to-tend",
             "name": "TrainToTend.com",
             "type": "Web Apps",
             "role": "kb-vid",
-            "company": "Klein Buendel Inc.",
-            "image": "url(\"/images/portfolio/train-to-tend.svg\")",
             "info": [
-                "duties: [<span class=\"string\">'js'</span>, <span class=\"string\">'html'</span>, <span class=\"string\">'css'</span>, <span class=\"string\">'anim'</span>, <span class=\"string\">'gfx'</span>, <span class=\"string\">'sfx'</span>],",
-                "js: [<span class=\"string\">'jQuery'</span>, <span class=\"string\">'GSAP'</span>, <span class=\"string\">'createJS'</span>],",
-                "apps: [<span class=\"string\">'Ae'</span>, <span class=\"string\">'Ai'</span>, <span class=\"string\">'Au'</span>, <span class=\"string\">'Ch'</span>, <span class=\"string\">'Pr'</span>, <span class=\"string\">'Ps'</span>],",
-                "year: <span class=\"number\">2017</span>"
-            ]
-        },
-        {
-            "id": "project-strong",
-            "name": "Project Strong",
-            "type": "Web Apps",
-            "role": "kb-vid",
-            "company": "Klein Buendel Inc.",
-            "image": "url(\"/images/portfolio/project-strong-8.png\")",
-            "info": [
-                "duties: [<span class=\"string\">'js'</span>, <span class=\"string\">'html'</span>, <span class=\"string\">'css'</span>, <span class=\"string\">'anim'</span>, <span class=\"string\">'gfx'</span>, <span class=\"string\">'sfx'</span>],",
-                "js: [<span class=\"string\">'jQuery'</span>, <span class=\"string\">'GSAP'</span>, <span class=\"string\">'createJS'</span>],",
-                "apps: [<span class=\"string\">'Ae'</span>, <span class=\"string\">'Ai'</span>, <span class=\"string\">'Au'</span>, <span class=\"string\">'Ch'</span>, <span class=\"string\">'Pr'</span>, <span class=\"string\">'Ps'</span>],",
-                "year: <span class=\"number\">2016</span>"
-            ]
-        },
-        {
-            "id": "step-for-life",
-            "name": "Step for Life",
-            "type": "Web Apps",
-            "role": "kb-vid",
-            "company": "Klein Buendel Inc.",
-            "image": "url(\"/images/portfolio/step-for-life-ipad.png\")",
-            "info": [
-                "duties: [<span class=\"string\">'js'</span>, <span class=\"string\">'html'</span>, <span class=\"string\">'css'</span>, <span class=\"string\">'gfx'</span>,<span class=\"string\">'director'</span>],",
-                "js: [<span class=\"string\">'angularJS'</span>, <span class=\"string\">'GSAP'</span>],",
-                "apps: [<span class=\"string\">'Ae'</span>, <span class=\"string\">'Ai'</span>, <span class=\"string\">'Au'</span>, <span class=\"string\">'Pr'</span>, <span class=\"string\">'Ps'</span>, <span class=\"string\">'SASS'</span>],",
-                "year: <span class=\"number\">2016</span>"
-            ]
-        },
-        {
-            "id": "momzing",
-            "name": "Momzing.com",
-            "type": "Web Apps",
-            "role": "kb-vid2",
-            "company": "Klein Buendel Inc.",
-            "image": "url(\"/images/portfolio/momzing.svg\")",
-            "info": [
-                "duties: [<span class=\"string\">'as3'</span>, <span class=\"string\">'js'</span>, <span class=\"string\">'mograph'</span>, <span class=\"string\">'director'</span>, <span class=\"string\">'landingPage'</span>, <span class=\"string\">'promoVid'</span>],",
-                "as3: [<span class=\"string\">'AdobeMediaServer'</span>, <span class=\"string\">'GSAP'</span>],",
-                "apps: [<span class=\"string\">'Ae'</span>, <span class=\"string\">'Ai'</span>, <span class=\"string\">'Fb'</span>, <span class=\"string\">'Fl'</span>, <span class=\"string\">'Pr'</span>, <span class=\"string\">'Ps'</span>],",
-                "year: <span class=\"number\">2013</span>"
-            ]
-        },
-        {
-            "id": "bub-and-bot",
-            "name": "Fit-tastic Health: Bub & Bot",
-            "type": "AS3 Games",
-            "role": "kb-game",
-            "company": "Klein Buendel Inc.",
-            "image": "url(\"/images/portfolio/bub-and-bot.png\")",
-            "info": [
-                "duties: [<span class=\"string\">'as3'</span>, <span class=\"string\">'gfx'</span>, <span class=\"string\">'sfx'</span>, <span class=\"string\">'art direction'</span>],",
-                "as3: [<span class=\"string\">'GSAP'</span>, <span class=\"string\">'Nape'</span>, <span class=\"string\">'Starling'</span>],",
-                "apps: [<span class=\"string\">'Ae'</span>, <span class=\"string\">'Ai'</span>, <span class=\"string\">'Au'</span>, <span class=\"string\">'Fb'</span>, <span class=\"string\">'Fl'</span>, <span class=\"string\">'Pr'</span>, <span class=\"string\">'Ps'</span>],",
-                "year: <span class=\"number\">2012</span>"
+                {
+                    "title": "duties",
+                    "strings": [
+                        "js",
+                        "html",
+                        "css",
+                        "anim",
+                        "gfx",
+                        "sfx"
+                    ]
+                }, {
+                    "title": "js",
+                    "strings": [
+                        "jQuery",
+                        "GSAP",
+                        "createJS"
+                    ]
+                }, {
+                    "title": "apps",
+                    "strings": [
+                        "Ae",
+                        "Ai",
+                        "Au",
+                        "Ch",
+                        "Pr",
+                        "Ps"]
+                }, {
+                    "title": "year",
+                    "number": 2017
+                }
             ]
         }
     ]

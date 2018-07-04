@@ -1,0 +1,11 @@
+#ui-view {
+    z-index: 110;
+    height: auto;
+    .right {
+        .logo-holder {
+            height: 75%;
+            margin-top: 0.8em;
+            position: relative;
+        }
+    }
+}

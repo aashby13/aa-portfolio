@@ -72,20 +72,19 @@
         height: auto;
         display: inline-block;
         position: relative;
-        /* visibility: hidden; */
+        margin-top: 30em;
+        visibility: hidden;
     }
     .portfolio-image {
         width: $right-width;
         height: $right-image-height;
         background: transparent no-repeat;
         background-size: cover;
-        /* border-left: 0.15em solid $darker-grey;
-			border-right: 0.15em solid $darker-grey; */
     }
 
-    .portfolio-image:first-of-type {
+    /* .portfolio-image:first-of-type {
         background-position-y: 30em;
-    }
+    } */
     .gutter.right {
         display: table;
         #dot-holder {
