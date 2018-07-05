@@ -3,8 +3,11 @@ import { DataService } from '../services/data.service';
 import { TweenLite, TimelineMax, CSSPlugin, Sine, Power3, Power2 } from 'gsap/TweenMax';
 import { ProjectData, ProjectTypeData, TypesData, ProjectRoleData } from '../interfaces/project-data';
 import { WindowService } from '../services/window.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { PlatformLocation } from '@angular/common';
+import { ScrollVelocityService } from '../services/scroll-velocity.service';
+import { ScrollData } from '../interfaces/scroll-data';
 
 require('gsap/ScrollToPlugin');
 
@@ -14,7 +17,7 @@ let to: number;
 let rt: number;
 let ot: number;
 let i: number;
-let l: number;
+let l = 0;
 let top: number;
 let height: number;
 let img: HTMLElement;
@@ -40,12 +43,19 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
 
     private _window: Window;
     private _ready = false;
-    private _first: string;
+    private _freshID: string;
+    private _imgSub: Subscription;
+    private _dataSub: Subscription;
+    /* private _velSub: Subscription;
+    private vel: ScrollData;
+    private velStart = false; */
 
     constructor(
         private _windowService: WindowService,
         private _dataService: DataService,
-        private _router: Router
+       /*  private _scrollService: ScrollVelocityService, */
+        private _router: Router,
+        private _loc: PlatformLocation
     ) {
         this._window = this._windowService.nativeWindow;
     }
@@ -53,60 +63,36 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
     ngAfterViewInit() {
         CSSPlugin.defaultTransformPerspective = 4000;
         window.scrollTo(0, 0);
-        const arr = window.location.pathname.split('/');
-        this._first = arr[arr.length - 1];
         //
-        this.imageList.changes.subscribe(q => {
-            console.log('changes', q);
+        this._loc.onPopState(() => {
+            const c = this._getFreshIndex();
+            this.goTo(c);
+        });
+        //
+        this._imgSub = this.imageList.changes.subscribe(q => {
             this.images = q.toArray();
             l = this.images.length;
-            this._build();
+            this._buildTL();
             this._animIn();
         });
         //
-        this._dataService.getData()
+        this._dataSub = this._dataService.getData()
             .subscribe(data => {
-                const typesData: TypesData = {};
-                const prjs = data.projects;
-                this.roles = data.roles;
-                // change project.type to ProjectTypeData object {text:string, id:string}
-                for (i = prjs.length - 1; i >= 0; i--) {
-                    const p = prjs[i],
-                        t = (p.type as string).toLowerCase().replace(/ /g, '-'),
-                        typeObj = { text: p.type, id: t } as ProjectTypeData;
-                    p.type = typeObj;
-                    p.index = i;
-                    // build typesData object - no duplicates
-                    if (!typesData.hasOwnProperty(t)) {
-                        typesData[t] = typeObj;
-                        this.types.push(typeObj);
-                    }
-                    console.log(prjs[i]);
-                }
-                this.projects = prjs;
-                if (this._first === '0') {
-                    cur = 0;
-                } else {
-                    for (i = 0; i < this.projects.length; i++) {
-                        if (this.projects[i].id === this._first) {
-                            cur = i;
-                            break;
-                        }
-                    }
-                }
-                console.log('cur', cur, 'first', this._first);
-                console.log('types', this.types);
-                console.log('projects', this.projects);
-                this._updateIndex();
+                this._buildData(data);
             },
                 error => this.errorMessage = <any>error
             );
+        //
     }
 
     ngOnDestroy() {
         if (tl) {
             tl.kill();
         }
+        this._loc = null;
+        /* this._velSub.unsubscribe(); */
+        this._dataSub.unsubscribe();
+        this._imgSub.unsubscribe();
     }
 
     @HostListener('window:scroll', [])
@@ -129,13 +115,86 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
                 timeScale = timeScale / 0.6;
                 tl.timeScale(timeScale);
                 tl.tweenTo(img.id, { ease: Sine.easeOut });
-                console.log('do tween');
+                /* console.log('do tween'); */
             }
         }
+
+        /* if (this.velStart && this.vel) {
+            console.log(Math.round(this.vel.curVel * l));
+            if (this.vel.count > 10 && this.vel.prevVel > this.vel.curVel) {
+                this.velStart = false;
+                let n = Math.round(this.vel.curVel * l);
+                n = n > l - 1 ? l - 1 : n;
+                n = this.vel.prevScroll > this.vel.curScroll ? cur - n : cur + n;
+                n = n < 0 ? 0 : n;
+                console.log('scrllTo', n);
+                this.goTo(n);
+            }
+        } */
     }
 
-    private _build() {
-        console.log('PortfolioComponent.build()');
+    /* private startVelStream() {
+        if (!this.velStart) {
+            console.log('startVelStream()');
+            this.velStart = true;
+            this._scrollService.reset();
+            if (!this._velSub) {
+                this._velSub = this._scrollService.getVelStream()
+                    .subscribe(v => {
+                        this.vel = v;
+                        // console.log('got vel', this.vel.count);
+                    },
+                        error => this.errorMessage = <any>error
+                    );
+            }
+        }
+    } */
+
+    private _getFreshIndex() {
+        let c;
+        const arr = window.location.pathname.split('/');
+        this._freshID = arr[arr.length - 1];
+        if (this._freshID === '0') {
+            c = 0;
+        } else {
+            for (i = 0; i < this.projects.length; i++) {
+                if (this.projects[i].id === this._freshID) {
+                    c = i;
+                    break;
+                }
+            }
+        }
+        return c;
+    }
+
+    private _buildData(data) {
+        const typesData: TypesData = {};
+        const prjs = data.projects;
+        this.roles = data.roles;
+        l = prjs.length;
+        // change project.type to ProjectTypeData object {text:string, id:string}
+        for (i = l - 1; i >= 0; i--) {
+            const p = prjs[i],
+                t = (p.type as string).toLowerCase().replace(/ /g, '-'),
+                typeObj = { text: p.type, id: t } as ProjectTypeData;
+            p.type = typeObj;
+            p.index = i;
+            // build typesData object - no duplicates
+            if (!typesData.hasOwnProperty(t)) {
+                typesData[t] = typeObj;
+                this.types.push(typeObj);
+            }
+        }
+        this.projects = prjs;
+        cur = this._getFreshIndex();
+        /* console.log('cur', cur, 'first', this._freshID);
+        console.log('types', this.types);
+        console.log('projects', this.projects); */
+        this._updateIndex();
+    }
+
+    private _buildTL() {
+        console.log('PortfolioComponent_buildTL()');
         // set .project-type rotation
         TweenLite.set('.project-type', { rotationX: 90, transformOrigin: 'center center', display: 'block' });
         // set .project-role rotation
@@ -144,7 +203,6 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         TweenLite.set('.project-info', { rotationY: 90, transformOrigin: 'top left', display: 'block' });
         // build timeline
         tl = new TimelineMax({ paused: true });
-        l = this.projects.length;
         //
         for (i = 0; i < l; i++) {
             // add labels for each project .6sec apart
@@ -171,19 +229,22 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
 
     private  _animIn() {
         const t = cur === 0 ? 0.5 : 0.3;
-        // animate in current project
+        // animate in current project after load
         TweenLite.to('#image-holder', t, { marginTop: '0em', visibility: 'visible', ease: Power3.easeOut,
             onComplete: () => {
-                console.log(this.images[0]);
                 ot = this.images[0].nativeElement.offsetTop;
-                rt = this.images[cur].nativeElement.offsetTop; console.log(this.images[cur], cur, rt, ot);
+                rt = this.images[cur].nativeElement.offsetTop;
                 this._ready = true;
-                timeScale = Math.abs(tl.time() - tl.getLabelTime(this._first));
+                timeScale = Math.abs(tl.time() - tl.getLabelTime(this._freshID));
                 timeScale = timeScale / 0.6;
                 tl.timeScale(timeScale);
-                /* this._updateIndex(); */
-                TweenLite.to(this._window, 0.6, { scrollTo: { y: rt, autoKill: true }, ease: Sine.easeOut });
-                tl.tweenTo(this._first, { ease: Sine.easeOut });
+                /* this.startVelStream(); */
+                TweenLite.to(this._window, 0.6, {scrollTo: {y: rt, autoKill: true,
+                        /* onAutoKill: this.startVelStream,
+                        onAuroKillScope: this,
+                        onComplete: this.startVelStream, */
+                        onCompleteScope: this }, ease: Sine.easeOut });
+                tl.tweenTo(this._freshID, { ease: Sine.easeOut });
             }
         });
         TweenLite.to([`.project-type[data-type="${this.projects[0].type.id}"]`, `.project-role[data-role="${this.projects[0].role}"]`],
@@ -195,13 +256,19 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         this.index = cur;
         this.curID = this.projects[this.index].id;
         this._router.navigate(['/portfolio', this.curID]);
-        console.log('_updateIndex', this.index, 'curID', this.curID);
+        /* console.log('_updateIndex', this.index, 'curID', this.curID); */
     }
 
-    public goTo(indx, delay = 0) {
+    public goTo(indx: number) {
         rt = this.images[indx].nativeElement.offsetTop;
         TweenLite.to(this._window, 0.6 + (Math.abs(indx - cur) * 0.06),
-            { scrollTo: { y: rt - ot, autoKill: true }, ease: Power2.easeOut, delay: delay });
+            { scrollTo: { y: rt - ot, ease: Power2.easeOut,
+                autoKill: true,
+                /* onAutoKill: this.startVelStream,
+                onAutoKillScope: this,
+                onComplete: this.startVelStream, */
+                onCompleteScope: this
+            }});
     }
 
 }

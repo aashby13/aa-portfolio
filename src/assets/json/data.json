@@ -33,7 +33,7 @@
                         "js",
                         "php",
                         "html",
-                        "css",
+                        "scss",
                         "gfx",
                         "sfx"
                     ]
@@ -49,8 +49,7 @@
                     "title": "apps",
                     "strings": [
                         "Ai",
-                        "Au",
-                        "SASS"
+                        "Au"
                     ]
                 }, {
                     "title": "year",
@@ -68,7 +67,7 @@
                     "js",
                     "php",
                     "html",
-                    "css",
+                    "scss",
                     "gfx"
                 ]
             }, {
@@ -82,8 +81,7 @@
                 "strings": [ 
                     "Ae",
                     "Ai",
-                    "Chimera",
-                    "SASS"
+                    "Chimera"
                 ]
             }, {
                 "title": "year",
