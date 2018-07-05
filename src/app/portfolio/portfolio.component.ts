@@ -33,7 +33,7 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
 
     projects: Array<ProjectData>;
     roles: Array<ProjectRoleData>;
-    types = new Array<ProjectTypeData>();
+    types: Array<ProjectTypeData>;
     index: number;
     curID: string;
     errorMessage: string;
@@ -73,7 +73,11 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         //
         this._dataSub = this._dataService.getData()
             .subscribe(data => {
-                this._buildData(data);
+                this.projects = data.projects;
+                this.roles = data.roles;
+                this.types = data.types;
+                cur = this._getFreshIndex();
+                this._updateIndex();
             },
                 error => this.errorMessage = <any>error
             );
@@ -139,29 +143,6 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
             }
         }
         return c;
-    }
-
-    private _buildData(data) {
-        const typesData: TypesData = {};
-        const prjs = data.projects;
-        this.roles = data.roles;
-        l = prjs.length;
-        // change project.type to ProjectTypeData object {text:string, id:string}
-        for (i = l - 1; i >= 0; i--) {
-            const p = prjs[i],
-                t = (p.type as string).toLowerCase().replace(/ /g, '-'),
-                typeObj = { text: p.type, id: t } as ProjectTypeData;
-            p.type = typeObj;
-            p.index = i;
-            // build typesData object - no duplicates
-            if (!typesData.hasOwnProperty(t)) {
-                typesData[t] = typeObj;
-                this.types.push(typeObj);
-            }
-        }
-        this.projects = prjs;
-        cur = this._getFreshIndex();
-        this._updateIndex();
     }
 
     private _buildTL() {
