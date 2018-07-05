@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, /* OnInit, */ OnDestroy, HostListener, ViewChildren, QueryList, ElementRef} from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, HostListener, ViewChildren, QueryList, ElementRef} from '@angular/core';
 import { DataService } from '../services/data.service';
 import { TweenLite, TimelineMax, CSSPlugin, Sine, Power3, Power2 } from 'gsap/TweenMax';
 import { ProjectData, ProjectTypeData, TypesData, ProjectRoleData } from '../interfaces/project-data';
@@ -6,8 +6,6 @@ import { WindowService } from '../services/window.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PlatformLocation } from '@angular/common';
-import { ScrollVelocityService } from '../services/scroll-velocity.service';
-import { ScrollData } from '../interfaces/scroll-data';
 
 require('gsap/ScrollToPlugin');
 
@@ -46,14 +44,11 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
     private _freshID: string;
     private _imgSub: Subscription;
     private _dataSub: Subscription;
-    /* private _velSub: Subscription;
-    private vel: ScrollData;
-    private velStart = false; */
+    private delta: number;
 
     constructor(
         private _windowService: WindowService,
         private _dataService: DataService,
-       /*  private _scrollService: ScrollVelocityService, */
         private _router: Router,
         private _loc: PlatformLocation
     ) {
@@ -90,7 +85,6 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
             tl.kill();
         }
         this._loc = null;
-        /* this._velSub.unsubscribe(); */
         this._dataSub.unsubscribe();
         this._imgSub.unsubscribe();
     }
@@ -100,8 +94,9 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         if (!this._ready) { return; }
         clearTimeout(to);
         to = this._window.setTimeout(() => {
-            TweenLite.to(this._window, 0.6, { scrollTo: { y: rt - ot, autoKill: true }, ease: Sine.easeOut });
-        }, 100);
+            const b = (rt - ot) - this._window.scrollY > (height / 8) ? true : false;
+            TweenLite.to(this._window, b ? 1.4 : 0.8, { scrollTo: { y: rt - ot, autoKill: true }, ease: Sine.easeOut });
+        }, 17);
         //
         for (i = 0; i < l; i++) {
             img = this.images[i].nativeElement;
@@ -115,40 +110,19 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
                 timeScale = timeScale / 0.6;
                 tl.timeScale(timeScale);
                 tl.tweenTo(img.id, { ease: Sine.easeOut });
-                /* console.log('do tween'); */
             }
         }
-
-        /* if (this.velStart && this.vel) {
-            console.log(Math.round(this.vel.curVel * l));
-            if (this.vel.count > 10 && this.vel.prevVel > this.vel.curVel) {
-                this.velStart = false;
-                let n = Math.round(this.vel.curVel * l);
-                n = n > l - 1 ? l - 1 : n;
-                n = this.vel.prevScroll > this.vel.curScroll ? cur - n : cur + n;
-                n = n < 0 ? 0 : n;
-                console.log('scrllTo', n);
-                this.goTo(n);
-            }
-        } */
     }
 
-    /* private startVelStream() {
-        if (!this.velStart) {
-            console.log('startVelStream()');
-            this.velStart = true;
-            this._scrollService.reset();
-            if (!this._velSub) {
-                this._velSub = this._scrollService.getVelStream()
-                    .subscribe(v => {
-                        this.vel = v;
-                        // console.log('got vel', this.vel.count);
-                    },
-                        error => this.errorMessage = <any>error
-                    );
-            }
-        }
-    } */
+    onScrollUp(e: any) {
+        if (!this.delta) {this.delta = e.delta; }
+        TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY - Math.abs(e.delta / 4) }});
+    }
+
+    onScrollDown(e: any) {
+        if (!this.delta) { this.delta = e.delta; }
+        TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY + Math.abs(e.delta / 4) } });
+    }
 
     private _getFreshIndex() {
         let c;
@@ -187,9 +161,6 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         }
         this.projects = prjs;
         cur = this._getFreshIndex();
-        /* console.log('cur', cur, 'first', this._freshID);
-        console.log('types', this.types);
-        console.log('projects', this.projects); */
         this._updateIndex();
     }
 
@@ -238,12 +209,7 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
                 timeScale = Math.abs(tl.time() - tl.getLabelTime(this._freshID));
                 timeScale = timeScale / 0.6;
                 tl.timeScale(timeScale);
-                /* this.startVelStream(); */
-                TweenLite.to(this._window, 0.6, {scrollTo: {y: rt, autoKill: true,
-                        /* onAutoKill: this.startVelStream,
-                        onAuroKillScope: this,
-                        onComplete: this.startVelStream, */
-                        onCompleteScope: this }, ease: Sine.easeOut });
+                TweenLite.to(this._window, 0.6, {scrollTo: {y: rt, autoKill: true}, ease: Sine.easeOut });
                 tl.tweenTo(this._freshID, { ease: Sine.easeOut });
             }
         });
@@ -264,9 +230,6 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         TweenLite.to(this._window, 0.6 + (Math.abs(indx - cur) * 0.06),
             { scrollTo: { y: rt - ot, ease: Power2.easeOut,
                 autoKill: true,
-                /* onAutoKill: this.startVelStream,
-                onAutoKillScope: this,
-                onComplete: this.startVelStream, */
                 onCompleteScope: this
             }});
     }
