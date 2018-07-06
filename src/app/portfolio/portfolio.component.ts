@@ -6,8 +6,9 @@ import { WindowService } from '../services/window.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PlatformLocation } from '@angular/common';
+import { TimelineLite } from 'gsap';
 
-require('gsap/ScrollToPlugin');
+/* require('gsap/ScrollToPlugin'); */
 
 let cur = 0;
 let tl: TimelineMax;
@@ -57,7 +58,7 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
 
     ngAfterViewInit() {
         CSSPlugin.defaultTransformPerspective = 4000;
-        window.scrollTo(0, 0);
+        /* TweenLite.set(this._window, {scrollTo: {y: 0}}); */
         //
         this._loc.onPopState(() => {
             const c = this._getFreshIndex();
@@ -102,12 +103,28 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
             TweenLite.to(this._window, b ? 1.4 : 0.8, { scrollTo: { y: rt - ot, autoKill: true }, ease: Sine.easeOut });
         }, 17);
         //
+        this._gotToNearestInfo(Math.round(this.delta / 2) * -1);
+    }
+
+    onScrollUp(e: any) {
+        this.delta = e.delta;
+        TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY - Math.abs(e.delta / 4) }});
+        /* console.log('scrollUp'); */
+    }
+
+    onScrollDown(e: any) {
+        this.delta = e.delta;
+        TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY + Math.abs(e.delta / 4) } });
+        /* console.log('scrollDown'); */
+    }
+
+    private _gotToNearestInfo(addY: number = 0) {
         for (i = 0; i < l; i++) {
             img = this.images[i].nativeElement;
             top = img.offsetTop;
             height = img.offsetHeight / 2;
             //
-            if ((top <= this._window.scrollY + ot + height && top >= this._window.scrollY + ot - height) && i !== cur) {
+            if ((top <= (this._window.scrollY + addY) + ot + height && top >= (this._window.scrollY + addY) + ot - height) && i !== cur) {
                 cur = i;
                 rt = top;
                 timeScale = Math.abs(tl.time() - tl.getLabelTime(img.id));
@@ -116,16 +133,6 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
                 tl.tweenTo(img.id, { ease: Sine.easeOut });
             }
         }
-    }
-
-    onScrollUp(e: any) {
-        if (!this.delta) {this.delta = e.delta; }
-        TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY - Math.abs(e.delta / 4) }});
-    }
-
-    onScrollDown(e: any) {
-        if (!this.delta) { this.delta = e.delta; }
-        TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY + Math.abs(e.delta / 4) } });
     }
 
     private _getFreshIndex() {
@@ -182,7 +189,7 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
     private  _animIn() {
         const t = cur === 0 ? 0.5 : 0.3;
         // animate in current project after load
-        TweenLite.to('#image-holder', t, { marginTop: '0em', visibility: 'visible', ease: Power3.easeOut,
+        TweenLite.to('.portfolio-image', t, { 'background-position-y': '0em', visibility: 'visible', ease: Power3.easeOut,
             onComplete: () => {
                 ot = this.images[0].nativeElement.offsetTop;
                 rt = this.images[cur].nativeElement.offsetTop;
@@ -199,20 +206,25 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         TweenLite.to(`.project-info[data-index="0"]`, t, { rotationY: 0, ease: Sine.easeOut });
     }
 
-    private  _updateIndex() {
-        this.index = cur;
+    private  _updateIndex(n?: number) {
+        this.index = n !== undefined ? n : cur;
         this.curID = this.projects[this.index].id;
         this._router.navigate(['/portfolio', this.curID]);
-        /* console.log('_updateIndex', this.index, 'curID', this.curID); */
+        console.log('_updateIndex', this.index, 'curID', this.curID);
     }
 
     public goTo(indx: number) {
+        /* if (!this.delta) { this._updateIndex.apply(this, [indx]); this.delta = 1; } */
         rt = this.images[indx].nativeElement.offsetTop;
         TweenLite.to(this._window, 0.6 + (Math.abs(indx - cur) * 0.06),
-            { scrollTo: { y: rt - ot, ease: Power2.easeOut,
-                autoKill: true,
-                onCompleteScope: this
-            }});
+            { scrollTo: { y: rt - ot, ease: Power2.easeOut, autoKill: true},
+            onUpdate: () => {
+                clearTimeout(to);
+            },
+            onComplete: () => {
+                this._updateIndex.apply(this, [indx]);
+            }
+        });
     }
 
 }

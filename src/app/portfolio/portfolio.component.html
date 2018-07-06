@@ -20,8 +20,12 @@
                     </p>
                     <p *ngFor="let info of project.info;"> 
                         <span class="tab"></span>{{ info.title }}:
-                        {{ info.strings ? '[' : null }}<span *ngFor="let str of info.strings" class="string">'{{str}}'</span>{{ info.strings ? '],' : null }}
+                        {{ info.strings ? '[' : null }}
+                        <span *ngFor="let str of info.strings, let last = last">
+                            <span  class="string">'{{str}}'</span>{{ !last ? ',' : null}}
+                        </span>{{ info.strings ? '],' : null }}
                         <span *ngIf="info.number" class="number">{{info.number}}</span>
+
                     </p>
                     <p>{{'};'}}</p>
                 </section>
@@ -33,6 +37,7 @@
             <div class="spacer"></div>
             <div id="image-holder" [ngStyle]="{'transform': 'translateY(' + scrollResist + 'px)'}">
                 <div #images class="portfolio-image" *ngFor="let project of projects" attr.id="{{project.id}}"></div>
+                <div style="height: 8em;"></div>
             </div>
             <div class="spacer"></div>
             <div class="block top"></div>

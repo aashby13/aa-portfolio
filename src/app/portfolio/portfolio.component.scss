@@ -72,7 +72,7 @@
         height: auto;
         display: inline-block;
         position: relative;
-        margin-top: 30em;
+        /* margin-top: 30em; */
         visibility: hidden;
     }
     .portfolio-image {
@@ -80,6 +80,7 @@
         height: $right-image-height;
         background: transparent no-repeat;
         background-size: cover;
+        background-position-y: 30em;
     }
 
     /* .portfolio-image:first-of-type {

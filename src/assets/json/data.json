@@ -124,6 +124,24 @@
                     "number": 2017
                 }
             ]
+        }, {
+            "id": "project-strong",
+            "name": "Project Strong",
+            "type": "Web Apps",
+            "role": "kb-vid",
+            "info": [{
+                "title": "duties",
+                "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
+            }, {
+                "title": "js",
+                "strings": ["jQuery", "GSAP", "createJS"]
+            }, {
+                "title": "apps",
+                "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
+            }, {
+                "title": "year",
+                "number": 2016
+            }]
         }
     ]
 }
