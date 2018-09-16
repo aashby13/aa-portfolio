@@ -126,7 +126,7 @@
             ]
         }, {
             "id": "project-strong",
-            "name": "Project Strong",
+            "name": "Project Strong & Project TRAC",
             "type": "Web Apps",
             "role": "kb-vid",
             "info": [{
@@ -139,8 +139,8 @@
                 "title": "apps",
                 "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
             }, {
-                "title": "year",
-                "number": 2016
+                "title": "years",
+                "numbers": [2016, 2018]
             }]
         }
     ]

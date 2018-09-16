@@ -20,10 +20,13 @@
                     </p>
                     <p *ngFor="let info of project.info;"> 
                         <span class="tab"></span>{{ info.title }}:
-                        {{ info.strings ? '[' : null }}
+                        {{ info.strings || info.numbers ? '[' : null }}
                         <span *ngFor="let str of info.strings, let last = last">
                             <span  class="string">'{{str}}'</span>{{ !last ? ',' : null}}
-                        </span>{{ info.strings ? '],' : null }}
+                        </span>
+                        <span *ngFor="let num of info.numbers, let last = last">
+                            <span class="number">'{{num}}'</span>{{ !last ? ',' : null}}
+                        </span>{{ info.strings || info.numbers ? '],' : null }}
                         <span *ngIf="info.number" class="number">{{info.number}}</span>
 
                     </p>

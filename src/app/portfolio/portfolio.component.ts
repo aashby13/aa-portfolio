@@ -45,7 +45,7 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
     private _freshID: string;
     private _imgSub: Subscription;
     private _dataSub: Subscription;
-    private delta: number;
+    private delta = 0;
 
     constructor(
         private _windowService: WindowService,
@@ -116,6 +116,21 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         this.delta = e.delta;
         TweenLite.set(this._window, { scrollTo: { y: this._window.scrollY + Math.abs(e.delta / 4) } });
         /* console.log('scrollDown'); */
+    }
+
+    goTo(indx: number) {
+        /* if (!this.delta) { this._updateIndex.apply(this, [indx]); this.delta = 1; } */
+        rt = this.images[indx].nativeElement.offsetTop;
+        TweenLite.to(this._window, 0.6 + (Math.abs(indx - cur) * 0.06),
+            {
+                scrollTo: { y: rt - ot, ease: Power2.easeOut, autoKill: true },
+                onUpdate: () => {
+                    clearTimeout(to);
+                },
+                onComplete: () => {
+                    this._updateIndex.apply(this, [indx]);
+                }
+            });
     }
 
     private _gotToNearestInfo(addY: number = 0) {
@@ -212,19 +227,4 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         this._router.navigate(['/portfolio', this.curID]);
         console.log('_updateIndex', this.index, 'curID', this.curID);
     }
-
-    public goTo(indx: number) {
-        /* if (!this.delta) { this._updateIndex.apply(this, [indx]); this.delta = 1; } */
-        rt = this.images[indx].nativeElement.offsetTop;
-        TweenLite.to(this._window, 0.6 + (Math.abs(indx - cur) * 0.06),
-            { scrollTo: { y: rt - ot, ease: Power2.easeOut, autoKill: true},
-            onUpdate: () => {
-                clearTimeout(to);
-            },
-            onComplete: () => {
-                this._updateIndex.apply(this, [indx]);
-            }
-        });
-    }
-
 }

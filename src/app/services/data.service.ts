@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { TypesData, ProjectTypeData } from '../interfaces/project-data';
 
@@ -10,16 +9,21 @@ import { TypesData, ProjectTypeData } from '../interfaces/project-data';
 })
 export class DataService {
     private _dataUrl = './assets/json/data.json';
+    private _data: any;
 
     constructor(private _http: HttpClient) { }
 
     getData(): Observable<any> {
-        return this._http.get<any>(this._dataUrl)
-            .pipe(map(data => {
-                return this.buildData(data);
-            }))
-            .pipe(tap(data => console.log('data.json loaded', data)))
-            .pipe(catchError(this.handleError));
+        if (this._data) {
+            return of(this._data);
+        } else {
+            return this._http.get<any>(this._dataUrl)
+                .pipe(map(data => {
+                    return this.buildData(data);
+                }))
+                .pipe(tap(data => console.log('data.json loaded', data)))
+                .pipe(catchError(this.handleError));
+            }
     }
 
     private handleError(err: HttpErrorResponse) {
@@ -30,12 +34,10 @@ export class DataService {
     private buildData(data) {
         const types = new Array<ProjectTypeData>();
         const typesData: TypesData = {};
-        const prjs = data.projects;
-        const roles = data.roles;
-        const l = prjs.length;
+        const l = data.projects.length;
         // change project.type to ProjectTypeData object {text:string, id:string}
         for (let i = l - 1; i >= 0; i--) {
-            const p = prjs[i],
+            const p = data.projects[i],
                 t = (p.type as string).toLowerCase().replace(/ /g, '-'),
                 typeObj = { text: p.type, id: t } as ProjectTypeData;
             p.type = typeObj;
@@ -46,9 +48,9 @@ export class DataService {
                 types.push(typeObj);
             }
         }
-        data.projects = prjs;
-        data.roles = roles;
         data.types = types;
+        this._data = data;
+        console.log(data);
         return data;
     }
 
