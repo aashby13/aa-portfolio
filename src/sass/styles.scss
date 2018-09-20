@@ -77,13 +77,11 @@ span {
     .left {
         width:calc(#{$left-width} - #{$right-width});
         height: 100%;
-        /* position: fixed; */
         z-index: 100;
     }
     .right {
         width: $right-width;
         height: 100%;
-        /* float: right; */
     }
     .block,
     .spacer {

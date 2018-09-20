@@ -8,7 +8,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PlayerComponent } from './player/player.component';
 import { DataService } from './services/data.service';
 import { WindowService } from './services/window.service';
-import { UserScrollDirective } from './user-scroll.directive';
+import { UserScrollDirective } from './directives/user-scroll.directive';
 
 const appRoutes: Routes = [
     { path: 'portfolio/:id', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },

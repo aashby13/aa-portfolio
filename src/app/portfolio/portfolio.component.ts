@@ -54,10 +54,10 @@ export class PortfolioComponent implements /* OnInit, */ AfterViewInit, OnDestro
         private _loc: PlatformLocation
     ) {
         this._window = this._windowService.nativeWindow;
+        CSSPlugin.defaultTransformPerspective = 4000;
     }
 
     ngAfterViewInit() {
-        CSSPlugin.defaultTransformPerspective = 4000;
         /* TweenLite.set(this._window, {scrollTo: {y: 0}}); */
         //
         this._loc.onPopState(() => {

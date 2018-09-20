@@ -32,9 +32,7 @@ export class UserScrollDirective {
             this.mouseWheelUp.emit({ delta: this.delta });
         } else if (this.delta < -this.thresh) {
             this.mouseWheelDown.emit({ delta: this.delta });
-        }/*  else {
-            event.preventDefault();
-        } */
+        }
         // for IE
         event.returnValue = false;
         // for Chrome and Firefox
