@@ -9,6 +9,7 @@ import { PlayerComponent } from './player/player.component';
 import { DataService } from './services/data.service';
 import { WindowService } from './services/window.service';
 import { UserScrollDirective } from './directives/user-scroll.directive';
+import { MainMenuComponent } from './main-menu/main-menu.component';
 
 const appRoutes: Routes = [
     { path: 'portfolio/:id', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
         AppComponent,
         PortfolioComponent,
         PlayerComponent,
-        UserScrollDirective
+        UserScrollDirective,
+        MainMenuComponent
     ],
     imports: [
         BrowserModule,
