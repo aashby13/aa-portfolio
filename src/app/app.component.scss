@@ -7,5 +7,9 @@
             margin-top: 0.8em;
             position: relative;
         }
+        .block.bottom{
+          background-color: transparent;
+          pointer-events: none;
+        }
     }
 }

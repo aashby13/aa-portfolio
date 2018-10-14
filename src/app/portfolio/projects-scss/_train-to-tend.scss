@@ -25,12 +25,20 @@ $ttt-purple:#bb88b5;
 		.string, .keyword{
 			color:$ttt-blue;
 		}
-		.name{
-			color:$black;
+		.name {
+			color: $black;
 			background-color:$ttt-green;
 		}
 		.number, .operator,{
 			color:$ttt-purple;
 		}
-	}
+  }
+  #svg-play-btn {
+    .play {
+        fill: $ttt-green;
+    }
+    .more {
+      fill: $ttt-purple;
+    }
+  }
 }

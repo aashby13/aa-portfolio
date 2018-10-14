@@ -1,0 +1,48 @@
+$milk-off-white: #d9ccc2; // #d9ccc2 #dad5d1
+$milk-dark-brown: #6c5f55;
+$milk-brown: #94877d;
+
+#milk-stache {
+    background-image: url(/assets/images/milk-stache.png);
+}
+
+.page.portfolio.milk-stache{
+	#text-holder{
+		.project-type{
+			color: $white;
+		}
+		.project-role h2{
+			color: $milk-off-white;
+			.tab{
+				color: $milk-brown;
+			}
+		}
+		.project-info{
+			p{
+				color: $milk-brown;
+			}
+		}
+		.string{
+			color: $white;
+		}
+		.keyword{
+			color: $milk-off-white;
+		}
+		.name {
+			color: $white;
+			background-color: $milk-dark-brown;
+		}
+		.number,
+		.operator {
+			color: $white;
+    }
+  }
+  #svg-play-btn {
+    .play {
+        fill: $milk-off-white;
+    }
+    .more {
+        fill: $milk-brown;
+    }
+  }
+}

@@ -81,11 +81,27 @@
         background: transparent no-repeat;
         background-size: cover;
         background-position-y: 30em;
+        cursor: pointer;
     }
 
-    /* .portfolio-image:first-of-type {
-        background-position-y: 30em;
-    } */
+    .play-btn-holder {
+      height: 45%;
+      max-height: 13rem;
+      margin-top: calc(2em + 5%);
+      position: relative;
+      #svg-play-btn {
+        cursor: pointer;
+        /* .rect {
+          stroke: none;
+        } */
+        .more { 
+          font-family: 'Exo 2', sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+    }
+
     .gutter.right {
         display: table;
         #dot-holder {
@@ -116,3 +132,5 @@
 @import "projects-scss/step-for-life";
 @import "projects-scss/momzing";
 @import "projects-scss/bub-and-bot";
+@import "projects-scss/milk-stache";
+@import "projects-scss/astro-pop";

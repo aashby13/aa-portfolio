@@ -29,7 +29,17 @@ $pinpoint-red:#ff3434;
 			background-color:$pinpoint-red;
 		}
 		.number, .keyword, .operator{
-			color:$pinpoint-red;
+			color: $pinpoint-red;
 		}
+  }
+  #svg-play-btn {
+    .play {
+      fill: $white;
+      fill: $pinpoint-red;
     }
+      .more {
+          fill: $pinpoint-red;
+          fill: $white;
+      }
+  }
 }

@@ -1,7 +1,7 @@
-$bub-purple:#9f84ba;
-$bub-blue:#0d71ba;
-$bub-yellow:#f7c45b;
-$bub-green:#8ea368;
+$bub-purple: #9f84ba;
+$bub-blue: #0d71ba;
+$bub-yellow: #f7c45b;
+$bub-green: #8ea368;
 
 #bub-and-bot {
     background-image: url(/assets/images/bub-and-bot.png);
@@ -10,31 +10,39 @@ $bub-green:#8ea368;
 .page.portfolio.bub-and-bot{
 	#text-holder{
 		.project-type{
-			color:$white;
+			color: $white;
 		}
 		.project-role h2{
-			color:$bub-green;
+			color: $bub-green;
 			.tab{
-				color:$bub-purple;
+				color: $bub-purple;
 			}
 		}
 		.project-info{
 			p{
-				color:#ccc8db;
+				color :#ccc8db;
 			}
 		}
 		.string{
-			color:$bub-purple;
+			color: $bub-purple;
 		}
 		.keyword{
-			color:$bub-green;
+			color: $bub-green;
 		}
-		.name{
-			color:$white;
-			background-color:$bub-blue;
+		.name {
+			color: $white;
+			background-color: $bub-blue;
 		}
 		.number, .operator,{
-			color:$bub-yellow;
+			color: $bub-yellow;
 		}
-	}
+  }
+  #svg-play-btn {
+    .play {
+        fill: $bub-green;
+    }
+      .more {
+          fill: $bub-purple;
+      }
+  }
 }

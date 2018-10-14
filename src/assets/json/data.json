@@ -134,13 +134,85 @@
                 "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
             }, {
                 "title": "js",
-                "strings": ["jQuery", "GSAP", "createJS"]
+                "strings": ["jQuery", "GSAP", "createJS", "Box2D"]
             }, {
                 "title": "apps",
                 "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
             }, {
                 "title": "years",
                 "numbers": [2016, 2018]
+            }]
+        }, {
+            "id": "momzing",
+            "name": "Momzing.com",
+            "type": "Web Apps",
+            "role": "kb-vid2",
+            "info": [{
+                "title": "duties",
+                "strings": ["as3", "js", "mograph", "director", "landingPage", "promoVid"]
+            }, {
+                "title": "as3",
+                "strings": ["AdobeMediaServer", "GSAP"]
+            }, {
+                "title": "apps",
+                "strings": ["Ae", "Ai", "Fb", "Fl", "Pr", "Ps"]
+            }, {
+                "title": "year",
+                "number": 2013
+            }]
+        }, {
+            "id": "bub-and-bot",
+            "name": "Fit-tastic Health: Bub & Bot",
+            "type": "AS3 Games",
+            "role": "kb-game",
+            "info": [{
+                "title": "duties",
+                "strings": ["as3", "gfx", "sfx", "art direction"]
+            }, {
+                "title": "as3",
+                "strings": ["GSAP", "Nape", "Starling"]
+            }, {
+                "title": "apps",
+                "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "Ps"]
+            }, {
+                "title": "year",
+                "number": 2012
+            }]
+        }, {
+            "id": "milk-stache",
+            "name": "Fit-tastic Health: Milk-Stache",
+            "type": "AS3 Games",
+            "role": "kb-game",
+            "info": [{
+                "title": "duties",
+                "strings": ["as3", "gfx", "sfx", "art direction"]
+            }, {
+                "title": "as3",
+                "strings": ["GSAP", "Nape", "Starling"]
+            }, {
+                "title": "apps",
+                "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "Ps"]
+            }, {
+                "title": "year",
+                "number": 2012
+            }]
+        }, {
+            "id": "astro-pop",
+            "name": "Fit-tastic Health: Astro-Pop",
+            "type": "AS3 Games",
+            "role": "kb-game",
+            "info": [{
+                "title": "duties",
+                "strings": ["as3", "gfx", "sfx", "music", "art direction"]
+            }, {
+                "title": "as3",
+                "strings": ["GSAP", "Nape", "Starling"]
+            }, {
+                "title": "apps",
+                "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "GarageBand", "Ps"]
+            }, {
+                "title": "year",
+                "number": 2012
             }]
         }
     ]

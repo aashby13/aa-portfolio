@@ -27,7 +27,7 @@ $momzing-orange:#dd7848;
 		}
 		.name{
 			/* color:$black; */
-			background-color:$momzing-pink;
+			background-color: $momzing-pink;
 		}
 		.number, .operator{
 			color:$momzing-orange;
@@ -35,5 +35,13 @@ $momzing-orange:#dd7848;
 		.keyword{
 			color:$momzing-pink;
 		}
-	}
+  }
+  #svg-play-btn {
+    .play {
+        fill: $momzing-pink;
+    }
+      .more {
+          fill: $momzing-orange;
+      }
+  }
 }
