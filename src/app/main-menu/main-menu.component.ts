@@ -20,6 +20,7 @@ export class MainMenuComponent implements AfterViewInit {
   @ViewChild('line') line: ElementRef;
   @ViewChildren('links') links: QueryList<ElementRef>;
 
+  private lineWidth: number;
   private linksObj = {};
   id: string;
 
@@ -44,10 +45,10 @@ export class MainMenuComponent implements AfterViewInit {
   }
 
   private animLine() {
-    const lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
+    this.lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
     new TimelineLite()
-      .to(this.line.nativeElement, 0.2, { width: lineWidth * 0.2, ease: Power3.easeOut }, 0)
-      .to(this.line.nativeElement, 0.25, { width: lineWidth, ease: Back.easeOut })
+      .to(this.line.nativeElement, 0.2, { width: this.lineWidth * 0.2, ease: Power3.easeOut }, 0)
+      .to(this.line.nativeElement, 0.25, { width: this.lineWidth, ease: Back.easeOut })
       .to(this.line.nativeElement, 0.45, { y: -this.linksObj[this.id].nativeElement.offsetLeft, ease: Back.easeOut }, 0);
   }
 
