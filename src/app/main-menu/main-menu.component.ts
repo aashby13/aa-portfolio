@@ -7,9 +7,9 @@ import { Power3, Back, TimelineLite } from 'gsap';
   template: `
     <nav>
       <ul>
-        <li><a #links [attr.data-active]="0" [routerLink]="['portfolio']">portfolio</a></li>
-		    <li><a #links [attr.data-active]="0" [routerLink]="['about']">about</a></li>
-		    <li><a #links [attr.data-active]="0" [routerLink]="['contact']">contact</a></li>
+        <li routerLinkActive="active"><a #links [attr.data-active]="0" [routerLink]="['portfolio']">portfolio</a></li>
+		    <li routerLinkActive="active"><a #links [attr.data-active]="0" [routerLink]="['about']">about</a></li>
+		    <li routerLinkActive="active"><a #links [attr.data-active]="0" [routerLink]="['contact']">contact</a></li>
       </ul>
       <div #line class="line"></div>
     </nav>`,
@@ -37,19 +37,13 @@ export class MainMenuComponent implements AfterViewInit {
         const id = e.snapshot.url[0].path;
         if (this.linksObj[id] && this.id !== id) {
           this.id = id;
-          this.setView();
+          this.animLine();
         }
       }
     });
   }
 
-  private setView() {
-    // set text color via data-active attr
-    this.links.forEach(el => {
-      el.nativeElement.setAttribute('data-active', 0);
-    });
-    this.linksObj[this.id].nativeElement.setAttribute('data-active', 1);
-    // animate line
+  private animLine() {
     const lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
     new TimelineLite()
       .to(this.line.nativeElement, 0.2, { width: lineWidth * 0.2, ease: Power3.easeOut }, 0)
