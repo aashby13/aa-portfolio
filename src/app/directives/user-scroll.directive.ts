@@ -1,6 +1,6 @@
 import { Directive, Output, Input, HostListener, EventEmitter } from '@angular/core';
 
-
+/* this directive adds resistence to scrolling */
 @Directive({
     selector: '[appUserScroll]'
 })

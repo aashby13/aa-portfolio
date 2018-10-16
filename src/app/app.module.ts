@@ -10,30 +10,42 @@ import { DataService } from './services/data.service';
 import { WindowService } from './services/window.service';
 import { UserScrollDirective } from './directives/user-scroll.directive';
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { DataResolver } from './services/data-resolver';
 
 const appRoutes: Routes = [
-    { path: 'portfolio/:id', component: PortfolioComponent, data: { title: 'Adam Ashby: Portfolio' } },
-    { path: '', redirectTo: 'portfolio/0', pathMatch: 'full' },
-    { path: '**', redirectTo: 'portfolio/0', pathMatch: 'full' }
+  { path: 'about', component: AboutComponent, data: { title: 'Adam Ashby Dev: About' } },
+  { path: 'contact', component: ContactComponent, data: { title: 'Adam Ashby Dev: Contact' } },
+  {
+    path: 'portfolio/:id',
+    component: PortfolioComponent,
+    data: { title: 'Adam Ashby Dev: Portfolio' },
+    resolve: { projectsData: DataResolver }
+  },
+  { path: '', redirectTo: 'portfolio/pinpoint', pathMatch: 'full' },
+  { path: '**', redirectTo: 'portfolio/pinpoint', pathMatch: 'full' }
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        PortfolioComponent,
-        PlayerComponent,
-        UserScrollDirective,
-        MainMenuComponent
-    ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        RouterModule.forRoot(
-            appRoutes,
-            { enableTracing: false } // <-- debugging purposes only
-        )
-    ],
-    providers: [Title, DataService, WindowService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    PortfolioComponent,
+    PlayerComponent,
+    UserScrollDirective,
+    MainMenuComponent,
+    AboutComponent,
+    ContactComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: false } // <-- debugging purposes only
+    )
+  ],
+  providers: [Title, DataService, WindowService, DataResolver],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
