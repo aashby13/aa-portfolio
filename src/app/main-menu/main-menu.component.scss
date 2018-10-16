@@ -34,7 +34,7 @@ a {
   user-select: none;
 }
 
-a:active, a[data-active="1"] {
+a:active, a.active {
   color: $lighter-grey;
 }
 
