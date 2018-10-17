@@ -20,7 +20,8 @@ export class AppComponent {
       if (e instanceof ActivationEnd) {
         this.setTitle(e.snapshot);
       }
-    }
+    });
+  }
 
   private setTitle(snapshot: ActivatedRouteSnapshot) {
     this.title = snapshot.data.title;

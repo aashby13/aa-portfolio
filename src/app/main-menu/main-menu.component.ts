@@ -7,9 +7,9 @@ import { Power3, Back, TimelineLite } from 'gsap';
   template: `
     <nav>
       <ul>
-        <li routerLinkActive="active"><a #links [routerLink]="['portfolio']">portfolio</a></li>
-		    <li routerLinkActive="active"><a #links [routerLink]="['about']">about</a></li>
-		    <li routerLinkActive="active"><a #links [routerLink]="['contact']">contact</a></li>
+        <li><a #links routerLinkActive="active" [routerLink]="['portfolio']">portfolio</a></li>
+		    <li><a #links routerLinkActive="active" [routerLink]="['about']">about</a></li>
+		    <li><a #links routerLinkActive="active" [routerLink]="['contact']">contact</a></li>
       </ul>
       <div #line class="line"></div>
     </nav>`,

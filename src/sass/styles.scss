@@ -134,8 +134,16 @@ span {
         fill: $lighter-grey;
         @include transition(fill 0.6s ease-out 0.8s);
     }
-    .name, .more {
-        fill: $light-grey;
+    .name {
+        fill: $lighter-grey;
         @include transition(fill 0.6s ease-out 0.8s);
+    }
+    .name.active {
+      fill: $light-grey;
+      @include transition(fill 0.6s ease-out 0.8s);
+    }
+    .more {
+      fill: $light-grey;
+      @include transition(fill 0.6s ease-out 0.8s);
     }
 }
