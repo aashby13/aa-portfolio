@@ -4,15 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { PlayerComponent } from './player/player.component';
+import { PlayerComponent } from './portfolio/player/player.component';
+import { UserScrollDirective } from './portfolio/user-scroll/user-scroll.directive';
+
 import { DataService } from './services/data.service';
+import { DataResolver } from './services/data-resolver';
 import { WindowService } from './services/window.service';
-import { UserScrollDirective } from './directives/user-scroll.directive';
+
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { DataResolver } from './services/data-resolver';
+import { RolodexComponent } from './portfolio/rolodex/rolodex.component';
+
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent, data: { title: 'Adam Ashby Dev: About' } },
@@ -35,7 +40,8 @@ const appRoutes: Routes = [
     UserScrollDirective,
     MainMenuComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    RolodexComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,7 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     )
   ],
-  providers: [Title, DataService, WindowService, DataResolver],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class WindowService {
 
+  private window = window;
+
   constructor() { }
 
     get nativeWindow(): Window {
-        return window;
+        return this.window;
     }
 }
