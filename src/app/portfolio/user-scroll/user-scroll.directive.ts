@@ -27,8 +27,8 @@ export class UserScrollDirective {
     this.mouseWheelFunc(event);
   }
 
-  mouseWheelFunc(e: any) {
-    this.delta = e.wheelDelta || -e.detail;
+  mouseWheelFunc(event: any) {
+    this.delta = event.wheelDelta || -event.detail;
     /* console.log('delta', this.delta); */
     if (this.delta > this.thresh) {
       this.mouseWheelUp.emit({ delta: this.delta });
