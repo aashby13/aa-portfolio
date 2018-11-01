@@ -13,7 +13,7 @@ export class UserScrollDirective {
   @Output() mouseWheelDown = new EventEmitter();
 
   delta = 0;
-  thresh = 65;
+  thresh = 40;
 
   @HostListener('mousewheel', ['$event']) onMouseWheelChrome(event: any) {
     this.mouseWheelFunc(event);

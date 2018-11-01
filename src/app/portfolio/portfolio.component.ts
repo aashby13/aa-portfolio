@@ -82,11 +82,11 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   }
 
   onScrollUp(e: { delta: number }) {
-    TweenLite.set(this.window, { scrollTo: { y: this.window.scrollY - Math.abs(e.delta / 4) } });
+    TweenLite.set(this.window, { scrollTo: { y: this.window.scrollY - Math.abs(e.delta / 3) } });
   }
 
   onScrollDown(e: { delta: number }) {
-    TweenLite.set(this.window, { scrollTo: { y: this.window.scrollY + Math.abs(e.delta / 4) } });
+    TweenLite.set(this.window, { scrollTo: { y: this.window.scrollY + Math.abs(e.delta / 3) } });
   }
 
   goTo(indx: number) {
