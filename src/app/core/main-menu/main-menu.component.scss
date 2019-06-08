@@ -1,0 +1,74 @@
+@import './src/sass/variables';
+
+app-main-menu {
+  display: flex;
+  align-items: flex-end;
+  width: 4vh;
+  height: 42vh;
+  pointer-events: all;
+
+  nav {
+    transform: rotate(-90deg);
+    transform-origin: left top 0;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 2vh;
+    margin: 0 1vh 0;
+    letter-spacing: 0.1vh;
+    text-transform: uppercase;
+    display: inline-flex;
+  }
+
+  li:first-of-type {
+    margin-left: 0;
+  }
+
+  li:last-of-type {
+    margin-right: 0;
+  }
+
+  a {
+    color: $light-grey;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  a:active,
+  a.active {
+    color: $lighter-grey;
+  }
+
+  .line {
+    background-color: $light-grey;
+        border-right: 0.1em solid $darker-grey;
+    margin-top: 0.5vh;
+    height: 0.3em;
+    width: 100%;
+  }
+}
+
+@media screen and (min-height: 48em) and (orientation: landscape) {
+
+  app-main-menu {
+      width: 2.6em;
+      height: 29em;
+
+    li {
+      font-size: 1.3em;
+      margin: 0 0.5em 0;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+

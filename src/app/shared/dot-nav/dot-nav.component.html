@@ -1,0 +1,8 @@
+<div id="dot-holder">
+  <div class="dot" *ngFor="let item of items; index as i"
+      [attr.data-index]="i"
+      routerLinkActive="active"
+      [routerLink]="[item.path]">
+  </div>
+</div>
+

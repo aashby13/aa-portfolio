@@ -40,5 +40,8 @@ Thumbs.db
 
 # Custom
 /work
+/src/assets/images
 /src/assets/video
 /src/assets/swf
+/src/assets/svg-store
+/src/svg

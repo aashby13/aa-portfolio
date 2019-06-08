@@ -1,0 +1,6 @@
+<div #holder class="image-holder">
+  <div #images class="image item" *ngFor="let item of items"
+    [attr.id]="item.id"
+    [ngClass]="{'hide': !ready}">
+  </div>
+</div>

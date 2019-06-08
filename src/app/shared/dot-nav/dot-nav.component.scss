@@ -1,0 +1,53 @@
+@import '../../../sass/variables';
+
+#dot-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  .dot {
+    width: 3.2vh;
+    height: 3.2vh;
+    margin: 1.8vh 0;
+    background-color: $light-grey;
+    border: 0.15em solid $lighter-grey;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background-color: $white;
+    border: 0.15em solid $white;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #dot-holder {
+    .dot {
+      width: 2.2vh;
+      height: 2.2vh;
+      margin: 1.3vh 0;
+    }
+  }
+}
+
+@media screen and (min-width: 60em) and (orientation: landscape) {
+  #dot-holder {
+    .dot {
+      width: 2vh;
+      height: 2vh;
+      margin: 1.2vh 0;
+    }
+  }
+}
+
+@media screen and (min-width: 90em) and (orientation: landscape) {
+  #dot-holder {
+    .dot {
+      width: 1.2em;
+      height: 1.2em;
+      margin: 0.8em 0;
+    }
+  }
+}

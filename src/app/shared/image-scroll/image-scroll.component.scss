@@ -1,0 +1,13 @@
+@import '../../../sass/variables';
+
+.image {
+  background: transparent no-repeat;
+  background-size: contain;
+  background-position-y: 0em;
+  border: thin solid $darker-grey;
+  transition: background-position-y 0.5s ease-out;
+}
+
+.image.hide {
+  background-position-y: 30em;
+}

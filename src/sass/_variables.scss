@@ -11,11 +11,3 @@ $string-color: #e8db61; //#e8db61;
 $name-color: $lighter-grey;
 $num-color:#b779d3; //#b779d3;
 $operator-color:#ff0071;
-/* global dims */
-
-$gutter-width-L:7%;
-$gutter-width-R:6%;
-$left-width:100% - ($gutter-width-L+$gutter-width-R);
-$right-width:30em;
-$right-image-height:30em;
-$top-height: calc((100% - #{$right-image-height})/2);

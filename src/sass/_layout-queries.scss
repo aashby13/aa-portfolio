@@ -1,0 +1,270 @@
+@import './variables';
+
+/* ----------------------------- PORTRAIT ----------------------------- */
+/* small phones */
+@media screen and (orientation: portrait) {
+  .gutter {
+    width: calc(50% - 12em);
+  }
+
+  .gutter.right {
+    padding-top: 4vh;
+  }
+
+  .content-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    display: none;
+  }
+
+  .content-inner-wrap {
+    width: 24em;
+    height: calc(100% - 8vh);
+    background-color: rgba(violet, 0.25);
+  }
+
+  .column-wrap {
+    width: 24em;
+  }
+
+  .column-block.top {
+    flex-grow: unset;
+  }
+
+  #svg-logo.active {
+    height: 90%;
+  }
+  
+  .column-mid {
+    height: 24em;
+
+    .item {
+      height: 24em;
+      width: 24em;
+    }
+  }
+}
+
+/* wider phones: iPhone 6, 7, 8 */
+@media screen and (min-width: 23.4em) and (orientation: portrait) {
+  .gutter {
+    width: calc(50% - 14em);
+  }
+
+  .content-inner-wrap {
+    width: 28em;
+  }
+
+  .column-wrap {
+    width: 28em;
+  }
+
+  .column-mid {
+    height: 28em;
+
+    .item {
+      height: 28em;
+      width: 28em;
+    }
+  }
+}
+
+/* long phones: iPhoneX, Pixel 2 XL */
+@media screen and (min-height: 50em) and (orientation: portrait) {
+  .column-block {
+    height: calc(50% - 14em)
+  }
+  .gutter.right {
+    padding-top: 0;
+  }
+}
+
+/* large phones: iPhone 6, 7, 8 Plus, Pixel 2 */
+@media screen and (min-width: 25.6em) and (orientation: portrait) {
+  .gutter {
+    width: calc(50% - 15em);
+  }
+
+  .content-inner-wrap {
+    width: 30em;
+  }
+
+  .column-wrap {
+    width: 30em;
+  }
+
+  .column-mid {
+    height: 30em;
+
+    .item {
+      height: 30em;
+      width: 30em;
+    }
+  }
+}
+
+/* tablets, iPads */
+@media screen and (min-height: 52em) and (orientation: portrait) {
+  .gutter {
+    width: 10%
+  }
+
+  .content-inner-wrap {
+    width: 36em;
+  }
+
+  .column-wrap {
+    width: 36em;
+  }
+
+  .column-mid {
+    height: 36em;
+
+    .item {
+      height: 36em;
+      width: 36em;
+    }
+  }
+
+  .column-block {
+    height: calc(50% - 18em);
+  }
+}
+
+/* large tablets, iPad Pro */
+@media screen and (min-width: 64em) and (orientation: portrait) {
+
+  .content-inner-wrap {
+    width: 40em;
+  }
+
+  .column-wrap {
+    width: 40em;
+  }
+
+  .column-mid {
+    height: 40em;
+
+    .item {
+      height: 40em;
+      width: 40em;
+    }
+  }
+
+  .column-block {
+    height: calc(50% - 20em);
+  }
+}
+
+/* -------------------------------------------------------------------- */
+
+
+
+/* ----------------------------- LANDSCAPE ----------------------------- */
+/* phones */
+@media screen and (orientation: landscape) {
+  .column-block {
+    max-height: calc(50% - 9em);
+  }
+
+  #svg-logo,
+  .content-wrap,
+  .gutter.left {
+    padding-top: 3vh;
+  }
+}
+
+/* large phones: iPhone 6, 7, 8 Plus, Pixel 2 */
+@media screen and (min-width: 45em) and (orientation: landscape) {
+  .column-wrap {
+    width: 24em;
+  }
+
+  .column-mid {
+    height: 24em;
+
+    .item {
+      height: 24em;
+      width: 24em;
+    }
+  }
+
+  .column-block {
+    max-height: calc(50% - 12em);
+  }
+}
+
+/* tablets, iPads, small laptop/desktop */
+@media screen and (min-width: 60em) and (orientation: landscape) {
+  .content-top {
+    min-height: 8em;
+  }
+
+  .column-wrap {
+    width: 28em;
+  }
+
+  .column-mid {
+    height: 28em;
+
+    .item {
+      height: 28em;
+      width: 28em;
+    }
+  }
+
+  .column-block {
+    max-height: calc(50% - 14em);
+  }
+
+  #svg-logo,
+  .content-wrap,
+  .gutter.left {
+    padding-top: 4vh;
+  }
+
+  #svg-logo {
+    padding-bottom: 4vh;
+    height: 95%;
+  }
+
+  #svg-logo.active {
+    padding-bottom: 9vh;
+    height: 85%;
+  }
+}
+
+/* laptops, desktops */
+@media screen and (min-width: 80em) and (orientation: landscape) {
+  .column-wrap {
+    width: 30em;
+  }
+
+  .column-mid {
+    height: 30em;
+
+    .item {
+      height: 30em;
+      width: 30em;
+    }
+  }
+
+  .column-block {
+    max-height: calc(50% - 15em);
+  }
+
+  #svg-logo {
+    height: 100%;
+  }
+
+  #svg-logo.active {
+    padding-bottom: 8vh;
+    height: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------- */
