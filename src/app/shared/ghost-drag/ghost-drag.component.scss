@@ -1,0 +1,11 @@
+.ghost-drag {
+  width: 100%;
+  height: 100%;
+  border: thin solid hotpink;
+  pointer-events: all;
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}

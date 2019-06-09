@@ -5,6 +5,7 @@ import { DataResolver } from './core/data-resolver/data.resolver';
 import { ImageScrollComponent } from './shared/image-scroll/image-scroll.component';
 import { DotNavComponent } from './shared/dot-nav/dot-nav.component';
 import { DATA_PATHS } from './constants';
+import { GhostDragComponent } from './shared/ghost-drag/ghost-drag.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,12 @@ const routes: Routes = [
           mapKeys: [['id', 'path']]
         },
         resolve: { jsonData: DataResolver }
+      },
+      {
+        path: '',
+        component: GhostDragComponent,
+        outlet: 'ghost-column',
+        data: {},
       }
     ]
   },

@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { UserScrollDirective } from './user-scroll/user-scroll.directive';
 import { ImageScrollComponent } from './image-scroll/image-scroll.component';
 import { DotNavComponent } from './dot-nav/dot-nav.component';
+import { GhostDragComponent } from './ghost-drag/ghost-drag.component';
 
 
 @NgModule({
   declarations: [
     UserScrollDirective,
     ImageScrollComponent,
-    DotNavComponent
+    DotNavComponent,
+    GhostDragComponent
   ],
   exports: [
     CommonModule,
