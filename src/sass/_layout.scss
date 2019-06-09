@@ -100,6 +100,8 @@ body,
 }
 
 .column-block {
+  max-height: calc(50% - 9em);
+  display: inline-flex;
   flex-grow: 1;
   background-color: $darker-grey;
   z-index: 2;
