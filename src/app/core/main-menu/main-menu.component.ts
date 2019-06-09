@@ -22,19 +22,23 @@ export class MainMenuComponent implements AfterViewInit {
   @ViewChildren('links') links: QueryList<ElementRef>;
 
   private lineWidth: number;
+  private lineX: number;
   private linksObj = {};
+  private isSafari: boolean;
   id: string;
 
   @HostListener('window:resize', ['$event'])
   onResize(e: Event) {
     if (this.id) {
       this.lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
-      TweenLite.set(this.line.nativeElement, { width: this.lineWidth, x: this.linksObj[this.id].nativeElement.offsetLeft});
+      this.lineX = this.linksObj[this.id].nativeElement.offsetLeft - (this.isSafari ? this.el.nativeElement.offsetLeft : 0);
+      TweenLite.set(this.line.nativeElement, { width: this.lineWidth, x: this.lineX});
     }
   }
 
-  constructor(
-    private router: Router) { }
+  constructor(private router: Router, private el: ElementRef) {
+    this.isSafari = navigator.vendor.search('Apple') !== -1 ? true : false; console.log('isSafari', this.isSafari);
+   }
 
   ngAfterViewInit() {
     this.links.forEach(el => {
@@ -57,10 +61,12 @@ export class MainMenuComponent implements AfterViewInit {
 
   private animLine() {
     this.lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
+    this.lineX = this.linksObj[this.id].nativeElement.offsetLeft - (this.isSafari ? this.el.nativeElement.offsetLeft : 0);
     new TimelineLite()
       .to(this.line.nativeElement, 0.2, { width: this.lineWidth * 0.2, ease: Power3.easeOut }, 0)
       .to(this.line.nativeElement, 0.25, { width: this.lineWidth, ease: Back.easeOut })
-      .to(this.line.nativeElement, 0.45, { x: this.linksObj[this.id].nativeElement.offsetLeft, ease: Back.easeOut }, 0);
+      .to(this.line.nativeElement, 0.45,
+        { x: this.lineX, ease: Back.easeOut }, 0);
   }
 
 }
