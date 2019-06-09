@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build",
+    "host": "ng serve --host 10.0.0.106 -o",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
