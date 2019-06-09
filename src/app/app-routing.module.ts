@@ -34,7 +34,9 @@ const routes: Routes = [
           url: DATA_PATHS.portfolio,
           tree: 'projects',
           filters: [{ type: 'key', match: 'id' }, { type: 'key', match: 'index' }],
-          rootPath: '/portfolio/' },
+          rootPath: '/portfolio/',
+          dragTriggerID: 'column'
+        },
         resolve: { jsonData: DataResolver }
       },
       {

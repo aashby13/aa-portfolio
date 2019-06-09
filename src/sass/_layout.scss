@@ -97,6 +97,7 @@ body,
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  overflow: hidden;
   /* border: thin solid orange; */
   z-index: 100;
 }
@@ -126,8 +127,7 @@ body,
   pointer-events: none;
   .column-wrap {
     display: unset;
-  }  
-  
+  }
 }
 
 #overlay-view > * {

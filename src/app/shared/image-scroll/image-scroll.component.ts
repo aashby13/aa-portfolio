@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { TweenLite, Power2 } from 'gsap/all';
 import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 import { Subscription } from 'rxjs';
 import { ScrollImageItemData } from 'src/app/models';
+import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
 
 @Component({
   selector: 'app-image-scroll',
@@ -24,11 +25,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   private newIndex: number;
   private thresh: number;
   private sub: Subscription;
-  private touching = false;
-  private timeout: any;
-  private curY: number;
-  private prevY: number;
-  private down: boolean;
+  private dragTriggerID: string;
 
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
@@ -52,58 +49,23 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /* @HostListener('window:touchstart', ['$event'])
-  onTouchStart(e: TouchEvent) {
-    console.log(e);
-    this.timeout = setTimeout(() => {
-      this.curY = e.touches[0].pageY;
-      this.touching = true;
-    }, 100);
+  onDown(e: TouchEvent) {
+    this.dragService.startDrag$.next(e);
   } */
 
-  /* @HostListener('window:touchend', ['$event'])
+  /* @HostListener('window: touchend', ['$event'])
   onTouchEnd(e: TouchEvent) {
-    clearTimeout(this.timeout);
-    this.touching = false;
-    ThrowPropsPlugin.to(this.holder.nativeElement, {
-      onUpdate: () => this.onTweenUpdate(),
-      throwProps: {
-        y: {
-          velocity: -((this.prevY - this.curY) * 4) * 12,
-          resistance: 400,
-          end: this.end
-        }
-      }}, 2, 0.8);
-    this.curY = 0;
+    this.dragService.enable$.next(false);
   } */
 
-  /* @HostListener('window:touchmove', ['$event'])
-  onTouchMove(e: TouchEvent) {
-    if (this.touching) {
-      this.prevY = this.curY;
-      this.curY = e.touches[0].pageY;
-      this.down = this.curY < this.prevY;
-      const vel = -((this.prevY - this.curY) * 4) * 10;
-      console.log(this.down, vel);
-      TweenLite.to(this.holder.nativeElement, 1, {
-        throwProps: {
-          y: {
-            velocity: vel,
-            end: this.end
-          },
-        },
-        ease: Power2.easeOut,
-        onUpdate: () => this.onTweenUpdate()
-      });
-    }
-  } */
-
-  constructor(private route: ActivatedRoute, private router: Router) {
-    ThrowPropsPlugin.defaultResistance = 1000;
+  constructor(private route: ActivatedRoute, private router: Router, private dragService: GhostDragService, private zone: NgZone) {
+    ThrowPropsPlugin.defaultResistance = 500;
   }
 
   ngOnInit() {
     this.items = this.route.snapshot.data.jsonData;
     this.rootPath = this.route.snapshot.data.rootPath;
+    this.dragTriggerID = this.route.snapshot.data.dragTriggerID;
     this.sub = this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.goToCurrent();
@@ -119,13 +81,32 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setEnd();
     this.goToCurrent(true);
     setTimeout(() => {
+      const self = this;
       this.ready = true;
+      this.dragService.vars$.next({
+        type: 'y',
+        throwProps: true,
+        snap: this.end,
+        throwResistance: 200,
+        maxDuration: 3,
+        minDuration: 0.5,
+        // tslint:disable-next-line:object-literal-shorthand
+        onDrag: function() {
+          self.onDrag(this.y);
+        },
+        onDragEnd: () => this.dragService.enable$.next(false),
+        // tslint:disable-next-line:object-literal-shorthand
+        onThrowUpdate: function() {
+          self.onThrowUpdate(this.y);
+        }
+      });
     }, 200);
   }
 
   private goToCurrent(set = false) {
     this.curID = this.router.url.split(this.rootPath)[1].split('/')[0];
     this.newIndex = this.items.find(obj => obj.id === this.curID).index;
+    this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
       TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex] });
     } else {
@@ -157,6 +138,16 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
       this.router.navigateByUrl(this.rootPath + this.curID);
       console.log(this.curID);
     }
+  }
+
+  private onDrag(y: number) {
+    TweenLite.set(this.holder.nativeElement, { y });
+    this.zone.run(this.onTweenUpdate, this);
+  }
+
+  private onThrowUpdate(y: number) {
+    TweenLite.set(this.holder.nativeElement, { y });
+    this.zone.run( this.onTweenUpdate, this );
   }
 
 }
