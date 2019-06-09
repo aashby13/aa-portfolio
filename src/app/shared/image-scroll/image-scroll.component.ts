@@ -24,6 +24,11 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   private newIndex: number;
   private thresh: number;
   private sub: Subscription;
+  private touching = false;
+  private timeout: any;
+  private curY: number;
+  private prevY: number;
+  private down: boolean;
 
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
@@ -45,6 +50,52 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setEnd();
     this.goToCurrent(true);
   }
+
+  /* @HostListener('window:touchstart', ['$event'])
+  onTouchStart(e: TouchEvent) {
+    console.log(e);
+    this.timeout = setTimeout(() => {
+      this.curY = e.touches[0].pageY;
+      this.touching = true;
+    }, 100);
+  } */
+
+  /* @HostListener('window:touchend', ['$event'])
+  onTouchEnd(e: TouchEvent) {
+    clearTimeout(this.timeout);
+    this.touching = false;
+    ThrowPropsPlugin.to(this.holder.nativeElement, {
+      onUpdate: () => this.onTweenUpdate(),
+      throwProps: {
+        y: {
+          velocity: -((this.prevY - this.curY) * 4) * 12,
+          resistance: 400,
+          end: this.end
+        }
+      }}, 2, 0.8);
+    this.curY = 0;
+  } */
+
+  /* @HostListener('window:touchmove', ['$event'])
+  onTouchMove(e: TouchEvent) {
+    if (this.touching) {
+      this.prevY = this.curY;
+      this.curY = e.touches[0].pageY;
+      this.down = this.curY < this.prevY;
+      const vel = -((this.prevY - this.curY) * 4) * 10;
+      console.log(this.down, vel);
+      TweenLite.to(this.holder.nativeElement, 1, {
+        throwProps: {
+          y: {
+            velocity: vel,
+            end: this.end
+          },
+        },
+        ease: Power2.easeOut,
+        onUpdate: () => this.onTweenUpdate()
+      });
+    }
+  } */
 
   constructor(private route: ActivatedRoute, private router: Router) {
     ThrowPropsPlugin.defaultResistance = 1000;
