@@ -1,5 +1,5 @@
 // tslint:disable-next-line:max-line-length
-import { Component, OnInit, OnDestroy, AfterViewInit, Output, EventEmitter, ViewEncapsulation, Input, OnChanges, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewEncapsulation, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TweenLite, TimelineMax, CSSPlugin, Sine } from 'gsap/all';
 import { ProjectData, ProjectRoleData, ProjectTypeData } from 'src/app/models';
@@ -14,11 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Output() indexUpdate = new EventEmitter();
-  @Output() animInComplete = new EventEmitter();
-
-  @Input() newID: string;
-
+  newID: string;
   projects: Array<ProjectData>;
   roles: Array<ProjectRoleData>;
   types: Array<ProjectTypeData>;
