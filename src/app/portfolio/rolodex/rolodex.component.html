@@ -1,3 +1,34 @@
-<p>
-  rolodex works!
-</p>
+<div id="text-holder">
+  <h1 class="project-type" *ngFor="let type of types" attr.data-type="{{type.id}}">{{type.text}}</h1>
+
+  <section class="project-role" *ngFor="let role of roles" attr.data-role="{{role.id}}">
+    <h2>
+      <span class="tab">me</span>{{role.me}}</h2>
+    <h2>
+      <span class="tab">&nbsp;&nbsp;&nbsp;&#64;</span>{{role.company}}</h2>
+  </section>
+
+  <section class="project-info" *ngFor="let project of projects" attr.data-index="{{project.index}}">
+    <p>
+      myWork.projects[<span class="number">{{project.index}}</span>].<span class="keyword">info</span>
+      <span class="operator"> =</span> {{ '{' }}
+    </p>
+    <p>
+      <span class="tab"></span>name:
+      <span class="string name">'{{project.name}}'</span>,
+    </p>
+    <p *ngFor="let info of project.info;">
+      <span class="tab"></span>{{ info.title }}:
+      {{ info.strings || info.numbers ? '[' : null }}
+      <span *ngFor="let str of info.strings, let last = last">
+        <span class="string">'{{str}}'</span>{{ !last ? ',' : null}}
+      </span>
+      <span *ngFor="let num of info.numbers, let last = last">
+        <span class="number">'{{num}}'</span>{{ !last ? ',' : null}}
+      </span>{{ info.strings || info.numbers ? '],' : null }}
+      <span *ngIf="info.number" class="number">{{info.number}}</span>
+    </p>
+    <p>{{'};'}}</p>
+  </section>
+
+  </div>

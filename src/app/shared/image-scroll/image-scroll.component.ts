@@ -123,7 +123,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.newIndex !== -1 && this.items[this.newIndex].id !== this.curID) {
       this.curIndex = this.newIndex;
       this.curID = this.items[this.curIndex].id;
-      this.router.navigateByUrl(this.rootPath + this.curID);
+      this.zone.run(this.router.navigateByUrl, this.router, [this.rootPath + this.curID]);
       console.log(this.curID);
     }
   }
