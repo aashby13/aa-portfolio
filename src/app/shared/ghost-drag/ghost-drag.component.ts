@@ -16,27 +16,37 @@ export class GhostDragComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[];
   private drag: Draggable;
+  private touching = false;
+  private dragging = false;
 
-  @HostListener('touchstart', ['$event'])
+  @HostListener('window: touchstart', ['$event'])
   onDown(e: TouchEvent) {
-    this.onEnable(true);
+    /* this.onEnable(true); */
+    /* console.log('touchstart'); */
+    this.show = true ;
   }
 
-  /* @HostListener('pointerup', ['$event'])
+  @HostListener('window: touchend', ['$event'])
   onUp(e: TouchEvent) {
+    /* console.log('touchend'); */
+    /* this.onEnable(false); */
+    this.touching = false;
     this.show = false;
-    this.drag.endDrag(e);
-  } */
+  }
 
-  /* @HostListener('window: pointerdown', ['$event'])
-  onDown(e: TouchEvent) {
-    this.onStartDrag(e);
-  } */
+  @HostListener('window: touchmove', ['$event'])
+  onMove(e: TouchEvent) {
+    /* console.log('window: touchmove'); */
+    if (!this.touching) {
+      this.onStartDrag(e);
+      this.touching = true;
+    }
+
+  }
 
   constructor(private service: GhostDragService) { }
 
   ngOnInit() {
-    if (this.drag) this.drag.kill();
     this.subs = [
       this.service.vars$.subscribe(vars => this.onVars(vars)),
       this.service.enable$.subscribe(boo => this.onEnable(boo)),
@@ -46,6 +56,7 @@ export class GhostDragComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.drag) this.drag.kill();
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
@@ -63,7 +74,6 @@ export class GhostDragComponent implements OnInit, OnDestroy {
   }
 
   private onStartDrag(e: MouseEvent | TouchEvent | PointerEvent) {
-    this.show = true;
     this.drag.startDrag(e);
   }
 

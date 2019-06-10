@@ -25,7 +25,6 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   private newIndex: number;
   private thresh: number;
   private sub: Subscription;
-  private dragTriggerID: string;
 
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
@@ -48,16 +47,6 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.goToCurrent(true);
   }
 
-  /* @HostListener('window:touchstart', ['$event'])
-  onDown(e: TouchEvent) {
-    this.dragService.startDrag$.next(e);
-  } */
-
-  /* @HostListener('window: touchend', ['$event'])
-  onTouchEnd(e: TouchEvent) {
-    this.dragService.enable$.next(false);
-  } */
-
   constructor(private route: ActivatedRoute, private router: Router, private dragService: GhostDragService, private zone: NgZone) {
     ThrowPropsPlugin.defaultResistance = 500;
   }
@@ -65,7 +54,6 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.items = this.route.snapshot.data.jsonData;
     this.rootPath = this.route.snapshot.data.rootPath;
-    this.dragTriggerID = this.route.snapshot.data.dragTriggerID;
     this.sub = this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.goToCurrent();
@@ -87,8 +75,8 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
         type: 'y',
         throwProps: true,
         snap: this.end,
-        throwResistance: 200,
-        maxDuration: 3,
+        throwResistance: 0,
+        maxDuration: 4.5,
         minDuration: 0.5,
         // tslint:disable-next-line:object-literal-shorthand
         onDrag: function() {
