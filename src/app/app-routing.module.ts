@@ -9,11 +9,11 @@ import { DATA_PATHS } from './constants';
 const routes: Routes = [
   {
     path: 'about',
-    loadChildren: './about/about.module#AboutModule',
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
     data: { title: 'Adam Ashby Dev: About' }
   },
   { path: 'contact',
-    loadChildren: './contact/contact.module#ContactModule',
+    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
     data: { title: 'Adam Ashby Dev: Contact' }
   },
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './portfolio/portfolio.module#PortfolioModule',
+        loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule),
         data: { title: 'Adam Ashby Dev: Portfolio', url: DATA_PATHS.portfolio },
         resolve: { jsonData: DataResolver }
       },

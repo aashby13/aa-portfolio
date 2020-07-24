@@ -18,7 +18,7 @@ import { Power3, Back, TimelineLite, TweenLite } from 'gsap';
 })
 export class MainMenuComponent implements AfterViewInit {
 
-  @ViewChild('line') line: ElementRef;
+  @ViewChild('line', { static: true }) line: ElementRef;
   @ViewChildren('links') links: QueryList<ElementRef>;
 
   private lineWidth: number;
