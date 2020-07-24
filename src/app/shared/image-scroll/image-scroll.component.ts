@@ -13,7 +13,7 @@ import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
 })
 export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @ViewChild('holder') holder: ElementRef;
+  @ViewChild('holder', { static: true }) holder: ElementRef;
 
   items: ScrollImageItemData[];
   ready = false;
