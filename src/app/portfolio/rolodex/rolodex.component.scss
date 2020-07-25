@@ -12,11 +12,12 @@ app-rolodex {
 }
 
 .project-type-wrap {
-  height: 5em;
+  height: 4rem;
+  margin-bottom: 0.5rem;
+}
 
-  /* >* {
-    display: none;
-  } */
+.project-type:not(:first-child) {
+  margin-top: -4rem;
 }
 
 .project-type {
@@ -26,7 +27,6 @@ app-rolodex {
   margin: 0;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  /* position: absolute; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,35 +34,28 @@ app-rolodex {
 }
 
 .project-role-wrap {
-  /* height: 8em;
- */
-  /* >* {
-    display: none;
-  } */
+  height: 8rem;
 }
 
 .project-role:not(:first-child) {
-  margin-top: -8em;
+  margin-top: -8rem;
 }
 
 .project-role {
-  height: 8em;
-  /* position: absolute; */
-  /* top: 5.3em; */
-  /* width: calc(100% - 8em); */
+  height: 8rem;
 
   h2 {
     font-family: 'Exo 2', sans-serif;
     font-size: 2.2em;
     color: $light-grey;
-    margin: 0.15em 0;
+    margin: 0 0 0.15em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
 
     .tab {
-      color: $operator-color;
+      color: $lighter-grey;
       font-size: 0.7em;
       width: 2em;
       display: inline-block;
@@ -71,25 +64,18 @@ app-rolodex {
 }
 
 .project-info-wrap {
-  height: 30em;
-
-  >* {
-    display: none;
-  }
+  height: 26rem;
 }
 
 .project-info:not(:first-child) {
-  margin-top: -30em;
+  margin-top: -26rem;
 }
 
 .project-info {
-  height: 30em;
+  height: 26rem;
   width: 100%;
-  /* position: absolute; */
-  /* top: 11em; */
   padding-top: 1.1em;
   border-top: 0.3em solid $light-grey;
-  /* width: calc(94% - 8em); */
   transition: border-color 0.6s ease-out 0.6s;
 
   p {

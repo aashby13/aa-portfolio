@@ -1,5 +1,5 @@
 // tslint:disable-next-line:max-line-length
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewEncapsulation, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TweenLite, TimelineMax, CSSPlugin, Sine } from 'gsap/all';
 import { ProjectData, ProjectRoleData, ProjectTypeData } from 'src/app/models';
@@ -15,15 +15,15 @@ import { Subscription } from 'rxjs';
 export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   newID: string;
-  projects: Array<ProjectData>;
-  roles: Array<ProjectRoleData>;
-  types: Array<ProjectTypeData>;
+  projects: ProjectData[];
+  roles: ProjectRoleData[];
+  types: ProjectTypeData[];
 
   private tl: TimelineMax;
   private timeScale: number;
   private sub: Subscription;
 
-  constructor(private route: ActivatedRoute, private ngZone: NgZone) {
+  constructor(private route: ActivatedRoute) {
     CSSPlugin.defaultTransformPerspective = 4000;
   }
 
@@ -32,14 +32,25 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
     this.roles = this.route.snapshot.data.jsonData.roles;
     this.types = this.route.snapshot.data.jsonData.types;
     this.sub = this.route.url.subscribe(url => this.onUrlChange(url[0].path));
+    this.newID = this.route.snapshot.url[0].path;
   }
 
   ngAfterViewInit() {
     this.buildTL();
-    this.newID = this.route.snapshot.url[0].path;
-    /* this.onUrlChange(this.newID); */
-    /* this.tl.tweenTo(this.newID, { ease: Sine.easeOut }); */
-    this.animIn(this.projects.find(obj => obj.id === this.newID).index);
+    const startingIndex = this.projects.find(obj => obj.id === this.newID).index;
+    this.tl.time(this.tl.getLabelTime(this.newID) - 0.3);
+    if (startingIndex !== 0) {
+      TweenLite.fromTo([
+        `.project-type[data-type="${(this.projects[startingIndex].type as ProjectTypeData).id}"]`,
+        `.project-role[data-role="${this.projects[startingIndex].role}"]`
+      ],
+        0.3, { rotationX: 90 },
+        { rotationX: 0, ease: Sine.easeOut, delay: 0.5 });
+    }
+
+    setTimeout(() => {
+      this.onUrlChange(this.newID);
+    }, 500);
   }
 
   ngOnDestroy() {
@@ -60,55 +71,44 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   private buildTL() {
     const length = this.projects.length;
     const lengthMinus1 = length - 1;
-    // set .project-type rotation
-    TweenLite.set('.project-type', { rotationX: 90, transformOrigin: 'center center', display: 'block' });
-    // set .project-role rotation
-    TweenLite.set('.project-role', { rotationX: 90, transformOrigin: 'center center', display: 'block' });
+    // set .project-type & .project-role rotation
+    console.log(TweenLite.set(['.project-type', '.project-role'], { rotationX: 90, transformOrigin: 'center center', display: 'block' }));
     // set .project-info rotation
     TweenLite.set('.project-info', { rotationY: 90, transformOrigin: 'top left', display: 'block' });
     // build timeline
-    this.tl = new TimelineMax({ paused: true });
+    this.tl = new TimelineMax({ paused: true })
+      .to('.project-info[data-index="0"]', 0.3, { rotationY: 0 }, 0)
+      .to([
+        `.project-type[data-type="${(this.projects[0].type as ProjectTypeData).id}"]`,
+        `.project-role[data-role="${this.projects[0].role}"]`
+      ],
+        0.3, { rotationX: 0 }, 0)
+      .call( () => { console.log('start'); }, null, null, 0.3);
     //
-    for (let i = 0; i < length; i++) {
+    this.projects.forEach((proj, i, arr) => {
       // add labels for each project .6sec apart
-      this.tl.addLabel(this.projects[i].id, i * 0.6);
+      this.tl.addLabel(proj.id, (i * 0.6) + 0.3);
       //
       if (i < lengthMinus1) {
         // anim project-info sections at label
-        this.tl.to(`.project-info[data-index="${i}"]`, 0.3, { rotationY: -90 }, this.projects[i].id); // hide
-        /* this.tl.call(this.onTimelineCall, null, this, this.projects[i].id + '+=.3'); */
-        this.tl.to(`.project-info[data-index="${i + 1}"]`, 0.3, { rotationY: 0 }, this.projects[i].id + '+=.3'); // show
+        this.tl.to(`.project-info[data-index="${i}"]`, 0.3, { rotationY: -90 }, proj.id); // hide
+        this.tl.to(`.project-info[data-index="${i + 1}"]`, 0.3, { rotationY: 0 }, proj.id + '+=.3'); // show
         // anim project-role sections if roles dif
-        if (this.projects[i].role !== this.projects[i + 1].role) {
-          this.tl.to(`.project-role[data-role="${this.projects[i].role}"]`, 0.3,
-            { rotationX: -90 }, this.projects[i].id); // hide
-          this.tl.to(`.project-role[data-role="${this.projects[i + 1].role}"]`, 0.3,
-            { rotationX: 0 }, this.projects[i].id + '+=.3'); // show
+        if (proj.role !== arr[i + 1].role) {
+          this.tl.to(`.project-role[data-role="${proj.role}"]`, 0.3,
+            { rotationX: -90 }, proj.id); // hide
         }
+        this.tl.to(`.project-role[data-role="${arr[i + 1].role}"]`, 0.3,
+          { rotationX: 0 }, proj.id + '+=.3'); // show
         // anim project-type sections if types dif
-        if ((this.projects[i].type as ProjectTypeData).id !== (this.projects[i + 1].type as ProjectTypeData).id) {
-          this.tl.to(`.project-type[data-type="${(this.projects[i].type as ProjectTypeData).id}"]`, 0.3,
-            { rotationX: -90 }, this.projects[i].id); // hide
-          this.tl.to(`.project-type[data-type="${(this.projects[i + 1].type as ProjectTypeData).id}"]`, 0.3,
-            { rotationX: 0 }, this.projects[i].id + '+=.3'); // show
+        if ((proj.type as ProjectTypeData).id !== (arr[i + 1].type as ProjectTypeData).id) {
+          this.tl.to(`.project-type[data-type="${(proj.type as ProjectTypeData).id}"]`, 0.3,
+            { rotationX: -90 }, proj.id); // hide
         }
+        this.tl.to(`.project-type[data-type="${(arr[i + 1].type as ProjectTypeData).id}"]`, 0.3,
+          { rotationX: 0 }, proj.id + '+=.3'); // show
       }
-    }
-  }
-
-  private animIn(index: number) {
-    const duration = 0.5;
-    const delay = 0.5;
-    TweenLite.to([
-      `.project-type[data-type="${(this.projects[index].type as ProjectTypeData).id}"]`,
-      `.project-role[data-role="${this.projects[index].role}"]`
-    ],
-      duration, { rotationX: 0, ease: Sine.easeOut, delay });
-    TweenLite.to(`.project-info[data-index="${index}"]`, duration, { rotationY: 0, delay, ease: Sine.easeOut,
-      onComplete: () => {
-        console.log(this.newID);
-        this.tl.currentLabel(this.newID);
-      } });
+    });
   }
 
 }
