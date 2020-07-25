@@ -1,42 +1,106 @@
 @import '../../../sass/variables';
 
 app-rolodex {
-  .project-type {
-    font-family: 'Audiowide', sans-serif;
-    font-size: 3.3em;
-    color: $lighter-grey;
-    margin: 0;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#text-holder {
+  padding: 3em 6%;
+}
+
+.project-type-wrap {
+  height: 5em;
+
+  /* >* {
+    display: none;
+  } */
+}
+
+.project-type {
+  font-family: 'Audiowide', sans-serif;
+  font-size: 3.3em;
+  color: $lighter-grey;
+  margin: 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* position: absolute; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.project-role-wrap {
+  /* height: 8em;
+ */
+  /* >* {
+    display: none;
+  } */
+}
+
+.project-role:not(:first-child) {
+  margin-top: -8em;
+}
+
+.project-role {
+  height: 8em;
+  /* position: absolute; */
+  /* top: 5.3em; */
+  /* width: calc(100% - 8em); */
+
+  h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 2.2em;
+    color: $light-grey;
+    margin: 0.15em 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+
+    .tab {
+      color: $operator-color;
+      font-size: 0.7em;
+      width: 2em;
+      display: inline-block;
+    }
+  }
+}
+
+.project-info-wrap {
+  height: 30em;
+
+  >* {
+    display: none;
+  }
+}
+
+.project-info:not(:first-child) {
+  margin-top: -30em;
+}
+
+.project-info {
+  height: 30em;
+  width: 100%;
+  /* position: absolute; */
+  /* top: 11em; */
+  padding-top: 1.1em;
+  border-top: 0.3em solid $light-grey;
+  /* width: calc(94% - 8em); */
+  transition: border-color 0.6s ease-out 0.6s;
+
+  p {
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 1.25em;
+    white-space: nowrap;
   }
 
-  .project-role {
-    position: absolute;
-    top: 5.3em; // 7.2
-    width: calc(100% - 8em);
-
-    h2 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 2.2em;
-      color: $light-grey;
-      margin: 0.15em 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 100%;
-
-      .tab {
-        color: $operator-color;
-        font-size: 0.7em;
-        width: 2em;
-        display: inline-block;
-      }
-    }
+  .tab {
+    width: 1.8em;
+    display: inline-block;
   }
 }
 

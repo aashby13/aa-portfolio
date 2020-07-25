@@ -20,9 +20,6 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   types: Array<ProjectTypeData>;
 
   private tl: TimelineMax;
-  private length: number;
-  private lengthMinus1: number;
-  private iter: number;
   private timeScale: number;
   private sub: Subscription;
 
@@ -31,18 +28,17 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    const data = this.route.snapshot.data.jsonData;
-    this.projects = data.projects;
-    this.roles = data.roles;
-    this.types = data.types;
-    this.length = this.projects.length;
-    this.lengthMinus1 = this.length - 1;
+    this.projects = this.route.snapshot.data.jsonData.projects;
+    this.roles = this.route.snapshot.data.jsonData.roles;
+    this.types = this.route.snapshot.data.jsonData.types;
     this.sub = this.route.url.subscribe(url => this.onUrlChange(url[0].path));
   }
 
   ngAfterViewInit() {
     this.buildTL();
     this.newID = this.route.snapshot.url[0].path;
+    /* this.onUrlChange(this.newID); */
+    /* this.tl.tweenTo(this.newID, { ease: Sine.easeOut }); */
     this.animIn(this.projects.find(obj => obj.id === this.newID).index);
   }
 
@@ -62,7 +58,8 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private buildTL() {
-    /* console.log('buildTL()'); */
+    const length = this.projects.length;
+    const lengthMinus1 = length - 1;
     // set .project-type rotation
     TweenLite.set('.project-type', { rotationX: 90, transformOrigin: 'center center', display: 'block' });
     // set .project-role rotation
@@ -72,28 +69,28 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
     // build timeline
     this.tl = new TimelineMax({ paused: true });
     //
-    for (this.iter = 0; this.iter < this.length; this.iter++) {
+    for (let i = 0; i < length; i++) {
       // add labels for each project .6sec apart
-      this.tl.addLabel(this.projects[this.iter].id, this.iter * 0.6);
+      this.tl.addLabel(this.projects[i].id, i * 0.6);
       //
-      if (this.iter < this.lengthMinus1) {
+      if (i < lengthMinus1) {
         // anim project-info sections at label
-        this.tl.to(`.project-info[data-index="${this.iter}"]`, 0.3, { rotationY: -90 }, this.projects[this.iter].id); // hide
-        /* this.tl.call(this.onTimelineCall, null, this, this.projects[this.iter].id + '+=.3'); */
-        this.tl.to(`.project-info[data-index="${this.iter + 1}"]`, 0.3, { rotationY: 0 }, this.projects[this.iter].id + '+=.3'); // show
+        this.tl.to(`.project-info[data-index="${i}"]`, 0.3, { rotationY: -90 }, this.projects[i].id); // hide
+        /* this.tl.call(this.onTimelineCall, null, this, this.projects[i].id + '+=.3'); */
+        this.tl.to(`.project-info[data-index="${i + 1}"]`, 0.3, { rotationY: 0 }, this.projects[i].id + '+=.3'); // show
         // anim project-role sections if roles dif
-        if (this.projects[this.iter].role !== this.projects[this.iter + 1].role) {
-          this.tl.to(`.project-role[data-role="${this.projects[this.iter].role}"]`, 0.3,
-            { rotationX: -90 }, this.projects[this.iter].id); // hide
-          this.tl.to(`.project-role[data-role="${this.projects[this.iter + 1].role}"]`, 0.3,
-            { rotationX: 0 }, this.projects[this.iter].id + '+=.3'); // show
+        if (this.projects[i].role !== this.projects[i + 1].role) {
+          this.tl.to(`.project-role[data-role="${this.projects[i].role}"]`, 0.3,
+            { rotationX: -90 }, this.projects[i].id); // hide
+          this.tl.to(`.project-role[data-role="${this.projects[i + 1].role}"]`, 0.3,
+            { rotationX: 0 }, this.projects[i].id + '+=.3'); // show
         }
         // anim project-type sections if types dif
-        if ((this.projects[this.iter].type as ProjectTypeData).id !== (this.projects[this.iter + 1].type as ProjectTypeData).id) {
-          this.tl.to(`.project-type[data-type="${(this.projects[this.iter].type as ProjectTypeData).id}"]`, 0.3,
-            { rotationX: -90 }, this.projects[this.iter].id); // hide
-          this.tl.to(`.project-type[data-type="${(this.projects[this.iter + 1].type as ProjectTypeData).id}"]`, 0.3,
-            { rotationX: 0 }, this.projects[this.iter].id + '+=.3'); // show
+        if ((this.projects[i].type as ProjectTypeData).id !== (this.projects[i + 1].type as ProjectTypeData).id) {
+          this.tl.to(`.project-type[data-type="${(this.projects[i].type as ProjectTypeData).id}"]`, 0.3,
+            { rotationX: -90 }, this.projects[i].id); // hide
+          this.tl.to(`.project-type[data-type="${(this.projects[i + 1].type as ProjectTypeData).id}"]`, 0.3,
+            { rotationX: 0 }, this.projects[i].id + '+=.3'); // show
         }
       }
     }
@@ -107,7 +104,11 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
       `.project-role[data-role="${this.projects[index].role}"]`
     ],
       duration, { rotationX: 0, ease: Sine.easeOut, delay });
-    TweenLite.to(`.project-info[data-index="${index}"]`, duration, { rotationY: 0, delay, ease: Sine.easeOut });
+    TweenLite.to(`.project-info[data-index="${index}"]`, duration, { rotationY: 0, delay, ease: Sine.easeOut,
+      onComplete: () => {
+        console.log(this.newID);
+        this.tl.currentLabel(this.newID);
+      } });
   }
 
 }

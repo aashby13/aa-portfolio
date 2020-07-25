@@ -10,7 +10,7 @@ import { Draggable, TweenLite } from 'gsap/all';
 })
 export class GhostDragComponent implements OnInit, OnDestroy {
 
-  @ViewChild('dragger') dragger: ElementRef;
+  @ViewChild('dragger', { static: true }) dragger: ElementRef;
   show = false;
 
   private subs: Subscription[];

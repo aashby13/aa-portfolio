@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { DataService } from '../data-service/data.service';
+import { DataService } from '../services/data.service';
 import { map, catchError } from 'rxjs/operators';
 import { ResolveFilter, ResolveMapKeys } from '../../models';
 

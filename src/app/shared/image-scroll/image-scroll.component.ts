@@ -96,7 +96,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.newIndex = this.items.find(obj => obj.id === this.curID).index;
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
-      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex] });
+      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex], onComplete: () => {} });
     } else {
       TweenLite.to(this.holder.nativeElement,
         0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
