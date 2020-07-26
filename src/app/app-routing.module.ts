@@ -34,7 +34,6 @@ const routes: Routes = [
           url: DATA_PATHS.portfolio,
           tree: 'projects',
           filters: [{ type: 'key', match: 'id' }, { type: 'key', match: 'index' }],
-          rootPath: '/portfolio/'
         },
         resolve: { jsonData: DataResolver }
       },
@@ -53,8 +52,7 @@ const routes: Routes = [
       {
         path: '',
         component: GhostDragComponent,
-        outlet: 'ghost-column',
-        data: {},
+        outlet: 'ghost-column'
       }
     ]
   },

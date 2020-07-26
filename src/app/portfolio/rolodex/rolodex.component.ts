@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TweenLite, TimelineMax, CSSPlugin, Sine } from 'gsap/all';
 import { ProjectData, ProjectRoleData, ProjectTypeData } from 'src/app/models';
 import { Subscription } from 'rxjs';
-import { BodyClassService } from 'src/app/core/services/body-class.service';
+import { GlobalService } from 'src/app/core/services/global.service';
 
 @Component({
   selector: 'app-rolodex',
@@ -23,11 +23,13 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   private timeScale: number;
   private sub: Subscription;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private globalService: GlobalService) {
     CSSPlugin.defaultTransformPerspective = 4000;
   }
 
   ngOnInit() {
+    this.globalService.rootPath$.next('/portfolio/');
+    this.globalService.imageScrollEnabled$.next(true);
     this.projects = this.route.snapshot.data.jsonData.projects;
     this.roles = this.route.snapshot.data.jsonData.roles;
     this.types = this.route.snapshot.data.jsonData.types;
@@ -55,6 +57,8 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.tl) this.tl.kill();
+    this.globalService.rootPath$.next(null);
+    this.globalService.imageScrollEnabled$.next(null);
     this.sub.unsubscribe();
   }
 
