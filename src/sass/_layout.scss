@@ -5,6 +5,7 @@
 }
 
 a,
+svg,
 div,
 button {
   outline: none;
@@ -15,7 +16,7 @@ h1,
 h2,
 p,
 span {
-  transition: color 0.6s ease-out 0.8s, background-color 0.6s ease-out 0.8s;
+  transition: color 0.6s ease-out 0.2s, background-color 0.6s ease-out 0.2s;
 }
 
 html {
@@ -81,7 +82,8 @@ body,
   flex-direction: column;
 }
 
-.content-top {
+.content-top,
+.content-bottom {
   height: 10%;
   min-height: 6em;
   /* border:thin solid red; */

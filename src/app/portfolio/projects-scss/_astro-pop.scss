@@ -8,41 +8,52 @@ $astro-orange: #ffa530;
     background-image: url(/assets/images/astro-pop2.png);
 }
 
-.page.portfolio.astro-pop{
-	#text-holder{
-		.project-type{
-			color: $white;
-		}
-		.project-role h2{
-			color: $astro-light-blue;
-			.tab{
-				color: $astro-blue;
-			}
-		}
-		.project-info{
-			p{
-				color: $astro-light-blue;
-			}
-		}
-		.string{
-			color: $astro-orange;
-		}
-		.keyword{
-			color: $astro-blue;
-		}
-		.name {
-			color: $white;
-			background-color: $astro-red;
-		}
-		.number,
-		.operator {
-			color: $astro-green;
+.astro-pop {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $astro-light-blue;
+
+        .tab {
+          color: $astro-blue;
+        }
+      }
+
+      .project-info {
+        p {
+          color: $astro-light-blue;
+        }
+      }
+
+      .string {
+        color: $astro-orange;
+      }
+
+      .keyword {
+        color: $astro-blue;
+      }
+
+      .name {
+        color: $white;
+        background-color: $astro-red;
+      }
+
+      .number,
+      .operator {
+        color: $astro-green;
+      }
     }
   }
+
   #svg-play-btn {
     .play {
-        fill: $white;
+      fill: $white;
     }
+
     .more {
       fill: $astro-light-blue;
     }

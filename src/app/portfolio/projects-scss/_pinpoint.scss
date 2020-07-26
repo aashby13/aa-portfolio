@@ -4,42 +4,53 @@ $pinpoint-red:#ff3434;
     background-image: url(/assets/images/pinpoint.svg);
 }
 
-.pinpoint app-rolodex{
-	#text-holder{
-		.project-type{
-			color:$white;
-		}
-		.project-role h2{
-			color:$pinpoint-red;
-			.tab{
-				color:$lighter-grey;
-			}
-		}
-		/* .project-info{
+.pinpoint {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $pinpoint-red;
+
+        .tab {
+          color: $lighter-grey;
+        }
+      }
+
+      /* .project-info{
 			border-color:$white;
 			p{
 				color:$white;
 			}
 		} */
-		.string{
-			color:$white;
-		}
-		.name{
-			color:$black;
-			background-color:$pinpoint-red;
-		}
-		.number, .keyword, .operator{
-			color: $pinpoint-red;
-		}
+      .string {
+        color: $white;
+      }
+
+      .name {
+        color: $black;
+        background-color: $pinpoint-red;
+      }
+
+      .number,
+      .keyword,
+      .operator {
+        color: $pinpoint-red;
+      }
+    }
   }
+
   #svg-play-btn {
     .play {
       fill: $white;
       fill: $pinpoint-red;
     }
-      .more {
-          fill: $pinpoint-red;
-          fill: $white;
-      }
+
+    .more {
+      fill: $pinpoint-red;
+      fill: $white;
+    }
   }
 }

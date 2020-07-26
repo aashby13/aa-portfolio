@@ -7,41 +7,53 @@ $ps-yellow:#b77a34;
     background-image: url(/assets/images/project-strong.png);
 }
 
-.page.portfolio.project-strong{
-	#text-holder{
-		.project-type{
-			color: $white;
-		}
-		.project-role h2{
-			color: $ps-yellow;
-			.tab{
-				color: $ps-blue;
-			}
-		}
-		.project-info{
-			p{
-				color: $white;
-			}
-		}
-		.string{
-			color: $ps-purple;
-		}
-		.keyword{
-			color: $ps-blue;
-		}
-		.name {
-			color: $black;
-			background-color: $ps-green;
-		}
-		.number, .operator,{
-			color: $ps-green;
-		}
+.project-strong {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $ps-yellow;
+
+        .tab {
+          color: $ps-blue;
+        }
+      }
+
+      .project-info {
+        p {
+          color: $white;
+        }
+      }
+
+      .string {
+        color: $ps-purple;
+      }
+
+      .keyword {
+        color: $ps-blue;
+      }
+
+      .name {
+        color: $black;
+        background-color: $ps-green;
+      }
+
+      .number,
+      .operator {
+        color: $ps-green;
+      }
+    }
   }
+
   #svg-play-btn {
     .play {
       /* fill: $ps-yellow; */
       fill: $white;
     }
+
     .more {
       /* fill: $ps-blue; */
       /* fill: $ps-green; */
@@ -49,3 +61,4 @@ $ps-yellow:#b77a34;
     }
   }
 }
+

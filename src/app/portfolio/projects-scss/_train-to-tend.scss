@@ -6,37 +6,49 @@ $ttt-purple:#bb88b5;
     background-image: url(/assets/images/train-to-tend.svg);
 }
 
-.page.portfolio.train-to-tend{
-	#text-holder{
-		.project-type{
-			color:$white;
-		}
-		.project-role h2{
-			color:$ttt-green;
-			.tab{
-				color:$ttt-purple;
-			}
-		}
-		.project-info{
-			p{
-				color:$white;
-			}
-		}
-		.string, .keyword{
-			color:$ttt-blue;
-		}
-		.name {
-			color: $black;
-			background-color:$ttt-green;
-		}
-		.number, .operator {
-			color:$ttt-purple;
-		}
+.train-to-tend {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $ttt-green;
+
+        .tab {
+          color: $ttt-purple;
+        }
+      }
+
+      .project-info {
+        p {
+          color: $white;
+        }
+      }
+
+      .string,
+      .keyword {
+        color: $ttt-blue;
+      }
+
+      .name {
+        color: $black;
+        background-color: $ttt-green;
+      }
+
+      .number,
+      .operator {
+        color: $ttt-purple;
+      }
+    }
   }
+
   #svg-play-btn {
     .play {
-        fill: $ttt-green;
+      fill: $ttt-green;
     }
+
     .more {
       fill: $ttt-purple;
     }
