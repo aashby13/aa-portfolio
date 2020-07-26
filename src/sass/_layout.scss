@@ -32,7 +32,8 @@ body {
 }
 
 body,
-#main-view {
+#main-view,
+#overlay-view {
   width: 100%;
   height: 100%;
   top: 0;
@@ -41,7 +42,8 @@ body,
   padding: 0;
 }
 
-#main-view {
+#main-view,
+#overlay-view {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -95,11 +97,14 @@ body,
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  overflow: hidden;
   /* border: thin solid orange; */
   z-index: 100;
 }
 
 .column-block {
+  max-height: calc(50% - 9em);
+  display: inline-flex;
   flex-grow: 1;
   background-color: $darker-grey;
   z-index: 2;
@@ -116,4 +121,15 @@ body,
     height: 18em;
     width: 18em;
   }
+}
+
+#overlay-view {
+  pointer-events: none;
+  .column-wrap {
+    display: unset;
+  }
+}
+
+#overlay-view > * {
+  background-color: transparent;
 }

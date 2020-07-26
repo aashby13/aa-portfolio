@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { TweenLite, Power2 } from 'gsap/all';
 import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 import { Subscription } from 'rxjs';
 import { ScrollImageItemData } from 'src/app/models';
+import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
 
 @Component({
   selector: 'app-image-scroll',
@@ -46,8 +47,8 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.goToCurrent(true);
   }
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-    ThrowPropsPlugin.defaultResistance = 1000;
+  constructor(private route: ActivatedRoute, private router: Router, private dragService: GhostDragService, private zone: NgZone) {
+    ThrowPropsPlugin.defaultResistance = 500;
   }
 
   ngOnInit() {
@@ -68,13 +69,32 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setEnd();
     this.goToCurrent(true);
     setTimeout(() => {
+      const self = this;
       this.ready = true;
+      this.dragService.vars$.next({
+        type: 'y',
+        throwProps: true,
+        snap: this.end,
+        throwResistance: 0,
+        maxDuration: 4.5,
+        minDuration: 0.5,
+        // tslint:disable-next-line:object-literal-shorthand
+        onDrag: function() {
+          self.onDrag(this.y);
+        },
+        onDragEnd: () => this.dragService.enable$.next(false),
+        // tslint:disable-next-line:object-literal-shorthand
+        onThrowUpdate: function() {
+          self.onThrowUpdate(this.y);
+        }
+      });
     }, 200);
   }
 
   private goToCurrent(set = false) {
     this.curID = this.router.url.split(this.rootPath)[1].split('/')[0];
     this.newIndex = this.items.find(obj => obj.id === this.curID).index;
+    this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
       TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex] });
     } else {
@@ -106,6 +126,16 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
       this.router.navigateByUrl(this.rootPath + this.curID);
       console.log(this.curID);
     }
+  }
+
+  private onDrag(y: number) {
+    TweenLite.set(this.holder.nativeElement, { y });
+    this.zone.run(this.onTweenUpdate, this);
+  }
+
+  private onThrowUpdate(y: number) {
+    TweenLite.set(this.holder.nativeElement, { y });
+    this.zone.run( this.onTweenUpdate, this );
   }
 
 }
