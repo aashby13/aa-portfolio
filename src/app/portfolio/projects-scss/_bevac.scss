@@ -6,40 +6,53 @@ $bevac-orange:#C95F0A;
     background-image: url(/assets/images/bevac.svg);
 }
 
-.page.portfolio.bevac{
-	#text-holder{
-		.project-type{
-			color:$white;
-		}
-		.project-role h2{
-			color:$bevac-blue;
-			.tab{
-				color: $bevac-orange;
-			}
-		}
-		.string, .number, .keyword{
-			color:$white;
-		}
-		.name {
-			background-color: $bevac-blue;
-		}
-		.number, .operator{
-			color:$bevac-orange;
-		}
-		.keyword{
-			color: $bevac-blue;
-		}
+.bevac {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $bevac-blue;
+
+        .tab {
+          color: $bevac-orange;
+        }
+      }
+
+      .string,
+      .number,
+      .keyword {
+        color: $white;
+      }
+
+      .name {
+        background-color: $bevac-blue;
+      }
+
+      .number,
+      .operator {
+        color: $bevac-orange;
+      }
+
+      .keyword {
+        color: $bevac-blue;
+      }
+    }
   }
+
   #svg-play-btn {
     .play {
-        fill: $bevac-blue;
-        /* fill: $white; */
-        /* fill: $bevac-orange; */
+      fill: $bevac-blue;
+      /* fill: $white; */
+      /* fill: $bevac-orange; */
     }
-      .more {
-          fill: $bevac-orange;
-          /* fill: $bevac-blue; */
-          /* fill: $white; */
-      }
+
+    .more {
+      fill: $bevac-orange;
+      /* fill: $bevac-blue; */
+      /* fill: $white; */
+    }
   }
 }

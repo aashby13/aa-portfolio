@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TweenLite, TimelineMax, CSSPlugin, Sine } from 'gsap/all';
 import { ProjectData, ProjectRoleData, ProjectTypeData } from 'src/app/models';
 import { Subscription } from 'rxjs';
-
+import { BodyClassService } from 'src/app/core/services/body-class.service';
 
 @Component({
   selector: 'app-rolodex',

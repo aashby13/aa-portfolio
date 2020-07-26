@@ -6,43 +6,56 @@ $milk-brown: #94877d;
     background-image: url(/assets/images/milk-stache.png);
 }
 
-.page.portfolio.milk-stache{
-	#text-holder{
-		.project-type{
-			color: $white;
-		}
-		.project-role h2{
-			color: $milk-off-white;
-			.tab{
-				color: $milk-brown;
-			}
-		}
-		.project-info{
-			p{
-				color: $milk-brown;
-			}
-		}
-		.string{
-			color: $white;
-		}
-		.keyword{
-			color: $milk-off-white;
-		}
-		.name {
-			color: $white;
-			background-color: $milk-dark-brown;
-		}
-		.number,
-		.operator {
-			color: $white;
+.milk-stache {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $milk-off-white;
+
+        .tab {
+          color: $milk-brown;
+        }
+      }
+
+      .project-info {
+        p {
+          color: $milk-brown;
+        }
+      }
+
+      .string {
+        color: $white;
+      }
+
+      .keyword {
+        color: $milk-off-white;
+      }
+
+      .name {
+        color: $white;
+        background-color: $milk-dark-brown;
+      }
+
+      .number,
+      .operator {
+        color: $white;
+      }
     }
   }
+  
   #svg-play-btn {
     .play {
-        fill: $milk-off-white;
+      fill: $milk-off-white;
     }
+
     .more {
-        fill: $milk-brown;
+      fill: $milk-brown;
     }
   }
 }
+
+  

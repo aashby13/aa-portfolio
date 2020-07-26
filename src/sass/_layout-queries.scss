@@ -184,6 +184,10 @@
   .gutter.left {
     padding-top: 3vh;
   }
+
+  .content-wrap {
+    padding-bottom: 3vh;
+  }
 }
 
 /* large phones: iPhone 6, 7, 8 Plus, Pixel 2 */
@@ -212,7 +216,8 @@
 
 /* tablets, iPads, small laptop/desktop */
 @media screen and (min-width: 60em) and (orientation: landscape) {
-  .content-top {
+  .content-top,
+  .content-bottom {
     min-height: 8em;
   }
 
@@ -237,6 +242,10 @@
   .content-wrap,
   .gutter.left {
     padding-top: 4vh;
+  }
+
+  .content-wrap {
+    padding-bottom: 4vh;
   }
 
   #svg-logo {

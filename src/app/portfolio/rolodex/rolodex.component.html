@@ -1,18 +1,18 @@
 <div id="text-holder">
 
-  <div class="project-type-wrap">
-    <h1 class="project-type" *ngFor="let type of types; let i = index"
-      attr.data-type="{{type.id}}">{{type.text}}</h1>
-  </div>
-  
+  <div class="type-roles-wrap">
+    <div class="project-type-wrap">
+      <h1 class="project-type" *ngFor="let type of types; let i = index" attr.data-type="{{type.id}}">{{type.text}}</h1>
+    </div>
 
-  <div class="project-role-wrap">
-    <section class="project-role" *ngFor="let role of roles" attr.data-role="{{role.id}}">
-      <h2>
-        <span class="tab">me</span>{{role.me}}</h2>
-      <h2>
-        <span class="tab">&nbsp;&nbsp;&nbsp;&#64;</span>{{role.company}}</h2>
-    </section>
+    <div class="project-role-wrap">
+      <section class="project-role" *ngFor="let role of roles" attr.data-role="{{role.id}}">
+        <h2>
+          <span class="tab">me</span>{{role.me}}</h2>
+        <h2>
+          <span class="tab">&nbsp;&nbsp;&nbsp;&#64;</span>{{role.company}}</h2>
+      </section>
+    </div>
   </div>
 
   <div class="project-info-wrap">
