@@ -1,7 +1,7 @@
 {
   "roles": [{
       "id": "kb-standard",
-      "me": "Front End & Game Dev, & Design",
+      "me": "Front End & Interactive Dev, & Design",
       "company": "Klein Buendel Inc."
     },
     {
@@ -11,7 +11,7 @@
     },
     {
       "id": "kb-vid2",
-      "me": "Video Player/Server Dev & Video Production",
+      "me": "Front End & Media Server Dev, & Video Production",
       "company": "Klein Buendel Inc."
     },
     {
@@ -26,63 +26,35 @@
     "type": "Web Apps",
     "role": "kb-standard",
     "info": [{
-      "title": "duties",
-      "strings": [
-        "js",
-        "php",
-        "html",
-        "scss",
-        "gfx",
-        "sfx"
-      ]
-    }, {
-      "title": "js",
-      "strings": [
-        "angularJS",
-        "GSAP",
-        "createJS",
-        "opentypeJS"
-      ]
-    }, {
-      "title": "apps",
-      "strings": [
-        "Ai",
-        "Au"
-      ]
-    }, {
-      "title": "year",
-      "number": 2017
+        "title": "duties",
+        "strings": ["ts", "html", "scss", "gfx", "sfx"]
+      }, {
+        "title": "ts",
+        "strings": ["angular", "redux", "gsap", "createJS", "opentypeJS"]
+      }, {
+        "title": "apps",
+        "strings": ["Ai", "Au"]
+      }, {
+        "title": "year",
+        "number": 2020
     }]
   }, {
-    "id": "bevac",
-    "name": "BeVac",
+    "id": "wts",
+    "name": "WayToServe & WTS-Español",
     "type": "Web Apps",
-    "role": "kb-standard",
+    "role": "kb-vid",
     "info": [{
-      "title": "duties",
-      "strings": [
-        "js",
-        "php",
-        "html",
-        "scss",
-        "gfx"
-      ]
-    }, {
-      "title": "js",
-      "strings": [
-        "angularJS",
-        "GSAP"
-      ]
-    }, {
-      "title": "apps",
-      "strings": [
-        "Ae",
-        "Ai",
-        "Chimera"
-      ]
-    }, {
-      "title": "year",
-      "number": 2016
+        "title": "duties",
+        "strings": ["ts", "html", "css", "anim", "gfx", "sfx"]
+      }, {
+        "title": "ts",
+        "strings": ["angular", "redux", "gsap", "createJS"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
+      }, {
+        "title": "years",
+        "numbers": [2018, 2019]
     }]
   }, {
     "id": "train-to-tend",
@@ -90,53 +62,53 @@
     "type": "Web Apps",
     "role": "kb-vid",
     "info": [{
-      "title": "duties",
-      "strings": [
-        "js",
-        "html",
-        "css",
-        "anim",
-        "gfx",
-        "sfx"
-      ]
-    }, {
-      "title": "js",
-      "strings": [
-        "jQuery",
-        "GSAP",
-        "createJS"
-      ]
-    }, {
-      "title": "apps",
-      "strings": [
-        "Ae",
-        "Ai",
-        "Au",
-        "Ch",
-        "Pr",
-        "Ps"
-      ]
-    }, {
-      "title": "year",
-      "number": 2017
+        "title": "duties",
+        "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
+      }, {
+        "title": "js",
+        "strings": ["jQuery", "gsap", "createJS"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
+      }, {
+        "title": "year",
+        "number": 2017
     }]
   }, {
     "id": "project-strong",
-    "name": "Project Strong & Project TRAC",
+    "name": "Project STRONG (En & Es) & Project TRAC",
     "type": "Web Apps",
     "role": "kb-vid",
     "info": [{
-      "title": "duties",
-      "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
-    }, {
-      "title": "js",
-      "strings": ["jQuery", "GSAP", "createJS", "Box2D"]
-    }, {
-      "title": "apps",
-      "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
-    }, {
-      "title": "years",
-      "numbers": [2016, 2018]
+        "title": "duties",
+        "strings": ["js", "html", "css", "anim", "mograph", "gfx", "sfx"]
+      }, {
+        "title": "js",
+        "strings": ["jQuery", "gsap", "createJS", "box2D"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
+      }, {
+        "title": "years",
+        "numbers": [2016, 2018, 2020]
+    }]
+  }, {
+    "id": "bevac",
+    "name": "BeVac",
+    "type": "Web Apps",
+    "role": "kb-standard",
+    "info": [{
+        "title": "duties",
+        "strings": ["js", "php", "html", "scss", "gfx"]
+      }, {
+        "title": "js",
+        "strings": ["angularJS", "gsap"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Chimera"]
+      }, {
+        "title": "year",
+        "number": 2016
     }]
   }, {
     "id": "momzing",
@@ -144,17 +116,20 @@
     "type": "Web Apps",
     "role": "kb-vid2",
     "info": [{
-      "title": "duties",
-      "strings": ["as3", "js", "mograph", "director", "landingPage", "promoVid"]
-    }, {
-      "title": "as3",
-      "strings": ["AdobeMediaServer", "GSAP"]
-    }, {
-      "title": "apps",
-      "strings": ["Ae", "Ai", "Fb", "Fl", "Pr", "Ps"]
-    }, {
-      "title": "year",
-      "number": 2013
+        "title": "duties",
+        "strings": ["as3", "js", "mograph", "director", "editor"]
+      }, {
+        "title": "as3-2013",
+        "strings": ["AdobeMediaServer", "gsap"]
+      }, {
+        "title": "js-2020",
+        "strings": ["react", "dash.js", "gsap"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Fb", "Fl", "Pr", "Ps"]
+      }, {
+        "title": "years",
+        "numbers": [2013, 2020]
     }]
   }, {
     "id": "bub-and-bot",
@@ -162,17 +137,17 @@
     "type": "AS3 Games",
     "role": "kb-game",
     "info": [{
-      "title": "duties",
-      "strings": ["as3", "gfx", "sfx", "art direction"]
-    }, {
-      "title": "as3",
-      "strings": ["GSAP", "Nape", "Starling"]
-    }, {
-      "title": "apps",
-      "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "Ps"]
-    }, {
-      "title": "year",
-      "number": 2012
+        "title": "duties",
+        "strings": ["as3", "gfx", "sfx", "art direction"]
+      }, {
+        "title": "as3",
+        "strings": ["gsap", "Nape", "Starling"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "Ps"]
+      }, {
+        "title": "year",
+        "number": 2012
     }]
   }, {
     "id": "milk-stache",
@@ -180,17 +155,17 @@
     "type": "AS3 Games",
     "role": "kb-game",
     "info": [{
-      "title": "duties",
-      "strings": ["as3", "gfx", "sfx", "art direction"]
-    }, {
-      "title": "as3",
-      "strings": ["GSAP", "Nape", "Starling"]
-    }, {
-      "title": "apps",
-      "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "Ps"]
-    }, {
-      "title": "year",
-      "number": 2012
+        "title": "duties",
+        "strings": ["as3", "gfx", "sfx", "art direction"]
+      }, {
+        "title": "as3",
+        "strings": ["gsap", "Nape", "Starling"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "Ps"]
+      }, {
+        "title": "year",
+        "number": 2012
     }]
   }, {
     "id": "astro-pop",
@@ -198,17 +173,17 @@
     "type": "AS3 Games",
     "role": "kb-game",
     "info": [{
-      "title": "duties",
-      "strings": ["as3", "gfx", "sfx", "music", "art direction"]
-    }, {
-      "title": "as3",
-      "strings": ["GSAP", "Nape", "Starling"]
-    }, {
-      "title": "apps",
-      "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "GarageBand", "Ps"]
-    }, {
-      "title": "year",
-      "number": 2012
+        "title": "duties",
+        "strings": ["as3", "gfx", "sfx", "music", "art direction"]
+      }, {
+        "title": "as3",
+        "strings": ["gsap", "Nape", "Starling"]
+      }, {
+        "title": "apps",
+        "strings": ["Ae", "Ai", "Au", "Fb", "Fl", "GarageBand", "Ps"]
+      }, {
+        "title": "year",
+        "number": 2012
     }]
   }]
 }

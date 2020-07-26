@@ -5,6 +5,7 @@ import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 import { Subscription } from 'rxjs';
 import { ScrollImageItemData } from 'src/app/models';
 import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
+import { BodyClassService } from 'src/app/core/services/body-class.service';
 
 @Component({
   selector: 'app-image-scroll',
@@ -37,7 +38,8 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
         },
       },
       ease: Power2.easeOut,
-      onUpdate: () => this.onTweenUpdate()
+      onUpdate: () => this.onTweenUpdate(),
+      onComplete: () => this.classService.set(this.curID)
     });
   }
 
@@ -47,7 +49,13 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.goToCurrent(true);
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private dragService: GhostDragService, private zone: NgZone) {
+  constructor(
+      private route: ActivatedRoute,
+      private router: Router,
+      private dragService: GhostDragService,
+      private classService: BodyClassService,
+      private zone: NgZone
+    ) {
     ThrowPropsPlugin.defaultResistance = 500;
   }
 
@@ -96,11 +104,15 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.newIndex = this.items.find(obj => obj.id === this.curID).index;
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
-      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex] });
+      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex], onComplete: () => this.classService.set(this.curID) });
     } else {
       TweenLite.to(this.holder.nativeElement,
         0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
-        { y: this.end[this.newIndex], ease: Power2.easeOut }
+        {
+          y: this.end[this.newIndex],
+          ease: Power2.easeOut,
+          onComplete: () => this.classService.set(this.curID)
+        }
       );
     }
     this.curIndex = this.newIndex;
@@ -123,8 +135,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.newIndex !== -1 && this.items[this.newIndex].id !== this.curID) {
       this.curIndex = this.newIndex;
       this.curID = this.items[this.curIndex].id;
-      this.router.navigateByUrl(this.rootPath + this.curID);
-      console.log(this.curID);
+      this.zone.run(this.router.navigateByUrl, this.router, [this.rootPath + this.curID]);
     }
   }
 

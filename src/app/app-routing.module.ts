@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DataResolver } from './core/data-resolver/data.resolver';
+import { DataResolver } from './core/resolvers/data.resolver';
 import { ImageScrollComponent } from './shared/image-scroll/image-scroll.component';
 import { DotNavComponent } from './shared/dot-nav/dot-nav.component';
 import { DATA_PATHS } from './constants';

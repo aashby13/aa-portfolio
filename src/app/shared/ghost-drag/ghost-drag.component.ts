@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy, HostListener } fro
 import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
 import { Subscription } from 'rxjs';
 import { Draggable, TweenLite } from 'gsap/all';
-import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 
 @Component({
   selector: 'app-ghost-drag',
@@ -11,7 +10,7 @@ import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 })
 export class GhostDragComponent implements OnInit, OnDestroy {
 
-  @ViewChild('dragger') dragger: ElementRef;
+  @ViewChild('dragger', { static: true }) dragger: ElementRef;
   show = false;
 
   private subs: Subscription[];

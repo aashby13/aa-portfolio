@@ -7,42 +7,56 @@ $bub-green: #8ea368;
     background-image: url(/assets/images/bub-and-bot.png);
 }
 
-.page.portfolio.bub-and-bot{
-	#text-holder{
-		.project-type{
-			color: $white;
-		}
-		.project-role h2{
-			color: $bub-green;
-			.tab{
-				color: $bub-purple;
-			}
-		}
-		.project-info{
-			p{
-				color :#ccc8db;
-			}
-		}
-		.string{
-			color: $bub-purple;
-		}
-		.keyword{
-			color: $bub-green;
-		}
-		.name {
-			color: $white;
-			background-color: $bub-blue;
-		}
-		.number, .operator,{
-			color: $bub-yellow;
-		}
+.bub-and-bot {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $bub-green;
+
+        .tab {
+          color: $bub-purple;
+        }
+      }
+
+      .project-info {
+        p {
+          color: #ccc8db;
+        }
+      }
+
+      .string {
+        color: $bub-purple;
+      }
+
+      .keyword {
+        color: $bub-green;
+      }
+
+      .name {
+        color: $white;
+        background-color: $bub-blue;
+      }
+
+      .number,
+      .operator {
+        color: $bub-yellow;
+      }
+    }
   }
+
   #svg-play-btn {
     .play {
-        fill: $bub-green;
+      fill: $bub-green;
     }
-      .more {
-          fill: $bub-purple;
-      }
+
+    .more {
+      fill: $bub-purple;
+    }
   }
 }
+
+  

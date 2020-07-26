@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aa-portfolio-redux": {
+    "aa-portfolio": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/aa-portfolio-redux",
+            "outputPath": "dist/aa-portfolio",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "aa-portfolio-redux:build"
+            "browserTarget": "aa-portfolio:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "aa-portfolio-redux:build:production"
+              "browserTarget": "aa-portfolio:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "aa-portfolio-redux:build"
+            "browserTarget": "aa-portfolio:build"
           }
         },
         "test": {
@@ -111,7 +111,7 @@
         }
       }
     },
-    "aa-portfolio-redux-e2e": {
+    "aa-portfolio-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -120,11 +120,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "aa-portfolio-redux:serve"
+            "devServerTarget": "aa-portfolio:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "aa-portfolio-redux:serve:production"
+              "devServerTarget": "aa-portfolio:serve:production"
             }
           }
         },
@@ -140,5 +140,5 @@
       }
     }
   },
-  "defaultProject": "aa-portfolio-redux"
+  "defaultProject": "aa-portfolio"
 }

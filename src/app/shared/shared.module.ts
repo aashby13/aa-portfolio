@@ -18,7 +18,8 @@ import { GhostDragComponent } from './ghost-drag/ghost-drag.component';
     CommonModule,
     UserScrollDirective,
     ImageScrollComponent,
-    DotNavComponent
+    DotNavComponent,
+    GhostDragComponent
   ],
   imports: [
     RouterModule,

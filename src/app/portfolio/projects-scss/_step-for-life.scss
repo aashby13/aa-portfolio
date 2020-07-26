@@ -4,30 +4,41 @@ $sfl-blue:#3078be;
     background-image: url(/assets/images/step-for-life.png);
 }
 
-.page.portfolio.step-for-life{
-	#text-holder{
-		.project-type{
-			color:$white;
-		}
-		.project-role h2{
-			color:$sfl-blue;
-			.tab{
-				color:$lighter-grey;
-			}
-		}
-		/* .project-info{
+.step-for-life {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $white;
+      }
+
+      .project-role h2 {
+        color: $sfl-blue;
+
+        .tab {
+          color: $lighter-grey;
+        }
+      }
+
+      /* .project-info{
 			p{
 				color:$white;
 			}
 		} */
-		.string, .number, .keyword{
-			color:$white;
-		}
-		.name{
-			background-color:$sfl-blue;
-		}
-		.number, .keyword, .operator{
-			color:$sfl-blue;
-		}
-	}
+      .string,
+      .number,
+      .keyword {
+        color: $white;
+      }
+
+      .name {
+        background-color: $sfl-blue;
+      }
+
+      .number,
+      .keyword,
+      .operator {
+        color: $sfl-blue;
+      }
+    }
+  }
 }

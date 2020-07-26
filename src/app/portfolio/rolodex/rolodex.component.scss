@@ -1,7 +1,110 @@
 @import '../../../sass/variables';
 
 app-rolodex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  #text-holder {
+    padding: 0 10% 0 6%;
+    font-size: 0.8rem;
+
+    .type-roles-wrap {
+      height: 23em;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .project-type-wrap {
+      font-size: 3.5em;
+      height: 1.15em;
+      margin-bottom: 0.35em;
+    }
+
+    .project-type:not(:first-child) {
+      margin-top: -1.15em;
+    }
+
+    .project-type {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1em;
+      color: $lighter-grey;
+      margin: 0;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    .project-role-wrap {
+      height: 8em;
+    }
+
+    .project-role:not(:first-child) {
+      margin-top: -8em;
+    }
+
+    .project-role {
+      height: 8em;
+
+      h2 {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 2.2em;
+        color: $light-grey;
+        margin: 0 0 0.15em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+
+        .tab {
+          color: $lighter-grey;
+          font-size: 0.7em;
+          width: 2em;
+          display: inline-block;
+        }
+      }
+    }
+
+    .project-info-wrap {
+      height: 22em;
+    }
+
+    .project-info:not(:first-child) {
+      margin-top: -22em;
+    }
+
+    .project-info {
+      height: 22em;
+      width: 100%;
+      padding-top: 1.1em;
+      border-top: 0.3em solid $light-grey;
+      transition: border-color 0.6s ease-out 0.6s;
+
+      p {
+        font-family: 'Droid Sans Mono', sans-serif;
+        font-size: 1.25em;
+        white-space: nowrap;
+      }
+
+      .tab {
+        width: 1.8em;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 53em) {
+  app-rolodex {
+    #text-holder {
+      font-size: 1.3vh;
+    }
+  }
 }
 
 /* portfolio projects scss */
@@ -9,7 +112,7 @@ app-rolodex {
 @import '../projects-scss/train-to-tend';
 @import '../projects-scss/project-strong';
 @import '../projects-scss/bevac';
-@import '../projects-scss/step-for-life';
+/* @import '../projects-scss/step-for-life'; */
 @import '../projects-scss/momzing';
 @import '../projects-scss/bub-and-bot';
 @import '../projects-scss/milk-stache';
