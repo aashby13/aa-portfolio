@@ -12,11 +12,9 @@ svg {
   height 0.6s ease-in-out;
 }
 
-#svg-logo,
-#svg-play-btn {
+#svg-logo {
 
-  rect,
-  .rect {
+  rect {
     fill: none;
     stroke: $light-grey;
     stroke-miterlimit: 10;
@@ -24,25 +22,16 @@ svg {
   }
 
   .double-a,
-  .play,
   .name {
     fill: $lighter-grey;
   }
 
-  .play,
   .name {
     cursor: pointer;
   }
 
-  
-  .more {
-    fill: $light-grey;
-  }
-
   .double-a,
-  .play,
-  .name,
-  .more {
+  .name {
     transition: fill 0.6s ease-out 0.6s;
   }
 }

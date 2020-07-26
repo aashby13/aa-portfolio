@@ -6,6 +6,7 @@ import { ImageScrollComponent } from './shared/image-scroll/image-scroll.compone
 import { DotNavComponent } from './shared/dot-nav/dot-nav.component';
 import { DATA_PATHS } from './constants';
 import { GhostDragComponent } from './shared/ghost-drag/ghost-drag.component';
+import { PlayerLaunchBtnComponent } from './shared/player-launch-btn/player-launch-btn.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
           filters: [{ type: 'key', match: 'id' }, { type: 'key', match: 'index' }],
         },
         resolve: { jsonData: DataResolver }
+      },
+      {
+        path: '',
+        component: PlayerLaunchBtnComponent,
+        outlet: 'column-bottom'
       },
       {
         path: '',

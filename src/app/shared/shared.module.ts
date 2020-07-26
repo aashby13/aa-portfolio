@@ -5,6 +5,7 @@ import { UserScrollDirective } from './user-scroll/user-scroll.directive';
 import { ImageScrollComponent } from './image-scroll/image-scroll.component';
 import { DotNavComponent } from './dot-nav/dot-nav.component';
 import { GhostDragComponent } from './ghost-drag/ghost-drag.component';
+import { PlayerLaunchBtnComponent } from './player-launch-btn/player-launch-btn.component';
 
 
 @NgModule({
@@ -12,14 +13,16 @@ import { GhostDragComponent } from './ghost-drag/ghost-drag.component';
     UserScrollDirective,
     ImageScrollComponent,
     DotNavComponent,
-    GhostDragComponent
+    GhostDragComponent,
+    PlayerLaunchBtnComponent
   ],
   exports: [
     CommonModule,
     UserScrollDirective,
     ImageScrollComponent,
     DotNavComponent,
-    GhostDragComponent
+    GhostDragComponent,
+    PlayerLaunchBtnComponent
   ],
   imports: [
     RouterModule,

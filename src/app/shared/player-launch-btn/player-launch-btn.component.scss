@@ -1,0 +1,47 @@
+@import '../../../sass/variables';
+
+app-player-launch-btn {
+  display: inline-flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+
+  #svg-play-btn {
+    height: 40%;
+    max-height: 13rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+
+    .rect,
+    .play,
+    .more {
+      cursor: pointer;
+    }
+
+    .play {
+      fill: $lighter-grey;
+    }
+
+    .more {
+      fill: $light-grey;
+      font-family: "Exo 2", sans-serif;
+      font-size: 1.7rem;
+      user-select: none;
+    }
+
+    .play,
+    .more {
+      transition: fill 0.6s ease-out 0.6s;
+    }
+  }
+}
+
+@media screen and (orientation: portrait) {
+  app-player-launch-btn {
+    #svg-play-btn {
+      max-height: 25rem;
+      margin-left: 0.6rem;
+    }
+  }
+}
+
