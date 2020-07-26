@@ -5,7 +5,7 @@ import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 import { Subscription } from 'rxjs';
 import { ScrollImageItemData } from 'src/app/models';
 import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
-import { BodyClassService } from 'src/app/core/services/body-class.service';
+import { GlobalService } from 'src/app/core/services/global.service';
 
 @Component({
   selector: 'app-image-scroll',
@@ -25,22 +25,24 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   private end: number[];
   private newIndex: number;
   private thresh: number;
-  private sub: Subscription;
+  private subs: Subscription[];
+  private scrollEnabled: boolean;
 
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
-    if (Math.abs(e.deltaY) > 10)
-    TweenLite.to(this.holder.nativeElement, 1, {
-      throwProps: {
-        y: {
-          velocity: -e.deltaY * 8,
-          end: this.end
+    if (this.scrollEnabled && Math.abs(e.deltaY) > 10) {
+      TweenLite.to(this.holder.nativeElement, 1, {
+        throwProps: {
+          y: {
+            velocity: -e.deltaY * 8,
+            end: this.end
+          },
         },
-      },
-      ease: Power2.easeOut,
-      onUpdate: () => this.onTweenUpdate(),
-      onComplete: () => this.classService.set(this.curID)
-    });
+        ease: Power2.easeOut,
+        onUpdate: () => this.onTweenUpdate(),
+        onComplete: () => this.globalService.bodyClass$.next(this.curID)
+      });
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -53,7 +55,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
       private route: ActivatedRoute,
       private router: Router,
       private dragService: GhostDragService,
-      private classService: BodyClassService,
+      private globalService: GlobalService,
       private zone: NgZone
     ) {
     ThrowPropsPlugin.defaultResistance = 500;
@@ -61,16 +63,21 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.items = this.route.snapshot.data.jsonData;
-    this.rootPath = this.route.snapshot.data.rootPath;
-    this.sub = this.router.events.subscribe(e => {
-      if (e instanceof NavigationEnd) {
-        this.goToCurrent();
-      }
-    });
+    /* this.rootPath = this.route.snapshot.data.rootPath; */
+    this.subs = [
+      this.globalService.imageScrollEnabled$.subscribe(b => this.scrollEnabled = b),
+      this.globalService.rootPath$.subscribe(path => this.rootPath = path),
+      this.router.events.subscribe(e => {
+        if (e instanceof NavigationEnd) {
+          this.goToCurrent();
+        }
+      })
+    ];
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.globalService.bodyClass$.next(null);
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
   ngAfterViewInit() {
@@ -104,14 +111,15 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.newIndex = this.items.find(obj => obj.id === this.curID).index;
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
-      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex], onComplete: () => this.classService.set(this.curID) });
+      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex],
+        onComplete: () => this.globalService.bodyClass$.next(this.curID) });
     } else {
       TweenLite.to(this.holder.nativeElement,
         0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
         {
           y: this.end[this.newIndex],
           ease: Power2.easeOut,
-          onComplete: () => this.classService.set(this.curID)
+          onComplete: () => this.globalService.bodyClass$.next(this.curID)
         }
       );
     }
