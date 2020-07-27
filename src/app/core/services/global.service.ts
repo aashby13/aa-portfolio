@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 export class GlobalService {
 
   bodyClass$ = new BehaviorSubject<string>(null);
-  rootPath$ = new BehaviorSubject<string>(null);
   imageScrollEnabled$ = new BehaviorSubject<boolean>(null);
 
   constructor() {

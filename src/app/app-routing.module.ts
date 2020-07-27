@@ -35,13 +35,15 @@ const routes: Routes = [
           url: DATA_PATHS.portfolio,
           tree: 'projects',
           filters: [{ type: 'key', match: 'id' }, { type: 'key', match: 'index' }],
+          rootPath: '/portfolio/'
         },
         resolve: { jsonData: DataResolver }
       },
       {
         path: '',
         component: PlayerLaunchBtnComponent,
-        outlet: 'column-bottom'
+        outlet: 'column-bottom',
+        data: { link: 'more', rootPath: '/portfolio/' }
       },
       {
         path: '',

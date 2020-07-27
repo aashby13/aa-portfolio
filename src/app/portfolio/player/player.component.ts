@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/core/services/global.service';
 
 @Component({
     selector: 'app-player',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
 
-    constructor() { }
+  constructor(private globalService: GlobalService) { }
 
     ngOnInit() {
+      this.globalService.rootPath$.next('/portfolio/');
     }
 
 }

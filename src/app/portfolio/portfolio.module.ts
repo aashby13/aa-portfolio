@@ -10,7 +10,7 @@ const routes: Routes = [
     component: RolodexComponent
   },
   {
-    path: 'player/:id',
+    path: ':id/more',
     component: PlayerComponent
   },
   { path: '', redirectTo: 'pinpoint', pathMatch: 'full' },

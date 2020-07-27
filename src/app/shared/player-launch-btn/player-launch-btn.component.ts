@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { GlobalService } from 'src/app/core/services/global.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-launch-btn',
@@ -9,13 +9,20 @@ import { GlobalService } from 'src/app/core/services/global.service';
 })
 export class PlayerLaunchBtnComponent implements OnInit {
 
-  constructor(private gloabalService: GlobalService) { }
+  private rootPath: string;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.rootPath = this.route.snapshot.data.rootPath;
   }
 
   onClick() {
-    console.log('PlayerLaunchBtnComponent.onClick()');
+    // tslint:disable-next-line: max-line-length
+    this.router.navigate([this.router.url.split(this.rootPath)[1].split('/')[0], this.route.snapshot.data.link], { relativeTo: this.route });
   }
 
 }

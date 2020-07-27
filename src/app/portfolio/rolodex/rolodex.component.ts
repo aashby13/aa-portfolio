@@ -28,7 +28,6 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.globalService.rootPath$.next('/portfolio/');
     this.globalService.imageScrollEnabled$.next(true);
     this.projects = this.route.snapshot.data.jsonData.projects;
     this.roles = this.route.snapshot.data.jsonData.roles;
@@ -57,7 +56,6 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.tl) this.tl.kill();
-    this.globalService.rootPath$.next(null);
     this.globalService.imageScrollEnabled$.next(null);
     this.sub.unsubscribe();
   }

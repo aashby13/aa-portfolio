@@ -2,7 +2,7 @@
   <div class="dot" *ngFor="let item of items; index as i"
       [attr.data-index]="i"
       routerLinkActive="active"
-      [routerLink]="[item.path]">
+      [routerLink]=" seg ? [item.path, seg] : [item.path]">
   </div>
 </div>
 

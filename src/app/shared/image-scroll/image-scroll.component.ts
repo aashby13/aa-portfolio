@@ -63,10 +63,9 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.items = this.route.snapshot.data.jsonData;
-    /* this.rootPath = this.route.snapshot.data.rootPath; */
+    this.rootPath = this.route.snapshot.data.rootPath;
     this.subs = [
       this.globalService.imageScrollEnabled$.subscribe(b => this.scrollEnabled = b),
-      this.globalService.rootPath$.subscribe(path => this.rootPath = path),
       this.router.events.subscribe(e => {
         if (e instanceof NavigationEnd) {
           this.goToCurrent();
@@ -108,6 +107,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private goToCurrent(set = false) {
     this.curID = this.router.url.split(this.rootPath)[1].split('/')[0];
+    console.log(this.curID);
     this.newIndex = this.items.find(obj => obj.id === this.curID).index;
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
