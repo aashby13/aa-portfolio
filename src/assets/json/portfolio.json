@@ -130,7 +130,11 @@
       }, {
         "title": "years",
         "numbers": [2013, 2020]
-    }]
+    }],
+    "more": {
+      "video": "http://video.kleinbuendel.com/momzing/mz_howto",
+      "desc": "I developed an adaptive streaming video player utilizing Adobe Media Server for a Mom & baby exercise web app. I also created the motion graphics package, editing workflow, shooting workflow, and project management docs for the project, as well as, directed 30 of the 99 exercise videos. The project eventually transitioned to a commercial product. I designed the site’s new commercial landing page, produced a marketing and “how to” video, and hunted down and removed any front-end bugs left in the beta version. Now Momzing is being rebuilt in modern technologies. It will be in a new study and eventually a be new product in partnership with Kaiser Permanente. I am building the front-end with React and all the videos have been converted to multi-bitrate streaming assets (ffmpeg, bento4) to be streamed via HLS and DASH."
+    }
   }, {
     "id": "bub-and-bot",
     "name": "Fit-tastic Health: Bub & Bot",

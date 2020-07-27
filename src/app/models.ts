@@ -9,14 +9,25 @@ export interface ProjectRoleData {
   company: string;
 }
 
+export interface ProjectMoreData {
+  video: string;
+  desc: string;
+}
+
+export interface ProjectInfoData {
+  title: string;
+  strings?: string[];
+  numbers?: number[];
+}
+
 export interface ProjectData {
   id: string;
+  index: number;
   name: string;
   type: ProjectTypeData | string;
   role: string;
-  image: string;
-  info: string;
-  index: number;
+  info: ProjectInfoData[];
+  more: ProjectMoreData;
 }
 
 export interface TypesData {
@@ -24,9 +35,9 @@ export interface TypesData {
 }
 
 export interface ProjectJsonData {
-  projects: Array<ProjectData>;
-  roles: Array<ProjectRoleData>;
-  types: Array<ProjectTypeData>;
+  projects: ProjectData[];
+  roles: ProjectRoleData[];
+  types: ProjectTypeData[];
 }
 
 export interface ScrollData {
