@@ -59,4 +59,10 @@ $momzing-orange:#dd7848;
       fill: $momzing-orange;
     }
   }
+
+  app-player {
+    .line {
+      border-color: $momzing-pink;
+    }
+  }
 }
