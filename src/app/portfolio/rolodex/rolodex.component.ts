@@ -74,7 +74,7 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
     const length = this.projects.length;
     const lengthMinus1 = length - 1;
     // set .project-type & .project-role rotation
-    console.log(TweenLite.set(['.project-type', '.project-role'], { rotationX: 90, transformOrigin: 'center center', display: 'block' }));
+    TweenLite.set(['.project-type', '.project-role'], { rotationX: 90, transformOrigin: 'center center', display: 'block' });
     // set .project-info rotation
     TweenLite.set('.project-info', { rotationY: 90, transformOrigin: 'top left', display: 'block' });
     // build timeline
@@ -84,8 +84,7 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
         `.project-type[data-type="${(this.projects[0].type as ProjectTypeData).id}"]`,
         `.project-role[data-role="${this.projects[0].role}"]`
       ],
-        0.3, { rotationX: 0 }, 0)
-      .call( () => { console.log('start'); }, null, null, 0.3);
+        0.3, { rotationX: 0 }, 0);
     //
     this.projects.forEach((proj, i, arr) => {
       // add labels for each project .6sec apart
