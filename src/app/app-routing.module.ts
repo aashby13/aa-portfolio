@@ -42,7 +42,7 @@ const routes: Routes = [
         path: '',
         component: PlayerLaunchBtnComponent,
         outlet: 'column-bottom',
-        data: { link: 'more', rootPath: '/portfolio/' }
+        data: { link: 'more' }
       },
       {
         path: '',

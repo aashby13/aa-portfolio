@@ -9,7 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PlayerLaunchBtnComponent implements OnInit {
 
-  private rootPath: string;
+  message = 'more';
+
+  private urlArr: string[];
+  private link: string;
+  private linkIndex: number;
 
   constructor(
     private router: Router,
@@ -17,12 +21,35 @@ export class PlayerLaunchBtnComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.rootPath = this.route.snapshot.data.rootPath;
+    this.link = this.route.snapshot.data.link;
+    this.urlArr = this.router.url.split('/').filter(s => s !== '');
+    this.linkIndex = this.urlArr.indexOf(this.link);
+    if (this.linkIndex !== -1) this.setBtn('less');
   }
 
   onClick() {
-    // tslint:disable-next-line: max-line-length
-    this.router.navigate([this.router.url.split(this.rootPath)[1].split('/')[0], this.route.snapshot.data.link], { relativeTo: this.route });
+    this.urlArr = this.router.url.split('/').filter(s => s !== '');
+    this.linkIndex = this.urlArr.indexOf(this.link);
+    if (this.linkIndex !== -1) {
+      // close
+      this.urlArr = this.urlArr.slice(0, this.linkIndex);
+      this.setBtn('more');
+    } else {
+      // open link
+      this.urlArr.push(this.link);
+      this.setBtn('less');
+    }
+    /* console.log(this.urlArr); */
+    this.router.navigate(this.urlArr);
+  }
+
+  private setBtn(msg: string) {
+    this.message = msg;
+    if (this.message === 'more') {
+
+    } else {
+
+    }
   }
 
 }
