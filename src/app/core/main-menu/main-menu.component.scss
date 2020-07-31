@@ -1,10 +1,14 @@
 @import './src/sass/variables';
 
+.menu-slug,
+app-main-menu {
+  width: 4vh;
+  height: 42vh;
+}
+
 app-main-menu {
   display: flex;
   align-items: flex-end;
-  width: 4vh;
-  height: 42vh;
 
   nav {
     transform: rotate(-90deg);
@@ -58,10 +62,13 @@ app-main-menu {
 
 @media screen and (min-height: 48em) and (orientation: landscape) {
 
+  .menu-slug,
   app-main-menu {
-      width: 2.6em;
-      height: 29em;
+    width: 2.6em;
+    height: 29em;
+  }
 
+  app-main-menu {
     li {
       font-size: 1.3em;
       margin: 0 0.5em 0;

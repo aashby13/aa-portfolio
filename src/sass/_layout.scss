@@ -137,3 +137,8 @@ body,
 #overlay-view > * {
   background-color: transparent;
 }
+
+#overlay-view header {
+  pointer-events: all;
+  background-color: $darker-grey;
+}

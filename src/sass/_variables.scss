@@ -3,6 +3,7 @@ $white: #FFF;
 $black: #000;
 $dark-grey: rgb(48, 48, 48);
 $darker-grey: rgb(33, 33, 33);
+$darkest-grey: darken($darker-grey, 5);
 $light-grey: rgb(89, 89, 89);
 $lighter-grey: #bcbcbc;
 /*  */

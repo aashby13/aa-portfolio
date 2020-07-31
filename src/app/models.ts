@@ -10,6 +10,7 @@ export interface ProjectRoleData {
 }
 
 export interface ProjectMoreData {
+  class: string;
   video: string;
   desc: string;
 }

@@ -27,10 +27,10 @@
     "role": "kb-standard",
     "info": [{
         "title": "duties",
-        "strings": ["ts", "html", "scss", "gfx", "sfx"]
+        "strings": ["js", "html", "scss", "gfx", "sfx"]
       }, {
-        "title": "ts",
-        "strings": ["angular", "redux", "gsap", "createJS", "opentypeJS"]
+        "title": "js",
+        "strings": ["ts", "angular", "redux", "gsap", "createJS", "opentypeJS"]
       }, {
         "title": "apps",
         "strings": ["Ai", "Au"]
@@ -39,7 +39,8 @@
         "number": 2020
     }],
     "more": {
-      "video": "/assets/video/pinpoint",
+      "class": "vert",
+      "video": "https://video.kleinbuendel.com/caminemos/how-to-en.mp4",
       "desc": "Pinpoint is a phone web app for use with 13-17 year olds that utilizes a Pain Assessment Tool (PAT) to describe and categorise specific types of pain experienced by adolescents with sickle cell disease. Pinpoint uses core game aspects such as fun, play, transparency, design, and challenge, and applies them to real-world objectives to increase engagement and effectiveness. The users are encouraged by a points system to report their pain frequently by using the drawing and questionnaire features, and to play the gaming features to help then enhance their communication skills by expanding their vocabulary and understanding of self-disclosure concepts. The points can be used to to customise a ”Learning Buddy” avatar that guides them through the app. The app also includes parent/guardian and medical provider portals where the teen user’s pain report and survey records can be accessed. The front-end was developed with Angular, and the backend with .NET Core. The app utilises REST APIs to save and retrieve data from the database, Resolvers to inject data into components, and Interceptors to add web token authorisation to backend calls. It has a unique, visually appealing interface with lots of animated elements (GSAP, Angular Animations, CSS3 transitions), including morphing SVGs. Pinpoint is being conducted in collaboration with the Hilton Publishing Company."
     }
   }, {
@@ -49,10 +50,10 @@
     "role": "kb-vid",
     "info": [{
         "title": "duties",
-        "strings": ["ts", "html", "css", "anim", "gfx", "sfx"]
+        "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
       }, {
-        "title": "ts",
-        "strings": ["angular", "redux", "gsap", "createJS"]
+        "title": "js",
+        "strings": ["ts", "angular", "redux", "gsap", "createJS"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
@@ -136,7 +137,8 @@
         "numbers": [2013, 2020]
     }],
     "more": {
-      "video": "http://video.kleinbuendel.com/momzing/mz_howto",
+      "class": "horz",
+      "video": "http://video.kleinbuendel.com/momzing/mz_howto.mp4",
       "desc": "I developed an adaptive streaming video player utilizing Adobe Media Server for a Mom & baby exercise web app. I also created the motion graphics package, editing workflow, shooting workflow, and project management docs for the project, as well as, directed 30 of the 99 exercise videos. The project eventually transitioned to a commercial product. I designed the site’s new commercial landing page, produced a marketing and “how to” video, and hunted down and removed any front-end bugs left in the beta version. Now Momzing is being rebuilt in modern technologies. It will be in a new study and eventually a be new product in partnership with Kaiser Permanente. A junior developer and myself are building the front-end with React and all the videos have been converted to multi-bitrate streaming assets (ffmpeg, bento4) to be streamed via HLS and DASH."
     }
   }, {

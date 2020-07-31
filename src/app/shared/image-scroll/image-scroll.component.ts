@@ -30,7 +30,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
-    if (this.scrollEnabled && Math.abs(e.deltaY) > 10) {
+    if (/* this.scrollEnabled &&  */Math.abs(e.deltaY) > 10) {
       TweenLite.to(this.holder.nativeElement, 1, {
         throwProps: {
           y: {
@@ -65,7 +65,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.items = this.route.snapshot.data.jsonData;
     this.rootPath = this.route.snapshot.data.rootPath;
     this.subs = [
-      this.globalService.imageScrollEnabled$.subscribe(b => this.scrollEnabled = b),
+      /* this.globalService.imageScrollEnabled$.subscribe(b => this.scrollEnabled = b), */
       this.router.events.subscribe(e => {
         if (e instanceof NavigationEnd) {
           this.goToCurrent();
