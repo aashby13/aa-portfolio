@@ -40,7 +40,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         ease: Power2.easeOut,
         onUpdate: () => this.onTweenUpdate(),
-        onComplete: () => this.globalService.bodyClass$.next(this.curID)
+        onComplete: () => this.globalService.bodyClass1$.next(this.curID)
       });
     }
   }
@@ -74,7 +74,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.globalService.bodyClass$.next(null);
+    this.globalService.bodyClass1$.next(null);
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
@@ -118,14 +118,14 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
       TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex],
-        onComplete: () => this.globalService.bodyClass$.next(this.curID) });
+        onComplete: () => this.globalService.bodyClass1$.next(this.curID) });
     } else {
       TweenLite.to(this.holder.nativeElement,
         0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
         {
           y: this.end[this.newIndex],
           ease: Power2.easeOut,
-          onComplete: () => this.globalService.bodyClass$.next(this.curID)
+          onComplete: () => this.globalService.bodyClass1$.next(this.curID)
         }
       );
     }

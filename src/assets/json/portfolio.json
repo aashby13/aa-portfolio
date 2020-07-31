@@ -40,7 +40,7 @@
     }],
     "more": {
       "class": "vert",
-      "video": "https://video.kleinbuendel.com/caminemos/how-to-en.mp4",
+      "video": "/assets/video/pinpoint.mp4",
       "desc": "Pinpoint is a phone web app for use with 13-17 year olds that utilizes a Pain Assessment Tool (PAT) to describe and categorise specific types of pain experienced by adolescents with sickle cell disease. Pinpoint uses core game aspects such as fun, play, transparency, design, and challenge, and applies them to real-world objectives to increase engagement and effectiveness. The users are encouraged by a points system to report their pain frequently by using the drawing and questionnaire features, and to play the gaming features to help then enhance their communication skills by expanding their vocabulary and understanding of self-disclosure concepts. The points can be used to to customise a ”Learning Buddy” avatar that guides them through the app. The app also includes parent/guardian and medical provider portals where the teen user’s pain report and survey records can be accessed. The front-end was developed with Angular, and the backend with .NET Core. The app utilises REST APIs to save and retrieve data from the database, Resolvers to inject data into components, and Interceptors to add web token authorisation to backend calls. It has a unique, visually appealing interface with lots of animated elements (GSAP, Angular Animations, CSS3 transitions), including morphing SVGs. Pinpoint is being conducted in collaboration with the Hilton Publishing Company."
     }
   }, {
@@ -60,7 +60,12 @@
       }, {
         "title": "years",
         "numbers": [2018, 2019]
-    }]
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/wts-en-wts-es.mp4",
+      "desc": ""
+    }
   }, {
     "id": "train-to-tend",
     "name": "TrainToTend.com",
@@ -78,7 +83,12 @@
       }, {
         "title": "year",
         "number": 2017
-    }]
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/train-to-tend.mp4",
+      "desc": ""
+    }
   }, {
     "id": "project-strong",
     "name": "Project STRONG (En & Es) & Project TRAC",
@@ -96,7 +106,12 @@
       }, {
         "title": "years",
         "numbers": [2016, 2018, 2020]
-    }]
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/proj-strong-trac.mp4",
+      "desc": ""
+    }
   }, {
     "id": "bevac",
     "name": "BeVac",
@@ -114,7 +129,12 @@
       }, {
         "title": "year",
         "number": 2016
-    }]
+    }],
+    "more": {
+      "class": "vert",
+      "video": "/assets/video/bevac.mp4",
+      "desc": ""
+    }
   }, {
     "id": "momzing",
     "name": "Momzing.com",
@@ -158,7 +178,12 @@
       }, {
         "title": "year",
         "number": 2012
-    }]
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/bub-and-bot.mp4",
+      "desc": ""
+    }
   }, {
     "id": "milk-stache",
     "name": "Fit-tastic Health: Milk-Stache",
@@ -176,7 +201,12 @@
       }, {
         "title": "year",
         "number": 2012
-    }]
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/milk-stache.mp4",
+      "desc": ""
+    }
   }, {
     "id": "astro-pop",
     "name": "Fit-tastic Health: Astro-Pop",
@@ -194,6 +224,11 @@
       }, {
         "title": "year",
         "number": 2012
-    }]
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/astro-pop.mp4",
+      "desc": ""
+    }
   }]
 }

@@ -1,7 +1,7 @@
 <div class="player-wrap">
     
-  <div *ngIf="data" class="video-wrap" [ngClass]="data.class">
-    <video [src]="data.video" autoplay controls>
+  <div class="video-wrap" [ngClass]="{'on': loaded}">
+    <video *ngIf="data" [src]="data.video" [ngClass]="data.class" (loadeddata)="onLoadedData()" autoplay>
     </video>
   </div>
 

@@ -1,7 +1,7 @@
 @import './variables';
 
 /* ----------------------------- PORTRAIT ----------------------------- */
-/* small phones */
+/* small phones & general portrait */
 @media screen and (orientation: portrait) {
   .gutter {
     width: calc(50% - 12em);
@@ -24,7 +24,7 @@
   .content-inner-wrap {
     width: 24em;
     height: calc(100% - 8vh);
-    background-color: rgba(violet, 0.25);
+    background-color: $darker-grey;
   }
 
   .column-wrap {
@@ -45,6 +45,21 @@
     .item {
       height: 24em;
       width: 24em;
+    }
+  }
+
+  .player {
+    #main-view {
+      .content-wrap {
+        display: flex;
+        height: 46%;
+        width: 60%;
+        top: 29%;
+        left: 20%;
+      }
+      .column-mid {
+        visibility: hidden;
+      }
     }
   }
 }
