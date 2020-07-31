@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class DotNavComponent implements OnInit, OnDestroy {
 
-  index = 0;
+  curIndex: number;
   items: DotNavItemData[];
   seg: string;
   private sub: Subscription;
@@ -23,6 +23,9 @@ export class DotNavComponent implements OnInit, OnDestroy {
     this.sub = this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.findLastSeg();
+        setTimeout(() => {
+          this.findLastSeg();
+        }, 1000);
       }
     });
   }
@@ -32,8 +35,9 @@ export class DotNavComponent implements OnInit, OnDestroy {
   }
 
   private findLastSeg() {
+    this.items.forEach((item, i) => this.router.url.includes(item.path) ? this.curIndex = i : null);
     this.seg = this.router.url.split(this.items.find(item => this.router.url.includes(item.path)).path + '/')[1] || null;
-    /* console.log(this.seg); */
+    /* console.log(this.seg, this.curIndex); */
   }
 
 }

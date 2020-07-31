@@ -16,6 +16,7 @@
     cursor: pointer;
   }
 
+  .dot.current,
   .dot.active {
     background-color: $white;
     border: 0.15em solid $white;

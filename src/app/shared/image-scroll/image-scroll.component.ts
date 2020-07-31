@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
 import { TweenLite, Power2 } from 'gsap/all';
 import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
 import { Subscription } from 'rxjs';
@@ -21,11 +21,11 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private curID: string;
   private curIndex: number;
-  private rootPath: string;
   private end: number[];
   private newIndex: number;
   private thresh: number;
   private subs: Subscription[];
+  private urlArr: string[];
   private scrollEnabled: boolean;
 
   @HostListener('window:mousewheel', ['$event'])
@@ -63,7 +63,6 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.items = this.route.snapshot.data.jsonData;
-    this.rootPath = this.route.snapshot.data.rootPath;
     this.subs = [
       /* this.globalService.imageScrollEnabled$.subscribe(b => this.scrollEnabled = b), */
       this.router.events.subscribe(e => {
@@ -106,9 +105,16 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private goToCurrent(set = false) {
-    this.curID = this.router.url.split(this.rootPath)[1].split('/')[0];
-    console.log(this.curID);
-    this.newIndex = this.items.find(obj => obj.id === this.curID).index;
+    this.router.url.split('/')
+      .filter(s => s !== '')
+      .forEach(s => {
+        const obj = this.items.find(itm => itm.id === s);
+        if (obj) {
+          this.curID = obj.id;
+          this.newIndex = obj.index;
+        }
+      });
+    /* console.log(this.curID, this.newIndex); */
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
       TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex],
@@ -143,7 +149,11 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.newIndex !== -1 && this.items[this.newIndex].id !== this.curID) {
       this.curIndex = this.newIndex;
       this.curID = this.items[this.curIndex].id;
-      this.zone.run(this.router.navigateByUrl, this.router, [this.rootPath + this.curID]);
+      this.urlArr = this.router.url.split('/')
+        .filter(s => s !== '')
+        .map(s => this.items.find(itm => itm.id === s) ? this.curID : s);
+      /* console.log(this.urlArr); */
+      this.zone.run(this.router.navigateByUrl, this.router, [`/${this.urlArr.join('/')}`]);
     }
   }
 

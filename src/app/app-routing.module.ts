@@ -34,8 +34,7 @@ const routes: Routes = [
         data: {
           url: DATA_PATHS.portfolio,
           tree: 'projects',
-          filters: [{ type: 'key', match: 'id' }, { type: 'key', match: 'index' }],
-          rootPath: '/portfolio/'
+          filters: [{ type: 'key', match: 'id' }, { type: 'key', match: 'index' }]
         },
         resolve: { jsonData: DataResolver }
       },
