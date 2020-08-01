@@ -2,7 +2,9 @@ import { Component, ViewEncapsulation, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-play-pause-btn',
-  templateUrl: './play-pause-btn.component.html',
+  template: `<div class="btn-wrap">
+              <button class="play-toggle-btn {{ playBtnClass }}" [ngClass]="{paused : !isPaused}"><span></span></button>
+            </div>`,
   styleUrls: ['./play-pause-btn.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
