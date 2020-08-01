@@ -8,7 +8,6 @@ app-rolodex {
 
   #text-holder {
     padding: 0 10% 0 6%;
-    font-size: 0.8rem;
 
     .type-roles-wrap {
       height: 23em;
@@ -99,10 +98,49 @@ app-rolodex {
   }
 }
 
-@media screen and (max-height: 53em) {
+/* ----------------------------- LANDSCAPE ----------------------------- */
+/* phones */
+@media screen and (orientation: landscape) {
   app-rolodex {
     #text-holder {
-      font-size: 1.3vh;
+      font-size: 1.45vh;
     }
   }
 }
+
+/* med phones */
+@media screen and (min-width: 41em) and (orientation: landscape) {
+  app-rolodex {
+    #text-holder {
+      font-size: 1.5vh;
+    }
+  }
+}
+
+/* large phones: iPhone Plus & X, Pixel 2 */
+@media screen and (min-width: 45em) and (orientation: landscape) {
+  app-rolodex {
+    #text-holder {
+      font-size: 1.6vh;
+    }
+  }
+}
+
+/* tablets, iPads, small laptop/desktop */
+@media screen and (min-width: 60em) and (orientation: landscape) {
+  app-rolodex {
+    #text-holder {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+/* laptops, desktops */
+@media screen and (min-width: 80em) and (orientation: landscape) {
+  app-rolodex {
+    #text-holder {
+      font-size: 0.8rem;
+    }
+  }
+}
+/* -------------------------------------------------------------------- */
