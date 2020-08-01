@@ -39,7 +39,7 @@ $wts-grey: #9A9A9A;
       }
 
       .name {
-        color: $black;
+        color: $darkest-grey;
         background-color: $wts-orange;
       }
 
@@ -52,11 +52,11 @@ $wts-grey: #9A9A9A;
 
   #svg-play-btn {
     .play {
-      fill: $wts-green;
+      fill: $wts-lighter-orange;
     }
 
     .more {
-      fill: $wts-grey;
+      fill: $wts-green;
     }
   }
 }
