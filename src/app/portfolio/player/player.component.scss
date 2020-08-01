@@ -31,6 +31,11 @@ app-player {
     }
   }
 
+  app-play-pause-btn {
+    position: absolute;
+    display: block;
+  }
+
   .on {
     opacity: 1;
   }

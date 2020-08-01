@@ -6,6 +6,7 @@ import { ImageScrollComponent } from './image-scroll/image-scroll.component';
 import { DotNavComponent } from './dot-nav/dot-nav.component';
 import { GhostDragComponent } from './ghost-drag/ghost-drag.component';
 import { PlayerLaunchBtnComponent } from './player-launch-btn/player-launch-btn.component';
+import { PlayPauseBtnComponent } from './play-pause-btn/play-pause-btn.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PlayerLaunchBtnComponent } from './player-launch-btn/player-launch-btn.
     ImageScrollComponent,
     DotNavComponent,
     GhostDragComponent,
-    PlayerLaunchBtnComponent
+    PlayerLaunchBtnComponent,
+    PlayPauseBtnComponent
   ],
   exports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { PlayerLaunchBtnComponent } from './player-launch-btn/player-launch-btn.
     ImageScrollComponent,
     DotNavComponent,
     GhostDragComponent,
-    PlayerLaunchBtnComponent
+    PlayerLaunchBtnComponent,
+    PlayPauseBtnComponent
   ],
   imports: [
     RouterModule,
