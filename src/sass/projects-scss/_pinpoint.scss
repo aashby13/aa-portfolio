@@ -53,4 +53,22 @@ $pinpoint-red:#ff3434;
       fill: $white;
     }
   }
+
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: $darker-grey;
+      border-color: $white;
+
+      span::after {
+        border-color: $pinpoint-red;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $pinpoint-red;
+      }
+    }
+  }
 }

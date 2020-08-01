@@ -21,7 +21,7 @@ app-play-pause-btn {
     align-items: center;
     background-color: $light-grey;
     border-radius: 50%;
-    border: 0.35em solid $lighter-grey;
+    border: 0.2em solid $lighter-grey;
     font-size: 190%;
     opacity: 1;
   }
@@ -69,7 +69,6 @@ app-play-pause-btn {
       position: relative;
       overflow: hidden;
       margin-left: 0.75em;
-      overflow: hidden;
     }
 
     span::after {

@@ -60,9 +60,21 @@ $momzing-orange:#dd7848;
     }
   }
 
-  app-player {
-    .line {
-      border-color: $momzing-pink;
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: rgba(0,0,0,0.5);
+      border-color: $white;
+
+      span::after {
+        border-color: $momzing-pink;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $momzing-pink;
+      }
     }
   }
 }

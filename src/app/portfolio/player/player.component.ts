@@ -60,22 +60,20 @@ export class PlayerComponent implements OnInit, OnDestroy {
         if (time < (this.vidEl.nativeElement as HTMLVideoElement).currentTime) {
           this.paused = false;
           this.showBtn = false;
-          console.log('video playing');
           clearInterval(int);
         }
       }, 300);
   }
 
   onVideoEnded() {
-    this.paused = true;
+    this.paused = false;
     this.showBtn = true;
-    console.log('video paused');
   }
 
   private onUrlChange(id: string) {
     this.loaded = false;
-    this.onVideoEnded();
     setTimeout(() => {
+      this.onVideoEnded();
       this.data = this.projects.find(proj => proj.id === id).more;
     }, 1000);
   }
