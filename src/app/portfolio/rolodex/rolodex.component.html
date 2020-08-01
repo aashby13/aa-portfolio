@@ -37,7 +37,7 @@
         </span>
 
         <span *ngFor="let num of info.numbers, let last = last">
-          <span class="number">'{{num}}'</span>{{ !last ? ',' : null}}
+          <span class="number">{{ num }}</span>{{ !last ? ',' : null}}
         </span>
         
         {{ info.strings || info.numbers ? '],' : null }}
