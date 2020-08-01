@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
-import { TweenLite, Power2 } from 'gsap/all';
-import { ThrowPropsPlugin } from 'src/gsap-bonus/ThrowPropsPlugin';
+import { gsap, InertiaPlugin } from 'gsap/all';
 import { Subscription } from 'rxjs';
 import { ScrollImageItemData } from 'src/app/models';
 import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
@@ -31,14 +30,15 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
     if (/* this.scrollEnabled &&  */Math.abs(e.deltaY) > 10) {
-      TweenLite.to(this.holder.nativeElement, 1, {
-        throwProps: {
+      gsap.to(this.holder.nativeElement, {
+        duration: 1,
+        inertia: {
           y: {
             velocity: -e.deltaY * 8,
             end: this.end
           },
         },
-        ease: Power2.easeOut,
+        ease: 'power2.out',
         onUpdate: () => this.onTweenUpdate(),
         onComplete: () => this.globalService.bodyClass1$.next(this.curID)
       });
@@ -58,8 +58,8 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
       private globalService: GlobalService,
       private zone: NgZone
     ) {
-    ThrowPropsPlugin.defaultResistance = 500;
-  }
+      gsap.registerPlugin(InertiaPlugin);
+    }
 
   ngOnInit() {
     this.items = this.route.snapshot.data.jsonData;
@@ -86,7 +86,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
       this.ready = true;
       this.dragService.vars$.next({
         type: 'y',
-        throwProps: true,
+        inertia: true,
         snap: this.end,
         throwResistance: 0,
         maxDuration: 4.5,
@@ -117,14 +117,14 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     /* console.log(this.curID, this.newIndex); */
     this.dragService.set$.next({ y: this.end[this.newIndex] });
     if (set) {
-      TweenLite.set(this.holder.nativeElement, { y: this.end[this.newIndex],
+      gsap.set(this.holder.nativeElement, { y: this.end[this.newIndex],
         onComplete: () => this.globalService.bodyClass1$.next(this.curID) });
     } else {
-      TweenLite.to(this.holder.nativeElement,
-        0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
+      gsap.to(this.holder.nativeElement,
         {
+          duration: 0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
           y: this.end[this.newIndex],
-          ease: Power2.easeOut,
+          ease: 'power2.out',
           onComplete: () => this.globalService.bodyClass1$.next(this.curID)
         }
       );
@@ -142,9 +142,11 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onTweenUpdate() {
+    /* console.log(gsap.getProperty(this.holder.nativeElement, 'y'), this.holder.nativeElement.style.transform); */
     this.newIndex = this.end.findIndex(num =>
-      Math.abs(num - this.holder.nativeElement._gsTransform.y) < this.thresh
+      Math.abs(num - (gsap.getProperty(this.holder.nativeElement, 'y') as number)) < this.thresh
     );
+    console.log(this.newIndex);
     //
     if (this.newIndex !== -1 && this.items[this.newIndex].id !== this.curID) {
       this.curIndex = this.newIndex;
@@ -158,12 +160,12 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onDrag(y: number) {
-    TweenLite.set(this.holder.nativeElement, { y });
+    gsap.set(this.holder.nativeElement, { y });
     this.zone.run(this.onTweenUpdate, this);
   }
 
   private onThrowUpdate(y: number) {
-    TweenLite.set(this.holder.nativeElement, { y });
+    gsap.set(this.holder.nativeElement, { y });
     this.zone.run( this.onTweenUpdate, this );
   }
 

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ViewChildren, QueryList, ElementRef, ViewEncapsulation, HostListener } from '@angular/core';
 import { Router, ActivationEnd } from '@angular/router';
-import { Power3, Back, TimelineLite, TweenLite } from 'gsap';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-main-menu',
@@ -32,7 +32,7 @@ export class MainMenuComponent implements AfterViewInit {
     if (this.id) {
       this.lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
       this.lineX = this.linksObj[this.id].nativeElement.offsetLeft - (this.isSafari ? this.el.nativeElement.offsetLeft : 0);
-      TweenLite.set(this.line.nativeElement, { width: this.lineWidth, x: this.lineX});
+      gsap.set(this.line.nativeElement, { width: this.lineWidth, x: this.lineX});
     }
   }
 
@@ -62,11 +62,10 @@ export class MainMenuComponent implements AfterViewInit {
   private animLine() {
     this.lineWidth = this.linksObj[this.id].nativeElement.clientWidth;
     this.lineX = this.linksObj[this.id].nativeElement.offsetLeft - (this.isSafari ? this.el.nativeElement.offsetLeft : 0);
-    new TimelineLite()
-      .to(this.line.nativeElement, 0.2, { width: this.lineWidth * 0.2, ease: Power3.easeOut }, 0)
-      .to(this.line.nativeElement, 0.25, { width: this.lineWidth, ease: Back.easeOut })
-      .to(this.line.nativeElement, 0.45,
-        { x: this.lineX, ease: Back.easeOut }, 0);
+    gsap.timeline()
+      .to(this.line.nativeElement, { duration: 0.2, width: this.lineWidth * 0.2, ease: 'power3.out'}, 0)
+      .to(this.line.nativeElement, { duration: 0.25, width: this.lineWidth, ease: 'back.out' })
+      .to(this.line.nativeElement, { duration: 0.45, x: this.lineX, ease: 'back.out' }, 0);
   }
 
 }

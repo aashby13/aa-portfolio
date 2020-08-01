@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { gsap, MorphSVGPlugin } from 'gsap/all';
 
 @Component({
   selector: 'app-player-launch-btn',
@@ -18,7 +19,10 @@ export class PlayerLaunchBtnComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    gsap.registerPlugin(MorphSVGPlugin);
+    MorphSVGPlugin.defaultType = 'linear';
+   }
 
   ngOnInit(): void {
     this.link = this.route.snapshot.data.link;

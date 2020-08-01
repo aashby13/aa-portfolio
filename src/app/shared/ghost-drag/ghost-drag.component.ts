@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy, HostListener } from '@angular/core';
 import { GhostDragService } from '../ghost-drag-service/ghost-drag.service';
 import { Subscription } from 'rxjs';
-import { Draggable, TweenLite } from 'gsap/all';
+import { gsap, Draggable } from 'gsap/all';
 
 @Component({
   selector: 'app-ghost-drag',
@@ -43,7 +43,9 @@ export class GhostDragComponent implements OnInit, OnDestroy {
 
   }
 
-  constructor(private service: GhostDragService) { }
+  constructor(private service: GhostDragService) {
+    gsap.registerPlugin(Draggable);
+   }
 
   ngOnInit() {
     this.subs = [
@@ -65,11 +67,11 @@ export class GhostDragComponent implements OnInit, OnDestroy {
 
   private onEnable(b: boolean) {
     this.show = b;
-    this.drag.enable(b);
+    this.drag.enabled(b);
   }
 
   private onSet(vars: any) {
-    TweenLite.set(this.dragger.nativeElement, vars);
+    gsap.set(this.dragger.nativeElement, vars);
   }
 
   private onStartDrag(e: MouseEvent | TouchEvent | PointerEvent) {

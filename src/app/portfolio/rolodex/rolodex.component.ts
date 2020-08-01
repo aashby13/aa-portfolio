@@ -1,7 +1,7 @@
 // tslint:disable-next-line:max-line-length
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TweenLite, TimelineMax, CSSPlugin, Sine } from 'gsap/all';
+import { gsap } from 'gsap';
 import { ProjectData, ProjectRoleData, ProjectTypeData } from 'src/app/models';
 import { Subscription } from 'rxjs';
 import { GlobalService } from 'src/app/core/services/global.service';
@@ -19,12 +19,12 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   roles: ProjectRoleData[];
   types: ProjectTypeData[];
 
-  private tl: TimelineMax;
+  private tl: gsap.core.Timeline;
   private timeScale: number;
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute, private globalService: GlobalService) {
-    CSSPlugin.defaultTransformPerspective = 4000;
+    /* gsap.defaults({ transformPerspective: 4000 }); */
   }
 
   ngOnInit() {
@@ -39,14 +39,14 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.buildTL();
     const startingIndex = this.projects.find(obj => obj.id === this.newID).index;
-    this.tl.time(this.tl.getLabelTime(this.newID) - 0.3);
+    this.tl.time(this.tl.labels[this.newID] - 0.3);
     if (startingIndex !== 0) {
-      TweenLite.fromTo([
-        `.project-type[data-type="${(this.projects[startingIndex].type as ProjectTypeData).id}"]`,
-        `.project-role[data-role="${this.projects[startingIndex].role}"]`
-      ],
-        0.3, { rotationX: 90 },
-        { rotationX: 0, ease: Sine.easeOut, delay: 0.5 });
+      gsap.fromTo([
+          `.project-type[data-type="${(this.projects[startingIndex].type as ProjectTypeData).id}"]`,
+          `.project-role[data-role="${this.projects[startingIndex].role}"]`
+        ],
+        { rotationX: 90 },
+        { duration: 0.3, rotationX: 0, ease: 'sine.out', delay: 0.5 });
     }
 
     setTimeout(() => {
@@ -63,10 +63,10 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
   onUrlChange(id: string) {
     this.newID = id;
     if (this.tl) {
-      this.timeScale = Math.abs(this.tl.time() - this.tl.getLabelTime(this.newID));
+      this.timeScale = Math.abs(this.tl.time() - this.tl.labels[this.newID]);
       this.timeScale = this.timeScale / 0.6;
       this.tl.timeScale(this.timeScale);
-      this.tl.tweenTo(this.newID, { ease: Sine.easeOut });
+      this.tl.tweenTo(this.newID, { ease: 'sine.out' });
     }
   }
 
@@ -74,17 +74,17 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
     const length = this.projects.length;
     const lengthMinus1 = length - 1;
     // set .project-type & .project-role rotation
-    TweenLite.set(['.project-type', '.project-role'], { rotationX: 90, transformOrigin: 'center center', display: 'block' });
+    gsap.set(['.project-type', '.project-role'], { rotationX: 90, transformOrigin: 'center center', display: 'block' });
     // set .project-info rotation
-    TweenLite.set('.project-info', { rotationY: 90, transformOrigin: 'top left', display: 'block' });
+    gsap.set('.project-info', { rotationY: 90, transformOrigin: 'top left', display: 'block' });
     // build timeline
-    this.tl = new TimelineMax({ paused: true })
-      .to('.project-info[data-index="0"]', 0.3, { rotationY: 0 }, 0)
+    this.tl = gsap.timeline({ paused: true, perspective: 4000  })
+      .to('.project-info[data-index="0"]', { duration: 0.3, rotationY: 0 }, 0)
       .to([
-        `.project-type[data-type="${(this.projects[0].type as ProjectTypeData).id}"]`,
-        `.project-role[data-role="${this.projects[0].role}"]`
-      ],
-        0.3, { rotationX: 0 }, 0);
+          `.project-type[data-type="${(this.projects[0].type as ProjectTypeData).id}"]`,
+          `.project-role[data-role="${this.projects[0].role}"]`
+        ],
+        { duration: 0.3,  rotationX: 0 }, 0);
     //
     this.projects.forEach((proj, i, arr) => {
       // add labels for each project .6sec apart
@@ -92,22 +92,22 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
       //
       if (i < lengthMinus1) {
         // anim project-info sections at label
-        this.tl.to(`.project-info[data-index="${i}"]`, 0.3, { rotationY: -90 }, proj.id); // hide
-        this.tl.to(`.project-info[data-index="${i + 1}"]`, 0.3, { rotationY: 0 }, proj.id + '+=.3'); // show
+        this.tl.to(`.project-info[data-index="${i}"]`, { duration: 0.3,  rotationY: -90 }, proj.id); // hide
+        this.tl.to(`.project-info[data-index="${i + 1}"]`, { duration: 0.3,  rotationY: 0 }, proj.id + '+=.3'); // show
         // anim project-role sections if roles dif
         if (proj.role !== arr[i + 1].role) {
-          this.tl.to(`.project-role[data-role="${proj.role}"]`, 0.3,
-            { rotationX: -90 }, proj.id); // hide
+          this.tl.to(`.project-role[data-role="${proj.role}"]`,
+            { duration: 0.3,  rotationX: -90 }, proj.id); // hide
         }
-        this.tl.to(`.project-role[data-role="${arr[i + 1].role}"]`, 0.3,
-          { rotationX: 0 }, proj.id + '+=.3'); // show
+        this.tl.to(`.project-role[data-role="${arr[i + 1].role}"]`,
+          { duration: 0.3,  rotationX: 0 }, proj.id + '+=.3'); // show
         // anim project-type sections if types dif
         if ((proj.type as ProjectTypeData).id !== (arr[i + 1].type as ProjectTypeData).id) {
-          this.tl.to(`.project-type[data-type="${(proj.type as ProjectTypeData).id}"]`, 0.3,
-            { rotationX: -90 }, proj.id); // hide
+          this.tl.to(`.project-type[data-type="${(proj.type as ProjectTypeData).id}"]`,
+            { duration: 0.3,  rotationX: -90 }, proj.id); // hide
         }
-        this.tl.to(`.project-type[data-type="${(arr[i + 1].type as ProjectTypeData).id}"]`, 0.3,
-          { rotationX: 0 }, proj.id + '+=.3'); // show
+        this.tl.to(`.project-type[data-type="${(arr[i + 1].type as ProjectTypeData).id}"]`,
+          { duration: 0.3,  rotationX: 0 }, proj.id + '+=.3'); // show
       }
     });
   }
