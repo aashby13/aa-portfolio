@@ -1,0 +1,62 @@
+$wts-green: #669A65;
+$wts-orange: #CE6934;
+$wts-light-orange: #DCA37E;
+/* $wts-lighter-orange: #E5BCA0; */
+$wts-lighter-orange: #EFD7C5;
+$wts-grey: #9A9A9A;
+
+#way-to-serve {
+    background-image: url(/assets/images/wts-logos.svg);
+}
+
+.way-to-serve {
+  app-rolodex {
+    #text-holder {
+      .project-type {
+        color: $wts-lighter-orange;
+      }
+
+      .project-role h2 {
+        color: $wts-green;
+
+        .tab {
+          color: $wts-orange;
+        }
+      }
+
+      .project-info {
+        p {
+          color: $wts-light-orange;
+        }
+      }
+
+      .string {
+        color: $wts-green;
+      }
+
+      .keyword {
+        color: $wts-lighter-orange;
+      }
+
+      .name {
+        color: $black;
+        background-color: $wts-orange;
+      }
+
+      .number,
+      .operator {
+        color: $wts-orange;
+      }
+    }
+  }
+
+  #svg-play-btn {
+    .play {
+      fill: $wts-green;
+    }
+
+    .more {
+      fill: $wts-grey;
+    }
+  }
+}
