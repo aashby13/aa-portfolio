@@ -27,5 +27,10 @@
 - DataResolver
   - resolve() : better error handling
   - filterData() : if data is object
+- Mobile testing/issues
+  - iOS
+    - smaller iPhones: css issues both horz & vert
+- Android
+  - need to test
 
 
