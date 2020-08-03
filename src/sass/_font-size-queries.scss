@@ -132,3 +132,15 @@ screen and (min-width: 74em) {
     font-size: 145%;
   }
 }
+
+@media screen and (min-width: 80em) and (max-height: 38em) and (orientation: landscape) {
+  html {
+    font-size: 65%;
+  }
+}
+
+@media screen and (min-width: 80em) and (max-height: 32.5em) and (orientation: landscape) {
+  html {
+    font-size: 60%;
+  }
+}
