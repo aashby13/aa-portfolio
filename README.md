@@ -10,6 +10,7 @@
 - portfolio usability
   - Are scrolling & swipe/dragging intuitive?
   - Add hints to appear briefly on nav to portfolio?
+  - Add arrow key functionality to nav between projects
 - convert to gsap 3
   - ~~start branch~~
   - fix scrolling animation issues
