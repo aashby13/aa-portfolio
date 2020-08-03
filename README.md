@@ -23,4 +23,7 @@
   - filterData() : if data is object
 - Convert videos to streaming assets (HLS & DASH)
 - Add dash.js to video player
+- Redesign player-launch-btn svg
+  - use design element from AA logo
+- Add loading animation to player
 
