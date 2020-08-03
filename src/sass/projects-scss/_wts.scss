@@ -59,4 +59,22 @@ $wts-grey: #9A9A9A;
       fill: $wts-green;
     }
   }
+
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: $wts-orange;
+      border-color: $wts-lighter-orange;
+
+      span::after {
+        border-color: $wts-lighter-orange;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $wts-lighter-orange;
+      }
+    }
+  }
 }

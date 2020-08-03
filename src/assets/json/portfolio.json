@@ -18,6 +18,11 @@
       "id": "kb-game",
       "me": "Game Dev & Design",
       "company": "Klein Buendel Inc."
+    },
+    {
+      "id": "aa-video",
+      "me": "Video Editor, MoGraph Artist, & Animator",
+      "company": "Adam Ashby Freelance & Various Companies"
     }
   ],
   "projects": [{
@@ -30,7 +35,7 @@
         "strings": ["js", "html", "scss", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["ts", "angular", "redux", "gsap", "createJS", "opentypeJS"]
+        "strings": ["ts", "angular", "redux", "gsap", "createjs", "opentypeJS"]
       }, {
         "title": "apps",
         "strings": ["Ai", "Au"]
@@ -50,10 +55,10 @@
     "role": "kb-vid",
     "info": [{
         "title": "duties",
-        "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
+        "strings": ["js", "html", "scss", "anim", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["ts", "angular", "redux", "gsap", "createJS"]
+        "strings": ["ts", "angular", "redux", "gsap", "createjs"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
@@ -63,7 +68,7 @@
     }],
     "more": {
       "class": "horz",
-      "video": "/assets/video/wts-en-wts-es.mp4",
+      "video": "/assets/video/way-to-serve.mp4",
       "desc": ""
     }
   }, {
@@ -76,7 +81,7 @@
         "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["jQuery", "gsap", "createJS"]
+        "strings": ["jQuery", "gsap", "createjs"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
@@ -96,10 +101,10 @@
     "role": "kb-vid",
     "info": [{
         "title": "duties",
-        "strings": ["js", "html", "css", "anim", "mograph", "gfx", "sfx"]
+        "strings": ["js", "html", "scss", "anim", "mograph", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["jQuery", "gsap", "createJS", "box2D"]
+        "strings": ["jQuery", "gsap", "createjs", "box2D"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
@@ -109,7 +114,7 @@
     }],
     "more": {
       "class": "horz",
-      "video": "/assets/video/proj-strong-trac.mp4",
+      "video": "/assets/video/project-strong-trac.mp4",
       "desc": ""
     }
   }, {
@@ -228,6 +233,23 @@
     "more": {
       "class": "horz",
       "video": "/assets/video/astro-pop.mp4",
+      "desc": ""
+    }
+  }, {
+    "id": "demo-reel",
+    "name": "Demo Reel 2010",
+    "type": "Old School",
+    "role": "aa-video",
+    "info": [{
+      "title": "apps",
+      "strings": ["FCP Legacy", "Motion", "SoundTrack", "Ae", "Ai", "Ps", "Fl"]
+    }, {
+      "title": "years",
+      "number": "2003-2010"
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/demo-reel-2010.mp4",
       "desc": ""
     }
   }]

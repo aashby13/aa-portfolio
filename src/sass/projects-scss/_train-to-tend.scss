@@ -53,4 +53,22 @@ $ttt-purple:#bb88b5;
       fill: $ttt-purple;
     }
   }
+
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: #333333;
+      border-color: $white;
+
+      span::after {
+        border-color: $ttt-green;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $ttt-green;
+      }
+    }
+  }
 }
