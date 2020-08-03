@@ -30,7 +30,7 @@
 - Mobile testing/issues
   - iOS
     - smaller iPhones: css issues both horz & vert
-- Android
-  - need to test
+  - Android
+    - need to test
 
 
