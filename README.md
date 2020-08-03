@@ -22,11 +22,10 @@
     - ~~play/pause btn~~
     - timeline/play head/load line/ scrubber? (not sure it;s needed)
 - player-launch-btn needs to be redesigned (open & close)
+  - use design element from AA logo
 - implement title service
 - DataResolver
   - resolve() : better error handling
   - filterData() : if data is object
-- Redesign player-launch-btn svg
-  - use design element from AA logo
 
 
