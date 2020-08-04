@@ -35,6 +35,10 @@
     flex-grow: unset;
   }
 
+  #svg-logo {
+    min-height: 13rem;
+  }
+
   #svg-logo.active {
     padding-bottom: 5.5vh;
   }

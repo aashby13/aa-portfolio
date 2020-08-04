@@ -1,10 +1,6 @@
 @import '../../../sass/variables';
 
 app-rolodex {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   #text-holder {
     padding: 0 10% 0 6%;
@@ -103,7 +99,15 @@ app-rolodex {
 @media screen and (orientation: landscape) {
   app-rolodex {
     #text-holder {
-      font-size: 1.45vh;
+      font-size: 1.3vh;
+    }
+  }
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  app-rolodex {
+    #text-holder {
+      font-size: 1.4vh;
     }
   }
 }

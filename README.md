@@ -20,7 +20,7 @@
   - Add loading animation
   - custom ontrols
     - ~~play/pause btn~~
-    - timeline/play head/load line/ scrubber? (not sure it;s needed)
+    - timeline/play head/load line/ scrubber? (not sure it's needed)
 - player-launch-btn needs to be redesigned (open & close)
   - use design element from AA logo
 - implement title service
