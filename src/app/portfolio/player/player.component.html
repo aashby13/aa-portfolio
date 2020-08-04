@@ -1,6 +1,6 @@
 <div class="player-wrap">
     
-  <div class="video-wrap" [ngClass]="{'on': loaded}" (click)="playToggle()">
+  <div class="video-wrap" [ngClass]="{'on': loaded}" (pointerup)="playToggle()">
     <video #video *ngIf="data" autoplay
       [src]="data.video" 
       [ngClass]="data.class"

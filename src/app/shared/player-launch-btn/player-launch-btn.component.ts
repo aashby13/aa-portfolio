@@ -35,8 +35,7 @@ export class PlayerLaunchBtnComponent implements OnInit {
     if (this.linkIndex !== -1) this.setBtn('less');
   }
 
-  onClick(e: Event) {
-    console.log(e);
+  onClick() {
     this.urlArr = this.router.url.split('/').filter(s => s !== '');
     this.linkIndex = this.urlArr.indexOf(this.link);
     if (this.linkIndex !== -1) {
@@ -50,7 +49,6 @@ export class PlayerLaunchBtnComponent implements OnInit {
     }
     /* console.log(this.urlArr); */
     this.router.navigate(this.urlArr);
-    return false;
   }
 
   private setBtn(msg: string) {
