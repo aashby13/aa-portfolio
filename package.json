@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build --sourceMap=false",
+    "build": "ng build --prod --sourceMap=false",
     "host": "ng serve --host 10.0.0.57 -o",
     "test": "ng test",
     "lint": "ng lint",
