@@ -30,19 +30,12 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:mousewheel', ['$event'])
   onMouseWheel(e: WheelEvent) {
-    if (/* this.scrollEnabled &&  */Math.abs(e.deltaY) > 10) {
-      TweenLite.to(this.holder.nativeElement, 1, {
-        throwProps: {
-          y: {
-            velocity: -e.deltaY * 8,
-            end: this.end
-          },
-        },
-        ease: Power2.easeOut,
-        onUpdate: () => this.onTweenUpdate(),
-        onComplete: () => this.globalService.bodyClass1$.next(this.curID)
-      });
-    }
+    this.onMouseWheelHandler(e.deltaY);
+  }
+
+  @HostListener('window:DOMMouseScroll', ['$event'])
+  onMouseWheelFirefox(e: WheelEvent) {
+    this.onMouseWheelHandler(e.detail * 9);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -102,6 +95,22 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     }, 200);
+  }
+
+  private onMouseWheelHandler(delta: number) {
+    if (/* this.scrollEnabled &&  */Math.abs(delta) > 10) {
+      TweenLite.to(this.holder.nativeElement, 1, {
+        throwProps: {
+          y: {
+            velocity: -delta * 8,
+            end: this.end
+          },
+        },
+        ease: Power2.easeOut,
+        onUpdate: () => this.onTweenUpdate(),
+        onComplete: () => this.globalService.bodyClass1$.next(this.curID)
+      });
+    }
   }
 
   private goToCurrent(set = false) {
