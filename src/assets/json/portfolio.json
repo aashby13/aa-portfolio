@@ -35,7 +35,7 @@
         "strings": ["js", "html", "scss", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["ts", "angular", "redux", "gsap", "createjs", "opentypeJS"]
+        "strings": ["ts", "angular", "ngrx", "gsap", "createjs", "opentypeJS"]
       }, {
         "title": "apps",
         "strings": ["Ai", "Au"]
@@ -58,7 +58,7 @@
         "strings": ["js", "html", "scss", "anim", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["ts", "angular", "redux", "gsap", "createjs"]
+        "strings": ["ts", "angular", "ngrx", "gsap", "createjs"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
@@ -68,7 +68,7 @@
     }],
     "more": {
       "class": "horz",
-      "video": "/assets/video/way-to-serve.mp4",
+      "video": "https://video.kleinbuendel.com/pinpoint/pinpoint-tutorial.mp4",
       "desc": ""
     }
   }, {
