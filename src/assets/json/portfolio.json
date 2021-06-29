@@ -45,7 +45,7 @@
     }],
     "more": {
       "class": "vert",
-      "video": "/assets/video/pinpoint.mp4",
+      "video": "https://video.kleinbuendel.com/pinpoint/pinpoint-tutorial.mp4",
       "desc": "Pinpoint is a phone web app for use with 13-17 year olds that utilizes a Pain Assessment Tool (PAT) to describe and categorise specific types of pain experienced by adolescents with sickle cell disease. Pinpoint uses core game aspects such as fun, play, transparency, design, and challenge, and applies them to real-world objectives to increase engagement and effectiveness. The users are encouraged by a points system to report their pain frequently by using the drawing and questionnaire features, and to play the gaming features to help then enhance their communication skills by expanding their vocabulary and understanding of self-disclosure concepts. The points can be used to to customise a ”Learning Buddy” avatar that guides them through the app. The app also includes parent/guardian and medical provider portals where the teen user’s pain report and survey records can be accessed. The front-end was developed with Angular, and the backend with .NET Core. The app utilises REST APIs to save and retrieve data from the database, Resolvers to inject data into components, and Interceptors to add web token authorisation to backend calls. It has a unique, visually appealing interface with lots of animated elements (GSAP, Angular Animations, CSS3 transitions), including morphing SVGs. Pinpoint is being conducted in collaboration with the Hilton Publishing Company."
     }
   }, {
@@ -64,11 +64,11 @@
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
       }, {
         "title": "years",
-        "numbers": [2018, 2019]
+        "numbers": [2018, 2019, 2021]
     }],
     "more": {
       "class": "horz",
-      "video": "https://video.kleinbuendel.com/pinpoint/pinpoint-tutorial.mp4",
+      "video": "/assets/video/tway-to-serve.mp4",
       "desc": ""
     }
   }, {
@@ -96,7 +96,7 @@
     }
   }, {
     "id": "project-strong",
-    "name": "Project STRONG (En & Es) & Project TRAC",
+    "name": "Project STRONG (En & Es)",
     "type": "Web Apps",
     "role": "kb-vid",
     "info": [{
@@ -110,11 +110,34 @@
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
       }, {
         "title": "years",
-        "numbers": [2016, 2018, 2020]
+        "numbers": [2016, 2020]
     }],
     "more": {
       "class": "horz",
-      "video": "/assets/video/project-strong-trac.mp4",
+      "video": "/assets/video/project-strong.mp4",
+      "desc": ""
+    }
+  }, {
+    "id": "project-trac",
+    "name": "Project TRAC",
+    "type": "Web Apps",
+    "role": "kb-vid",
+    "info": [{
+      "title": "duties",
+      "strings": ["js", "html", "scss", "anim", "mograph", "gfx", "sfx"]
+    }, {
+      "title": "js",
+      "strings": ["jQuery", "gsap", "createjs", "box2D"]
+    }, {
+      "title": "apps",
+      "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
+    }, {
+      "title": "year",
+      "number": 2018
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/project-trac.mp4",
       "desc": ""
     }
   }, {
