@@ -66,7 +66,7 @@ export class RolodexComponent implements OnInit, AfterViewInit, OnDestroy {
       this.timeScale = Math.abs(this.tl.time() - this.tl.labels[this.newID]);
       this.timeScale = this.timeScale / 0.6;
       this.tl.timeScale(this.timeScale);
-      this.tl.tweenTo(this.newID, { ease: 'sine.out' });
+      this.tl.tweenTo(this.newID, { ease: 'sine.out', overwrite: true });
     }
   }
 

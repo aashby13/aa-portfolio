@@ -39,6 +39,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
           },
         },
         ease: 'power2.out',
+        overwrite: true,
         onUpdate: () => this.onTweenUpdate(),
         onComplete: () => this.globalService.bodyClass1$.next(this.curID)
       });
