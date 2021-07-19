@@ -102,9 +102,9 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
         duration: 1,
         inertia: {
           y: {
-            velocity: -delta * 8,
+            velocity: -delta * 10,
             end: this.end
-          },
+          }
         },
         ease: 'power2.out',
         overwrite: true,
@@ -135,6 +135,7 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
           duration: 0.6 + (Math.abs(this.curIndex - this.newIndex) * 0.06),
           y: this.end[this.newIndex],
           ease: 'power2.out',
+          overwrite: true,
           onComplete: () => this.globalService.bodyClass1$.next(this.curID)
         }
       );
@@ -156,7 +157,6 @@ export class ImageScrollComponent implements OnInit, AfterViewInit, OnDestroy {
     this.newIndex = this.end.findIndex(num =>
       Math.abs(num - (gsap.getProperty(this.holder.nativeElement, 'y') as number)) < this.thresh
     );
-    console.log(this.newIndex);
     //
     if (this.newIndex !== -1 && this.items[this.newIndex].id !== this.curID) {
       this.curIndex = this.newIndex;
