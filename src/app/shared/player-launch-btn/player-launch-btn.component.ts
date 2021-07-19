@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { gsap, MorphSVGPlugin } from 'gsap/all';
 
@@ -9,6 +9,10 @@ import { gsap, MorphSVGPlugin } from 'gsap/all';
   encapsulation: ViewEncapsulation.None
 })
 export class PlayerLaunchBtnComponent implements OnInit {
+
+  @ViewChild('play', {static: true}) playEl: ElementRef;
+  @ViewChild('close', {static: true}) closeEl: ElementRef;
+  @ViewChild('more', {static: true}) moreEl: ElementRef;
 
   message = 'more';
 
@@ -50,9 +54,11 @@ export class PlayerLaunchBtnComponent implements OnInit {
   private setBtn(msg: string) {
     this.message = msg;
     if (this.message === 'more') {
-
+      TweenLite.to(this.playEl.nativeElement, 0.6, { morphSVG: this.playEl.nativeElement, ease: Power2.easeOut });
+      TweenLite.to(this.moreEl.nativeElement, 0.6, { x: 0, ease: Power2.easeOut });
     } else {
-
+      TweenLite.to(this.playEl.nativeElement, 0.6, { morphSVG: this.closeEl.nativeElement, ease: Power2.easeOut });
+      TweenLite.to(this.moreEl.nativeElement, 0.6, { x: -28, ease: Power2.easeOut });
     }
   }
 

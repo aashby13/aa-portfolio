@@ -18,6 +18,11 @@
       "id": "kb-game",
       "me": "Game Dev & Design",
       "company": "Klein Buendel Inc."
+    },
+    {
+      "id": "aa-video",
+      "me": "Video Editor, MoGraph Artist, & Animator",
+      "company": "Adam Ashby Freelance & Various Companies"
     }
   ],
   "projects": [{
@@ -30,7 +35,7 @@
         "strings": ["js", "html", "scss", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["ts", "angular", "redux", "gsap", "createJS", "opentypeJS"]
+        "strings": ["ts", "angular", "ngrx", "gsap", "createjs", "opentypeJS"]
       }, {
         "title": "apps",
         "strings": ["Ai", "Au"]
@@ -40,30 +45,30 @@
     }],
     "more": {
       "class": "vert",
-      "video": "/assets/video/pinpoint.mp4",
+      "video": "https://video.kleinbuendel.com/pinpoint/pinpoint-tutorial.mp4",
       "desc": "Pinpoint is a phone web app for use with 13-17 year olds that utilizes a Pain Assessment Tool (PAT) to describe and categorise specific types of pain experienced by adolescents with sickle cell disease. Pinpoint uses core game aspects such as fun, play, transparency, design, and challenge, and applies them to real-world objectives to increase engagement and effectiveness. The users are encouraged by a points system to report their pain frequently by using the drawing and questionnaire features, and to play the gaming features to help then enhance their communication skills by expanding their vocabulary and understanding of self-disclosure concepts. The points can be used to to customise a ”Learning Buddy” avatar that guides them through the app. The app also includes parent/guardian and medical provider portals where the teen user’s pain report and survey records can be accessed. The front-end was developed with Angular, and the backend with .NET Core. The app utilises REST APIs to save and retrieve data from the database, Resolvers to inject data into components, and Interceptors to add web token authorisation to backend calls. It has a unique, visually appealing interface with lots of animated elements (GSAP, Angular Animations, CSS3 transitions), including morphing SVGs. Pinpoint is being conducted in collaboration with the Hilton Publishing Company."
     }
   }, {
-    "id": "wts",
+    "id": "way-to-serve",
     "name": "WayToServe & WTS-Español",
     "type": "Web Apps",
     "role": "kb-vid",
     "info": [{
         "title": "duties",
-        "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
+        "strings": ["js", "html", "scss", "anim", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["ts", "angular", "redux", "gsap", "createJS"]
+        "strings": ["ts", "angular", "ngrx", "gsap", "createjs"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
       }, {
         "title": "years",
-        "numbers": [2018, 2019]
+        "numbers": [2018, 2019, 2021]
     }],
     "more": {
       "class": "horz",
-      "video": "/assets/video/wts-en-wts-es.mp4",
+      "video": "/assets/video/tway-to-serve.mp4",
       "desc": ""
     }
   }, {
@@ -76,7 +81,7 @@
         "strings": ["js", "html", "css", "anim", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["jQuery", "gsap", "createJS"]
+        "strings": ["jQuery", "gsap", "createjs"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
@@ -91,25 +96,48 @@
     }
   }, {
     "id": "project-strong",
-    "name": "Project STRONG (En & Es) & Project TRAC",
+    "name": "Project STRONG (En & Es)",
     "type": "Web Apps",
     "role": "kb-vid",
     "info": [{
         "title": "duties",
-        "strings": ["js", "html", "css", "anim", "mograph", "gfx", "sfx"]
+        "strings": ["js", "html", "scss", "anim", "mograph", "gfx", "sfx"]
       }, {
         "title": "js",
-        "strings": ["jQuery", "gsap", "createJS", "box2D"]
+        "strings": ["jQuery", "gsap", "createjs", "box2D"]
       }, {
         "title": "apps",
         "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
       }, {
         "title": "years",
-        "numbers": [2016, 2018, 2020]
+        "numbers": [2016, 2020]
     }],
     "more": {
       "class": "horz",
-      "video": "/assets/video/proj-strong-trac.mp4",
+      "video": "/assets/video/project-strong.mp4",
+      "desc": ""
+    }
+  }, {
+    "id": "project-trac",
+    "name": "Project TRAC",
+    "type": "Web Apps",
+    "role": "kb-vid",
+    "info": [{
+      "title": "duties",
+      "strings": ["js", "html", "scss", "anim", "mograph", "gfx", "sfx"]
+    }, {
+      "title": "js",
+      "strings": ["jQuery", "gsap", "createjs", "box2D"]
+    }, {
+      "title": "apps",
+      "strings": ["Ae", "Ai", "Au", "Ch", "Pr", "Ps"]
+    }, {
+      "title": "year",
+      "number": 2018
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/project-trac.mp4",
       "desc": ""
     }
   }, {
@@ -228,6 +256,23 @@
     "more": {
       "class": "horz",
       "video": "/assets/video/astro-pop.mp4",
+      "desc": ""
+    }
+  }, {
+    "id": "demo-reel",
+    "name": "Demo Reel 2010",
+    "type": "Old School",
+    "role": "aa-video",
+    "info": [{
+      "title": "apps",
+      "strings": ["FCP Legacy", "Motion", "SoundTrack", "Ae", "Ai", "Ps", "Fl"]
+    }, {
+      "title": "years",
+      "number": "2003-2010"
+    }],
+    "more": {
+      "class": "horz",
+      "video": "/assets/video/demo-reel-2010.mp4",
       "desc": ""
     }
   }]

@@ -56,6 +56,24 @@ $milk-brown: #94877d;
       fill: $milk-brown;
     }
   }
+
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: $milk-dark-brown;
+      border-color: $milk-off-white;
+
+      span::after {
+        border-color: $milk-off-white;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $milk-off-white;
+      }
+    }
+  }
 }
 
   

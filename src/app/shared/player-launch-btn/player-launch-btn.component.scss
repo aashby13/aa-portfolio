@@ -12,6 +12,7 @@ app-player-launch-btn {
     max-height: 13rem;
     margin-left: 1rem;
     margin-bottom: 1rem;
+    pointer-events: all;
 
     #close-path {
       display: none;

@@ -1,13 +1,14 @@
-$bub-purple: #9f84ba;
-$bub-blue: #0d71ba;
-$bub-yellow: #f7c45b;
-$bub-green: #8ea368;
+$demo-violet: #685868;
+$demo-grey: #bfbfbf;
+$demo-green: #576757;
+$demo-blue: #576767;
+$demo-red: #675757;
 
-#bub-and-bot {
-    background-image: url(/assets/images/bub-and-bot.png);
+#demo-reel {
+  background-image: url(/assets/images/demo-reel-2.png);
 }
 
-.bub-and-bot {
+.demo-reel {
   app-rolodex {
     #text-holder {
       .project-type {
@@ -15,52 +16,52 @@ $bub-green: #8ea368;
       }
 
       .project-role h2 {
-        color: $bub-green;
+        color: $demo-violet;
 
         .tab {
-          color: $bub-purple;
+          color: $demo-red;
         }
       }
 
       .project-info {
         p {
-          color: #ccc8db;
+          color: $demo-grey;
         }
       }
 
       .string {
-        color: $bub-purple;
+        color: $demo-green;
       }
 
       .keyword {
-        color: $bub-green;
+        color: $demo-red;
       }
 
       .name {
-        color: $white;
-        background-color: $bub-blue;
+        color: $demo-grey;
+        background-color: $black;
       }
 
       .number,
       .operator {
-        color: $bub-yellow;
+        color: $white;
       }
     }
   }
 
   #svg-play-btn {
     .play {
-      fill: $bub-green;
+      fill: $white;
     }
 
     .more {
-      fill: $bub-purple;
+      fill: $demo-violet;
     }
   }
 
   app-play-pause-btn {
     .play-toggle-btn {
-      background-color: $bub-green;
+      background-color: $demo-violet;
       border-color: $white;
 
       span::after {
@@ -76,5 +77,3 @@ $bub-green: #8ea368;
     }
   }
 }
-
-  

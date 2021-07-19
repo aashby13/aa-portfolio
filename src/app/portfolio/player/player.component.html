@@ -1,8 +1,14 @@
 <div class="player-wrap">
     
-  <div class="video-wrap" [ngClass]="{'on': loaded}">
-    <video *ngIf="data" [src]="data.video" [ngClass]="data.class" (loadeddata)="onLoadedData()" autoplay>
+  <div class="video-wrap" [ngClass]="{'on': loaded}" (pointerup)="playToggle()">
+    <video #video *ngIf="data" autoplay
+      [src]="data.video" 
+      [ngClass]="data.class"
+      (loadeddata)="onLoadedData()"
+      (playing)="onVideoPlaying()"
+      (ended)="onVideoEnded()">
     </video>
+    <app-play-pause-btn *ngIf="data" [ngClass]="data.class" [isPaused]="paused" [show]="showBtn"></app-play-pause-btn>
   </div>
 
 </div>

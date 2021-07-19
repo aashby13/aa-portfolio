@@ -1,12 +1,13 @@
-$ttt-green:#679a41;
-$ttt-blue:#0f98ae;
-$ttt-purple:#bb88b5;
+$ps-green:#22d922;
+$pt-light-pink:#c48ba2;
+$pt-blue:#507acc;
+$pt-mex-pink:#9e1f63;
 
-#train-to-tend {
-    background-image: url(/assets/images/train-to-tend.svg);
+#project-trac {
+  background-image: url(/assets/images/project-trac.png);
 }
 
-.train-to-tend {
+.project-trac {
   app-rolodex {
     #text-holder {
       .project-type {
@@ -14,10 +15,10 @@ $ttt-purple:#bb88b5;
       }
 
       .project-role h2 {
-        color: $ttt-green;
+        color: $pt-mex-pink;
 
         .tab {
-          color: $ttt-purple;
+          color: $pt-light-pink;
         }
       }
 
@@ -27,47 +28,50 @@ $ttt-purple:#bb88b5;
         }
       }
 
-      .string,
+      .string {
+        color: $pt-blue;
+      }
+
       .keyword {
-        color: $ttt-blue;
+        color: $pt-light-pink;
       }
 
       .name {
         color: $black;
-        background-color: $ttt-green;
+        background-color: $ps-green;
       }
 
       .number,
       .operator {
-        color: $ttt-purple;
+        color: $ps-green;
       }
     }
   }
 
   #svg-play-btn {
     .play {
-      fill: $ttt-green;
+      fill: $white;
     }
 
     .more {
-      fill: $ttt-purple;
+      fill: $pt-blue;
     }
   }
 
   app-play-pause-btn {
     .play-toggle-btn {
-      background-color: #333333;
-      border-color: $white;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-color: $ps-green;
 
       span::after {
-        border-color: $ttt-green;
+        border-color: $ps-green;
       }
     }
 
     .play-toggle-btn.paused {
 
       span::after {
-        background-color: $ttt-green;
+        background-color: $ps-green;
       }
     }
   }

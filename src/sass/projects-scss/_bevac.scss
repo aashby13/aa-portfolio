@@ -45,14 +45,28 @@ $bevac-orange:#C95F0A;
   #svg-play-btn {
     .play {
       fill: $bevac-blue;
-      /* fill: $white; */
-      /* fill: $bevac-orange; */
     }
 
     .more {
       fill: $bevac-orange;
-      /* fill: $bevac-blue; */
-      /* fill: $white; */
+    }
+  }
+
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: $bevac-blue;
+      border-color: $white;
+
+      span::after {
+        border-color: $white;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $white;
+      }
     }
   }
 }

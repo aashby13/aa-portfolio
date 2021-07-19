@@ -60,5 +60,23 @@ $ps-yellow:#b77a34;
       fill: $ps-yellow;
     }
   }
+
+  app-play-pause-btn {
+    .play-toggle-btn {
+      background-color: rgba(0,0,0,0.5);
+      border-color: $ps-green;
+
+      span::after {
+        border-color: $ps-green;
+      }
+    }
+
+    .play-toggle-btn.paused {
+
+      span::after {
+        background-color: $ps-green;
+      }
+    }
+  }
 }
 
